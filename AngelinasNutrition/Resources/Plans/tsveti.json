@@ -4256,7 +4256,16 @@
     "deloadEvery": [
       6,
       8
-    ]
+    ],
+    "extraExercises": {
+      "avoidCategories": [
+        "plyometrics"
+      ],
+      "note": {
+        "bg": "Без скокове (тазово дъно след раждане). Класически коремни преси, тежки планкове и колене във вис – само след преглед. Добавяй ново упражнение вместо подобно от програмата, не отгоре.",
+        "en": "No jumping (pelvic floor after birth). Classic crunches, heavy planks and hanging raises only after a check-up. Use a new exercise instead of a similar one from the program, not on top of it."
+      }
+    }
   },
   "checkIn": {
     "fields": [

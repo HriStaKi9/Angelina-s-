@@ -1,6 +1,8 @@
 import SwiftUI
 
 enum WorkoutRoute: Hashable {
+    case moreExercises
+    case muscleArea(MuscleArea)
     case overview
     case library
     case guide
@@ -41,6 +43,9 @@ struct WorkoutsView: View {
                 if path.isEmpty, store.activePlan != nil, UserDefaults.standard.bool(forKey: "openOverview") {
                     path.append(WorkoutRoute.overview)
                 }
+                if path.isEmpty, UserDefaults.standard.bool(forKey: "openMoreExercises") {
+                    path.append(WorkoutRoute.moreExercises)
+                }
             }
             #endif
             .navigationDestination(for: WorkoutRoute.self) { route in
@@ -48,6 +53,10 @@ struct WorkoutsView: View {
                 case .library:
                     ExerciseLibraryView()
                         .navigationTitle(store.t("Библиотека", "Exercise library"))
+                case .moreExercises:
+                    MoreExercisesView()
+                case .muscleArea(let area):
+                    MuscleAreaListView(area: area)
                 case .overview:
                     if let plan = store.activePlan { TrainingOverviewView(plan: plan) }
                 case .logbook:
@@ -83,6 +92,8 @@ private struct ProgramOverview: View {
                         .padding(.top, -Theme.Spacing.m)
                 }
                 workouts
+                NavigationLink(value: WorkoutRoute.moreExercises) { MoreExercisesCard(tint: plan.accentColor) }
+                    .buttonStyle(.plain)
                 WarmUpCard(items: program.warmUp)
                 ForEach(program.callouts) { InfoSectionView(section: $0) }
                 VStack(alignment: .leading, spacing: Theme.Spacing.m) {
@@ -453,5 +464,33 @@ private struct ProgramExerciseCard: View {
             .padding(.horizontal, 8).padding(.vertical, 4)
             .foregroundStyle(Theme.Palette.inkSecondary)
             .background(Theme.Palette.surfaceMuted, in: Capsule())
+    }
+}
+
+struct MoreExercisesCard: View {
+    @Environment(ProfileStore.self) private var store
+    let tint: Color
+
+    var body: some View {
+        let count = ExerciseLibrary.shared.exercises.filter {
+            [.strength, .powerlifting].contains($0.category) && $0.isDoable(with: store.gear)
+        }.count
+        HStack(spacing: Theme.Spacing.m) {
+            Image(systemName: "square.split.2x1.fill")
+                .font(.title2)
+                .foregroundStyle(.white)
+                .frame(width: 52, height: 52)
+                .background(tint.gradient, in: RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous))
+            VStack(alignment: .leading, spacing: 2) {
+                Text(store.t("Още упражнения", "More exercises")).font(.cardTitle).foregroundStyle(Theme.Palette.ink)
+                Text(store.t("\(count) за твоето оборудване · рак, щанга, дъмбели", "\(count) for your equipment · rack, barbell, dumbbells"))
+                    .font(.subheadline).foregroundStyle(Theme.Palette.inkSecondary)
+            }
+            Spacer(minLength: 0)
+            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(Theme.Palette.inkSecondary)
+        }
+        .padding(Theme.Spacing.l)
+        .background(Theme.Palette.surface, in: RoundedRectangle(cornerRadius: Theme.Radius.large, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: Theme.Radius.large, style: .continuous).strokeBorder(tint.opacity(0.4), lineWidth: 1.5))
     }
 }

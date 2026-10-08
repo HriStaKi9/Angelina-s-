@@ -55,6 +55,22 @@ struct ProfileView: View {
                             value: $store.profile.sessionsPerWeek, in: 2...6)
                 }
                 Section {
+                    FlowLayout(spacing: Theme.Spacing.s) {
+                        ForEach(HomeGear.allCases) { item in
+                            Chip(title: item.title[store.language], systemImage: item.systemImage, isSelected: store.gear.contains(item)) {
+                                var gear = store.gear
+                                if gear.contains(item) { gear.remove(item) } else { gear.insert(item) }
+                                store.gear = gear
+                            }
+                        }
+                    }
+                    .padding(.vertical, Theme.Spacing.xs)
+                } header: {
+                    Text("My equipment")
+                } footer: {
+                    Text("Used by Workouts → More exercises.")
+                }
+                Section {
                     if assistant.hasKey {
                         Label("API key saved in Keychain", systemImage: "checkmark.seal.fill")
                             .foregroundStyle(Theme.Palette.sage)

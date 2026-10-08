@@ -61,3 +61,7 @@ Exercises come from [free-exercise-db](https://github.com/yuhonas/free-exercise-
 ## Ask Claude
 
 The ✨ button on Today, Workouts, Nutrition and Progress opens a chat with Claude (`claude-opus-5-5`, streamed, server-side refusal fallback). It uses the user's own Anthropic API key, stored in the Keychain (`APIKeyStore`) and sent only to `api.anthropic.com`. The system prompt is the full plan rendered by `PlanSummary` (cached) plus a per-request block with today's session, chosen menu, check-ins and recent workouts. There is no Swift SDK, so `ClaudeClient` uses raw HTTP + Server-Sent Events.
+
+## More exercises
+
+Workouts → **More exercises** lists database exercises the user can do with their equipment (Profile → My equipment: power rack, barbell, bench, dumbbells, pull-up bar, bands, kettlebell, gym). `Exercise.isDoable(with:)` infers rack, bench and bar needs from the exercise name. A curated power-rack collection (`PowerRackCollection`) comes first, then exercises by muscle area. Plans can exclude categories via `training.extraExercises` (Tsveti: no plyometrics postpartum).

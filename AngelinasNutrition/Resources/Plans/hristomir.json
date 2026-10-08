@@ -3830,7 +3830,14 @@
     "deloadEvery": [
       6,
       8
-    ]
+    ],
+    "extraExercises": {
+      "avoidCategories": [],
+      "note": {
+        "bg": "Предпазните лостове на рака – малко под най-ниската точка при клек и малко под гърдите при лежанка. Използвай ново упражнение вместо подобно от програмата, не отгоре.",
+        "en": "Set the rack's safety bars just below the bottom of the squat and just below the chest for bench press. Use a new exercise instead of a similar one from the program, not on top of it."
+      }
+    }
   },
   "checkIn": {
     "fields": [
