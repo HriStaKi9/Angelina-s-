@@ -9,6 +9,14 @@ struct PersonalPlan: Codable, Identifiable, Hashable {
     let accent: String
     let nutrition: NutritionPlan
     let training: TrainingProgram
+    /// What the weekly check-in asks for.
+    let checkIn: CheckInSpec
+    /// Which plan section's adjustment table drives automatic advice: "nutrition" or "training".
+    let adviceSource: String
+
+    var adviceTable: AdjustmentTable? {
+        adviceSource == "training" ? training.adjustments : nutrition.adjustments
+    }
 }
 
 // MARK: - Bilingual text
@@ -95,6 +103,8 @@ struct AdjustmentTable: Codable, Hashable {
     struct Row: Codable, Hashable {
         let when: Localized
         let action: Localized
+        /// Machine-readable version of `when`, so the app can match check-in data to this row.
+        let trigger: AdviceTrigger?
     }
 
     let title: Localized
@@ -216,6 +226,16 @@ struct TrainingProgram: Codable, Hashable {
     let workouts: [ProgramWorkout]
     let sections: [InfoSection]
     let adjustments: AdjustmentTable?
+    /// Cut-down session for bad nights (first N exercises × M sets).
+    let shortVersion: ShortVersion?
+    /// Deload every N–M weeks.
+    let deloadEvery: [Int]?
+
+    struct ShortVersion: Codable, Hashable {
+        let exercises: Int
+        let sets: Int
+        let note: Localized
+    }
 
     func workout(id: String) -> ProgramWorkout? {
         workouts.first { $0.id == id }
@@ -295,6 +315,151 @@ struct ProgramExercise: Codable, Hashable, Identifiable {
     let cues: [Localized]
     /// Matching entry in the exercise database, for photos and full instructions.
     let exerciseID: String?
+    let tracking: ExerciseTracking
+    /// Swappable options (suggested by the app, not part of the coach's plan).
+    let alternatives: [ExerciseAlternative]
 
     var id: String { label }
+
+    /// Option 0 is the plan's own exercise; 1… are alternatives.
+    var options: [ExerciseOption] {
+        [ExerciseOption(index: 0, name: name, exerciseID: exerciseID, place: nil, note: nil)]
+            + alternatives.enumerated().map { ExerciseOption(index: $0.offset + 1, name: $0.element.name, exerciseID: $0.element.exerciseID, place: $0.element.place, note: $0.element.note) }
+    }
+
+    func option(_ index: Int) -> ExerciseOption {
+        options.indices.contains(index) ? options[index] : options[0]
+    }
+
+    var isSuperset: Bool { label.last?.isLetter == true }
+}
+
+struct ExerciseAlternative: Codable, Hashable {
+    let name: Localized
+    let exerciseID: String?
+    let place: Place
+    let note: Localized?
+
+    enum Place: String, Codable {
+        case home, gym, any
+
+        var title: Localized {
+            switch self {
+            case .home: Localized(bg: "У дома", en: "Home")
+            case .gym: Localized(bg: "Фитнес", en: "Gym")
+            case .any: Localized(bg: "Навсякъде", en: "Anywhere")
+            }
+        }
+    }
+}
+
+struct ExerciseOption: Hashable, Identifiable {
+    let index: Int
+    let name: Localized
+    let exerciseID: String?
+    let place: ExerciseAlternative.Place?
+    let note: Localized?
+
+    var id: Int { index }
+    var isOriginal: Bool { index == 0 }
+    var exercise: Exercise? { exerciseID.flatMap(ExerciseLibrary.shared.exercise(id:)) }
+}
+
+/// How an exercise is logged and progressed, taken from the program's rules.
+struct ExerciseTracking: Codable, Hashable {
+    enum Load: String, Codable {
+        /// `dumbbell` = one held weight (goblet); `dumbbells` = a pair, weight is per hand.
+        case barbell, dumbbell, dumbbells, cable, band, bodyweight, assisted
+
+        var usesWeight: Bool { [.barbell, .dumbbell, .dumbbells, .cable].contains(self) }
+    }
+
+    struct SetRule: Codable, Hashable {
+        let from: Int
+        let to: Int?
+        let sets: Int
+    }
+
+    let sets: Int
+    let reps: [Int]?
+    let seconds: [Int]?
+    let perSide: Bool
+    let load: Load
+    let start: [Double]?
+    let step: Double?
+    /// Weeks 1…N are done without added weight.
+    let bodyweightWeeks: Int?
+    /// Start without weight and add the starting weight once the top of the range is reached.
+    let bodyweightFirst: Bool?
+    let maxSeconds: Int?
+    let setRules: [SetRule]?
+    let restSeconds: Int
+
+    var repRange: ClosedRange<Int>? { reps.map { $0[0]...$0[1] } }
+    var secondRange: ClosedRange<Int>? { seconds.map { $0[0]...$0[1] } }
+    var isTimed: Bool { seconds != nil }
+
+    func sets(inWeek week: Int) -> Int {
+        setRules?.first { week >= $0.from && week <= ($0.to ?? .max) }?.sets ?? sets
+    }
+}
+
+// MARK: - Check-ins and advice
+
+struct CheckInSpec: Codable, Hashable {
+    let fields: [CheckInField]
+    let flags: [CheckInFlag]
+}
+
+enum CheckInField: String, Codable, CaseIterable, Identifiable {
+    case weight, waist, hips, steps
+
+    var id: String { rawValue }
+
+    var title: Localized {
+        switch self {
+        case .weight: Localized(bg: "Тегло", en: "Weight")
+        case .waist: Localized(bg: "Талия", en: "Waist")
+        case .hips: Localized(bg: "Ханш", en: "Hips")
+        case .steps: Localized(bg: "Крачки (средно)", en: "Steps (daily avg)")
+        }
+    }
+
+    var unit: Localized {
+        switch self {
+        case .weight: Localized(bg: "кг", en: "kg")
+        case .waist, .hips: Localized(bg: "см", en: "cm")
+        case .steps: Localized(bg: "крачки", en: "steps")
+        }
+    }
+}
+
+enum CheckInFlag: String, Codable, CaseIterable, Identifiable {
+    case lowMilk, fatigue, hunger, poorSleep, jointPain
+
+    var id: String { rawValue }
+
+    var title: Localized {
+        switch self {
+        case .lowMilk: Localized(bg: "По-малко кърма", en: "Less breast milk")
+        case .fatigue: Localized(bg: "Силна умора", en: "Heavy fatigue")
+        case .hunger: Localized(bg: "Силен глад", en: "Strong hunger")
+        case .poorSleep: Localized(bg: "Лош сън", en: "Poor sleep")
+        case .jointPain: Localized(bg: "Болки в ставите", en: "Joint pain")
+        }
+    }
+}
+
+struct AdviceTrigger: Codable, Hashable {
+    enum Kind: String, Codable { case steady, onTrack, losing, gaining, stalled, flags }
+
+    let type: Kind
+    let perWeek: Double?
+    let afterWeek: Int?
+    let weeks: Int?
+    let withWaist: Bool?
+    let anyOf: [CheckInFlag]?
+    let maxGainPerWeek: Double?
+    let maxLossPerWeek: Double?
+    let minLossPerWeek: Double?
 }

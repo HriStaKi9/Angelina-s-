@@ -3,11 +3,13 @@ import SwiftUI
 @main
 struct AngelinasNutritionApp: App {
     @State private var profileStore = ProfileStore()
+    @State private var trainingLog = TrainingLog()
 
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environment(profileStore)
+                .environment(trainingLog)
                 .tint(Theme.Palette.berry)
         }
     }
@@ -31,7 +33,7 @@ struct RootView: View {
 }
 
 struct MainTabView: View {
-    enum TabID: String { case today, workouts, nutrition, profile }
+    enum TabID: String { case today, workouts, nutrition, progress, profile }
 
     @State private var selection: TabID = Self.initialTab
 
@@ -40,6 +42,7 @@ struct MainTabView: View {
             Tab("Today", systemImage: "sun.max.fill", value: .today) { TodayView() }
             Tab("Workouts", systemImage: "figure.strengthtraining.functional", value: .workouts) { WorkoutsView() }
             Tab("Nutrition", systemImage: "leaf.fill", value: .nutrition) { NutritionView() }
+            Tab("Progress", systemImage: "chart.line.uptrend.xyaxis", value: .progress) { ProgressTabView() }
             Tab("Profile", systemImage: "person.crop.circle.fill", value: .profile) { ProfileView() }
         }
     }

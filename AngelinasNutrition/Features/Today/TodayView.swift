@@ -180,6 +180,7 @@ struct PlannedExerciseRow: View {
 /// Today with a personal plan: the scheduled session and the day's menu.
 private struct PlanTodaySection: View {
     @Environment(ProfileStore.self) private var store
+    @Environment(TrainingLog.self) private var log
     let plan: PersonalPlan
 
     private var lang: ContentLanguage { store.language }
@@ -188,7 +189,9 @@ private struct PlanTodaySection: View {
         if let today = store.programDay() {
             if let workout = today.workout {
                 NavigationLink(value: workout) {
-                    sessionCard(eyebrow: store.t("Днешна тренировка", "Today's workout"),
+                    sessionCard(eyebrow: log.didTrain(planID: plan.id, workoutID: workout.id, on: .now)
+                                    ? store.t("✓ Готово за днес", "✓ Done for today")
+                                    : store.t("Днешна тренировка", "Today's workout"),
                                 title: workout.title[lang],
                                 detail: [workout.duration[lang], store.t("\(workout.exercises.count) упражнения", "\(workout.exercises.count) exercises")],
                                 week: today.week, systemImage: "dumbbell.fill", showsChevron: true)

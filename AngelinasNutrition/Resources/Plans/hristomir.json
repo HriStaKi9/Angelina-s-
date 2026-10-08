@@ -1,368 +1,2718 @@
 {
   "id": "hristomir",
-  "name": { "bg": "Христомир", "en": "Hristomir" },
+  "name": {
+    "bg": "Христомир",
+    "en": "Hristomir"
+  },
   "accent": "apricot",
   "nutrition": {
-    "title": { "bg": "Хранителен режим", "en": "Eating plan" },
-    "goal": { "bg": "Редукция на подкожните мазнини с максимално запазване и постепенно изграждане на мускулна маса.", "en": "Reduce body fat while keeping as much muscle as possible and gradually building more." },
-    "stats": { "bg": "97 кг · 188 см · 29 г.", "en": "97 kg · 188 cm · 29 y" },
-    "kcal": [2200, 2300],
-    "protein": [175, 190],
-    "mealsPerDay": { "bg": "3 основни + протеиново междинно при нужда", "en": "3 main meals + a protein snack when needed" },
-    "pace": { "bg": "≈ 0.3–0.7 кг надолу седмично", "en": "≈ 0.3–0.7 kg down per week" },
-    "aboutTitle": { "bg": "За режима", "en": "About the plan" },
-    "about": [
-      { "bg": "Nutrition: Balance Is Key! Целта е постепенно намаляване на подкожните мазнини, запазване и изграждане на мускулна маса и подобряване на телесната композиция.", "en": "Nutrition: Balance Is Key! The goal is to gradually lose body fat, keep and build muscle, and improve body composition." },
-      { "bg": "Режимът е структуриран с 10 варианта за всяко основно хранене. Всеки ден се избира по 1 закуска + 1 обяд + 1 вечеря. При необходимост може да се добави протеиново междинно хранене.", "en": "There are 10 options for each main meal. Each day, pick 1 breakfast + 1 lunch + 1 dinner. Add a protein snack when needed." },
-      { "bg": "Междинното хранене не е задължително. Използва се, ако дневният прием на протеин или калории не може да бъде достигнат с трите основни хранения.", "en": "The snack is optional. Use it when the three main meals don't reach the day's protein or calories." }
+    "title": {
+      "bg": "Хранителен режим",
+      "en": "Eating plan"
+    },
+    "goal": {
+      "bg": "Редукция на подкожните мазнини с максимално запазване и постепенно изграждане на мускулна маса.",
+      "en": "Reduce body fat while keeping as much muscle as possible and gradually building more."
+    },
+    "stats": {
+      "bg": "97 кг · 188 см · 29 г.",
+      "en": "97 kg · 188 cm · 29 y"
+    },
+    "kcal": [
+      2200,
+      2300
     ],
-    "weekNote": { "bg": "Не е необходимо да следва точно определен ден от менюто. Следващата седмица може да се използват останалите варианти.", "en": "No need to follow a specific day of the menu. Next week, use the other options." },
+    "protein": [
+      175,
+      190
+    ],
+    "mealsPerDay": {
+      "bg": "3 основни + протеиново междинно при нужда",
+      "en": "3 main meals + a protein snack when needed"
+    },
+    "pace": {
+      "bg": "≈ 0.3–0.7 кг надолу седмично",
+      "en": "≈ 0.3–0.7 kg down per week"
+    },
+    "aboutTitle": {
+      "bg": "За режима",
+      "en": "About the plan"
+    },
+    "about": [
+      {
+        "bg": "Nutrition: Balance Is Key! Целта е постепенно намаляване на подкожните мазнини, запазване и изграждане на мускулна маса и подобряване на телесната композиция.",
+        "en": "Nutrition: Balance Is Key! The goal is to gradually lose body fat, keep and build muscle, and improve body composition."
+      },
+      {
+        "bg": "Режимът е структуриран с 10 варианта за всяко основно хранене. Всеки ден се избира по 1 закуска + 1 обяд + 1 вечеря. При необходимост може да се добави протеиново междинно хранене.",
+        "en": "There are 10 options for each main meal. Each day, pick 1 breakfast + 1 lunch + 1 dinner. Add a protein snack when needed."
+      },
+      {
+        "bg": "Междинното хранене не е задължително. Използва се, ако дневният прием на протеин или калории не може да бъде достигнат с трите основни хранения.",
+        "en": "The snack is optional. Use it when the three main meals don't reach the day's protein or calories."
+      }
+    ],
+    "weekNote": {
+      "bg": "Не е необходимо да следва точно определен ден от менюто. Следващата седмица може да се използват останалите варианти.",
+      "en": "No need to follow a specific day of the menu. Next week, use the other options."
+    },
     "dayFlow": null,
     "meals": [
-      { "course": "breakfast", "number": 1, "name": { "bg": "Омлет с яйца, белтъци и зеленчуци", "en": "Egg & egg-white omelette with vegetables" },
+      {
+        "course": "breakfast",
+        "number": 1,
+        "name": {
+          "bg": "Омлет с яйца, белтъци и зеленчуци",
+          "en": "Egg & egg-white omelette with vegetables"
+        },
         "ingredients": [
-          { "bg": "3 яйца", "en": "3 eggs" }, { "bg": "150 г белтъци", "en": "150 g egg whites" },
-          { "bg": "100 г домат", "en": "100 g tomato" }, { "bg": "100 г чушка", "en": "100 g bell pepper" },
-          { "bg": "30 г сирене", "en": "30 g white cheese (sirene)" }, { "bg": "5 г зехтин", "en": "5 g olive oil" },
-          { "bg": "60 г пълнозърнест хляб – Вита или Живена", "en": "60 g wholegrain bread – Vita or Zhivena" } ],
-        "steps": { "bg": "Загрей тигана и добави зехтина. Нарежи домата и чушката и ги запечи за 2–3 минути. Разбий яйцата и белтъците и ги добави към зеленчуците. Готви на умерен огън. Накрая добави натрошеното сирене. Сервирай с пълнозърнестия хляб.", "en": "Heat the pan and add the olive oil. Chop the tomato and pepper and sauté for 2–3 minutes. Beat the eggs and whites and add them to the vegetables. Cook over medium heat. Finish with the crumbled cheese. Serve with the wholegrain bread." },
-        "kcal": 600, "protein": 50 },
-      { "course": "breakfast", "number": 2, "name": { "bg": "Овесена закуска с яйца и плод", "en": "Oats with eggs and fruit" },
+          {
+            "bg": "3 яйца",
+            "en": "3 eggs"
+          },
+          {
+            "bg": "150 г белтъци",
+            "en": "150 g egg whites"
+          },
+          {
+            "bg": "100 г домат",
+            "en": "100 g tomato"
+          },
+          {
+            "bg": "100 г чушка",
+            "en": "100 g bell pepper"
+          },
+          {
+            "bg": "30 г сирене",
+            "en": "30 g white cheese (sirene)"
+          },
+          {
+            "bg": "5 г зехтин",
+            "en": "5 g olive oil"
+          },
+          {
+            "bg": "60 г пълнозърнест хляб – Вита или Живена",
+            "en": "60 g wholegrain bread – Vita or Zhivena"
+          }
+        ],
+        "steps": {
+          "bg": "Загрей тигана и добави зехтина. Нарежи домата и чушката и ги запечи за 2–3 минути. Разбий яйцата и белтъците и ги добави към зеленчуците. Готви на умерен огън. Накрая добави натрошеното сирене. Сервирай с пълнозърнестия хляб.",
+          "en": "Heat the pan and add the olive oil. Chop the tomato and pepper and sauté for 2–3 minutes. Beat the eggs and whites and add them to the vegetables. Cook over medium heat. Finish with the crumbled cheese. Serve with the wholegrain bread."
+        },
+        "kcal": 600,
+        "protein": 50
+      },
+      {
+        "course": "breakfast",
+        "number": 2,
+        "name": {
+          "bg": "Овесена закуска с яйца и плод",
+          "en": "Oats with eggs and fruit"
+        },
         "ingredients": [
-          { "bg": "60 г овесени ядки", "en": "60 g rolled oats" }, { "bg": "200 г кисело мляко 2%", "en": "200 g yogurt 2%" },
-          { "bg": "1 банан – около 100 г", "en": "1 banana – about 100 g" }, { "bg": "15 г фъстъчено масло", "en": "15 g peanut butter" },
-          { "bg": "2 яйца", "en": "2 eggs" }, { "bg": "щипка канела", "en": "a pinch of cinnamon" } ],
-        "steps": { "bg": "Смеси овесените ядки с киселото мляко и канелата. Нарежи банана и го добави отгоре. Добави фъстъченото масло. Яйцата свари за 7–9 минути.", "en": "Mix the oats with the yogurt and cinnamon. Slice the banana on top. Add the peanut butter. Boil the eggs for 7–9 minutes." },
-        "kcal": 600, "protein": [35, 40] },
-      { "course": "breakfast", "number": 3, "name": { "bg": "Бъркани яйца с пилешко", "en": "Scrambled eggs with chicken" },
+          {
+            "bg": "60 г овесени ядки",
+            "en": "60 g rolled oats"
+          },
+          {
+            "bg": "200 г кисело мляко 2%",
+            "en": "200 g yogurt 2%"
+          },
+          {
+            "bg": "1 банан – около 100 г",
+            "en": "1 banana – about 100 g"
+          },
+          {
+            "bg": "15 г фъстъчено масло",
+            "en": "15 g peanut butter"
+          },
+          {
+            "bg": "2 яйца",
+            "en": "2 eggs"
+          },
+          {
+            "bg": "щипка канела",
+            "en": "a pinch of cinnamon"
+          }
+        ],
+        "steps": {
+          "bg": "Смеси овесените ядки с киселото мляко и канелата. Нарежи банана и го добави отгоре. Добави фъстъченото масло. Яйцата свари за 7–9 минути.",
+          "en": "Mix the oats with the yogurt and cinnamon. Slice the banana on top. Add the peanut butter. Boil the eggs for 7–9 minutes."
+        },
+        "kcal": 600,
+        "protein": [
+          35,
+          40
+        ]
+      },
+      {
+        "course": "breakfast",
+        "number": 3,
+        "name": {
+          "bg": "Бъркани яйца с пилешко",
+          "en": "Scrambled eggs with chicken"
+        },
         "ingredients": [
-          { "bg": "3 яйца", "en": "3 eggs" }, { "bg": "100 г пилешко филе (Меско е добър вариант за марка)", "en": "100 g chicken breast (Mesko is a good brand)" },
-          { "bg": "100 г домати", "en": "100 g tomatoes" }, { "bg": "100 г краставица", "en": "100 g cucumber" },
-          { "bg": "50 г пълнозърнест хляб", "en": "50 g wholegrain bread" }, { "bg": "5 г зехтин", "en": "5 g olive oil" } ],
-        "steps": { "bg": "Нарежи пилешкото на малки парчета и го запечи в тигана със зехтина. Когато е готово, добави разбитите яйца и разбърквай до готовност. Сервирай с домат, краставица и хляб.", "en": "Dice the chicken and pan-fry it in the olive oil. When done, add the beaten eggs and stir until set. Serve with tomato, cucumber and bread." },
-        "kcal": [550, 580], "protein": 55 },
-      { "course": "breakfast", "number": 4, "name": { "bg": "Протеинова овесена купа", "en": "Protein oat bowl" },
+          {
+            "bg": "3 яйца",
+            "en": "3 eggs"
+          },
+          {
+            "bg": "100 г пилешко филе (Меско е добър вариант за марка)",
+            "en": "100 g chicken breast (Mesko is a good brand)"
+          },
+          {
+            "bg": "100 г домати",
+            "en": "100 g tomatoes"
+          },
+          {
+            "bg": "100 г краставица",
+            "en": "100 g cucumber"
+          },
+          {
+            "bg": "50 г пълнозърнест хляб",
+            "en": "50 g wholegrain bread"
+          },
+          {
+            "bg": "5 г зехтин",
+            "en": "5 g olive oil"
+          }
+        ],
+        "steps": {
+          "bg": "Нарежи пилешкото на малки парчета и го запечи в тигана със зехтина. Когато е готово, добави разбитите яйца и разбърквай до готовност. Сервирай с домат, краставица и хляб.",
+          "en": "Dice the chicken and pan-fry it in the olive oil. When done, add the beaten eggs and stir until set. Serve with tomato, cucumber and bread."
+        },
+        "kcal": [
+          550,
+          580
+        ],
+        "protein": 55
+      },
+      {
+        "course": "breakfast",
+        "number": 4,
+        "name": {
+          "bg": "Протеинова овесена купа",
+          "en": "Protein oat bowl"
+        },
         "ingredients": [
-          { "bg": "60 г овесени ядки", "en": "60 g rolled oats" }, { "bg": "250 г Skyr или високопротеиново кисело мляко", "en": "250 g Skyr or high-protein yogurt" },
-          { "bg": "150 г ягоди или боровинки", "en": "150 g strawberries or blueberries" }, { "bg": "15 г орехи", "en": "15 g walnuts" },
-          { "bg": "10 г мед", "en": "10 g honey" }, { "bg": "канела", "en": "cinnamon" } ],
-        "steps": { "bg": "Сложи овесените ядки в купа. Добави Skyr-а, плодовете, меда и канелата. Отгоре добави натрошените орехи.", "en": "Put the oats in a bowl. Add the Skyr, fruit, honey and cinnamon. Top with the crushed walnuts." },
-        "kcal": [500, 550], "protein": [35, 40] },
-      { "course": "breakfast", "number": 5, "name": { "bg": "Омлет с пилешко и кашкавал", "en": "Chicken & kashkaval omelette" },
+          {
+            "bg": "60 г овесени ядки",
+            "en": "60 g rolled oats"
+          },
+          {
+            "bg": "250 г Skyr или високопротеиново кисело мляко",
+            "en": "250 g Skyr or high-protein yogurt"
+          },
+          {
+            "bg": "150 г ягоди или боровинки",
+            "en": "150 g strawberries or blueberries"
+          },
+          {
+            "bg": "15 г орехи",
+            "en": "15 g walnuts"
+          },
+          {
+            "bg": "10 г мед",
+            "en": "10 g honey"
+          },
+          {
+            "bg": "канела",
+            "en": "cinnamon"
+          }
+        ],
+        "steps": {
+          "bg": "Сложи овесените ядки в купа. Добави Skyr-а, плодовете, меда и канелата. Отгоре добави натрошените орехи.",
+          "en": "Put the oats in a bowl. Add the Skyr, fruit, honey and cinnamon. Top with the crushed walnuts."
+        },
+        "kcal": [
+          500,
+          550
+        ],
+        "protein": [
+          35,
+          40
+        ]
+      },
+      {
+        "course": "breakfast",
+        "number": 5,
+        "name": {
+          "bg": "Омлет с пилешко и кашкавал",
+          "en": "Chicken & kashkaval omelette"
+        },
         "ingredients": [
-          { "bg": "2 яйца", "en": "2 eggs" }, { "bg": "150 г белтъци", "en": "150 g egg whites" },
-          { "bg": "100 г пилешко филе", "en": "100 g chicken breast" }, { "bg": "30 г кашкавал", "en": "30 g kashkaval (yellow cheese)" },
-          { "bg": "100 г чушки", "en": "100 g bell peppers" }, { "bg": "5 г зехтин", "en": "5 g olive oil" },
-          { "bg": "50 г пълнозърнест хляб", "en": "50 g wholegrain bread" } ],
-        "steps": { "bg": "Запечи нарязаното пилешко със зехтина. Добави чушките. След 2–3 минути добави разбитите яйца и белтъци. Когато омлетът почти е готов, добави кашкавала и го остави да се разтопи.", "en": "Pan-fry the diced chicken in the olive oil. Add the peppers. After 2–3 minutes add the beaten eggs and whites. When almost set, add the cheese and let it melt." },
-        "kcal": 600, "protein": 65 },
-      { "course": "breakfast", "number": 6, "name": { "bg": "Яйца с авокадо и хляб", "en": "Eggs with avocado toast" },
+          {
+            "bg": "2 яйца",
+            "en": "2 eggs"
+          },
+          {
+            "bg": "150 г белтъци",
+            "en": "150 g egg whites"
+          },
+          {
+            "bg": "100 г пилешко филе",
+            "en": "100 g chicken breast"
+          },
+          {
+            "bg": "30 г кашкавал",
+            "en": "30 g kashkaval (yellow cheese)"
+          },
+          {
+            "bg": "100 г чушки",
+            "en": "100 g bell peppers"
+          },
+          {
+            "bg": "5 г зехтин",
+            "en": "5 g olive oil"
+          },
+          {
+            "bg": "50 г пълнозърнест хляб",
+            "en": "50 g wholegrain bread"
+          }
+        ],
+        "steps": {
+          "bg": "Запечи нарязаното пилешко със зехтина. Добави чушките. След 2–3 минути добави разбитите яйца и белтъци. Когато омлетът почти е готов, добави кашкавала и го остави да се разтопи.",
+          "en": "Pan-fry the diced chicken in the olive oil. Add the peppers. After 2–3 minutes add the beaten eggs and whites. When almost set, add the cheese and let it melt."
+        },
+        "kcal": 600,
+        "protein": 65
+      },
+      {
+        "course": "breakfast",
+        "number": 6,
+        "name": {
+          "bg": "Яйца с авокадо и хляб",
+          "en": "Eggs with avocado toast"
+        },
         "ingredients": [
-          { "bg": "3 яйца", "en": "3 eggs" }, { "bg": "70 г авокадо", "en": "70 g avocado" },
-          { "bg": "70 г пълнозърнест хляб", "en": "70 g wholegrain bread" }, { "bg": "150 г домати", "en": "150 g tomatoes" },
-          { "bg": "100 г краставица", "en": "100 g cucumber" }, { "bg": "150 г Skyr", "en": "150 g Skyr" } ],
-        "steps": { "bg": "Яйцата могат да бъдат сварени или приготвени на очи в незалепващ тиган без допълнителна мазнина. Намачкай авокадото върху хляба и сервирай със зеленчуците и Skyr-а.", "en": "Boil the eggs or fry them sunny-side up in a non-stick pan without extra fat. Mash the avocado on the bread and serve with the vegetables and Skyr." },
-        "kcal": 600, "protein": 40 },
-      { "course": "breakfast", "number": 7, "name": { "bg": "Солена овесена каша с яйца", "en": "Savoury oatmeal with eggs" },
+          {
+            "bg": "3 яйца",
+            "en": "3 eggs"
+          },
+          {
+            "bg": "70 г авокадо",
+            "en": "70 g avocado"
+          },
+          {
+            "bg": "70 г пълнозърнест хляб",
+            "en": "70 g wholegrain bread"
+          },
+          {
+            "bg": "150 г домати",
+            "en": "150 g tomatoes"
+          },
+          {
+            "bg": "100 г краставица",
+            "en": "100 g cucumber"
+          },
+          {
+            "bg": "150 г Skyr",
+            "en": "150 g Skyr"
+          }
+        ],
+        "steps": {
+          "bg": "Яйцата могат да бъдат сварени или приготвени на очи в незалепващ тиган без допълнителна мазнина. Намачкай авокадото върху хляба и сервирай със зеленчуците и Skyr-а.",
+          "en": "Boil the eggs or fry them sunny-side up in a non-stick pan without extra fat. Mash the avocado on the bread and serve with the vegetables and Skyr."
+        },
+        "kcal": 600,
+        "protein": 40
+      },
+      {
+        "course": "breakfast",
+        "number": 7,
+        "name": {
+          "bg": "Солена овесена каша с яйца",
+          "en": "Savoury oatmeal with eggs"
+        },
         "ingredients": [
-          { "bg": "60 г овесени ядки", "en": "60 g rolled oats" }, { "bg": "2 яйца", "en": "2 eggs" },
-          { "bg": "150 г белтъци", "en": "150 g egg whites" }, { "bg": "100 г гъби", "en": "100 g mushrooms" },
-          { "bg": "100 г домат", "en": "100 g tomato" }, { "bg": "20 г сирене", "en": "20 g white cheese (sirene)" } ],
-        "steps": { "bg": "Свари овесените ядки с вода до получаване на гъста каша. Отделно запечи гъбите и домата. Добави яйцата и белтъците и приготви като бъркани яйца. Сервирай върху овесената каша и добави сиренето.", "en": "Cook the oats in water to a thick porridge. Separately sauté the mushrooms and tomato. Add the eggs and whites and scramble. Serve over the porridge and add the cheese." },
-        "kcal": [500, 550], "protein": [45, 50] },
-      { "course": "breakfast", "number": 8, "name": { "bg": "Пълнозърнест сандвич с яйца и пилешко", "en": "Wholegrain sandwich with eggs and chicken" },
+          {
+            "bg": "60 г овесени ядки",
+            "en": "60 g rolled oats"
+          },
+          {
+            "bg": "2 яйца",
+            "en": "2 eggs"
+          },
+          {
+            "bg": "150 г белтъци",
+            "en": "150 g egg whites"
+          },
+          {
+            "bg": "100 г гъби",
+            "en": "100 g mushrooms"
+          },
+          {
+            "bg": "100 г домат",
+            "en": "100 g tomato"
+          },
+          {
+            "bg": "20 г сирене",
+            "en": "20 g white cheese (sirene)"
+          }
+        ],
+        "steps": {
+          "bg": "Свари овесените ядки с вода до получаване на гъста каша. Отделно запечи гъбите и домата. Добави яйцата и белтъците и приготви като бъркани яйца. Сервирай върху овесената каша и добави сиренето.",
+          "en": "Cook the oats in water to a thick porridge. Separately sauté the mushrooms and tomato. Add the eggs and whites and scramble. Serve over the porridge and add the cheese."
+        },
+        "kcal": [
+          500,
+          550
+        ],
+        "protein": [
+          45,
+          50
+        ]
+      },
+      {
+        "course": "breakfast",
+        "number": 8,
+        "name": {
+          "bg": "Пълнозърнест сандвич с яйца и пилешко",
+          "en": "Wholegrain sandwich with eggs and chicken"
+        },
         "ingredients": [
-          { "bg": "100 г пълнозърнест хляб", "en": "100 g wholegrain bread" }, { "bg": "2 яйца", "en": "2 eggs" },
-          { "bg": "100 г пилешко филе", "en": "100 g chicken breast" }, { "bg": "30 г крема сирене light", "en": "30 g light cream cheese" },
-          { "bg": "домат, краставица, зелена салата", "en": "tomato, cucumber, lettuce" } ],
-        "steps": { "bg": "Свари яйцата и ги нарежи. Пилешкото се запича на тиган или грил. Намажи хляба с крема сиренето и добави пилешкото, яйцата и зеленчуците.", "en": "Boil and slice the eggs. Pan-fry or grill the chicken. Spread the cream cheese on the bread and add the chicken, eggs and vegetables." },
-        "kcal": 600, "protein": 55 },
-      { "course": "breakfast", "number": 9, "name": { "bg": "Кисело мляко с овес, банан и яйца", "en": "Yogurt with oats, banana and eggs" },
+          {
+            "bg": "100 г пълнозърнест хляб",
+            "en": "100 g wholegrain bread"
+          },
+          {
+            "bg": "2 яйца",
+            "en": "2 eggs"
+          },
+          {
+            "bg": "100 г пилешко филе",
+            "en": "100 g chicken breast"
+          },
+          {
+            "bg": "30 г крема сирене light",
+            "en": "30 g light cream cheese"
+          },
+          {
+            "bg": "домат, краставица, зелена салата",
+            "en": "tomato, cucumber, lettuce"
+          }
+        ],
+        "steps": {
+          "bg": "Свари яйцата и ги нарежи. Пилешкото се запича на тиган или грил. Намажи хляба с крема сиренето и добави пилешкото, яйцата и зеленчуците.",
+          "en": "Boil and slice the eggs. Pan-fry or grill the chicken. Spread the cream cheese on the bread and add the chicken, eggs and vegetables."
+        },
+        "kcal": 600,
+        "protein": 55
+      },
+      {
+        "course": "breakfast",
+        "number": 9,
+        "name": {
+          "bg": "Кисело мляко с овес, банан и яйца",
+          "en": "Yogurt with oats, banana and eggs"
+        },
         "ingredients": [
-          { "bg": "250 г кисело мляко 2%", "en": "250 g yogurt 2%" }, { "bg": "60 г овесени ядки", "en": "60 g rolled oats" },
-          { "bg": "100 г банан", "en": "100 g banana" }, { "bg": "10 г мед", "en": "10 g honey" },
-          { "bg": "2 яйца", "en": "2 eggs" }, { "bg": "10 г бадеми", "en": "10 g almonds" } ],
-        "steps": { "bg": "Смеси киселото мляко, овеса и меда. Добави нарязания банан и бадемите. Яйцата свари отделно.", "en": "Mix the yogurt, oats and honey. Add the sliced banana and almonds. Boil the eggs separately." },
-        "kcal": 600, "protein": [35, 40] },
-      { "course": "breakfast", "number": 10, "name": { "bg": "Палачинки с овес и протеин", "en": "Protein oat pancakes" },
+          {
+            "bg": "250 г кисело мляко 2%",
+            "en": "250 g yogurt 2%"
+          },
+          {
+            "bg": "60 г овесени ядки",
+            "en": "60 g rolled oats"
+          },
+          {
+            "bg": "100 г банан",
+            "en": "100 g banana"
+          },
+          {
+            "bg": "10 г мед",
+            "en": "10 g honey"
+          },
+          {
+            "bg": "2 яйца",
+            "en": "2 eggs"
+          },
+          {
+            "bg": "10 г бадеми",
+            "en": "10 g almonds"
+          }
+        ],
+        "steps": {
+          "bg": "Смеси киселото мляко, овеса и меда. Добави нарязания банан и бадемите. Яйцата свари отделно.",
+          "en": "Mix the yogurt, oats and honey. Add the sliced banana and almonds. Boil the eggs separately."
+        },
+        "kcal": 600,
+        "protein": [
+          35,
+          40
+        ]
+      },
+      {
+        "course": "breakfast",
+        "number": 10,
+        "name": {
+          "bg": "Палачинки с овес и протеин",
+          "en": "Protein oat pancakes"
+        },
         "ingredients": [
-          { "bg": "60 г овесени ядки", "en": "60 g rolled oats" }, { "bg": "2 яйца", "en": "2 eggs" },
-          { "bg": "150 г белтъци", "en": "150 g egg whites" }, { "bg": "100 г банан", "en": "100 g banana" },
-          { "bg": "100 г Skyr", "en": "100 g Skyr" }, { "bg": "канела", "en": "cinnamon" } ],
-        "steps": { "bg": "Смели овеса. Пасирай овеса, яйцата, белтъците и банана. Изсипвай малки количества от сместа в незалепващ тиган. Изпечи палачинките от двете страни. Сервирай със Skyr и канела.", "en": "Grind the oats. Blend the oats, eggs, whites and banana. Pour small amounts into a non-stick pan and cook the pancakes on both sides. Serve with Skyr and cinnamon." },
-        "kcal": 550, "protein": [45, 50] },
-
-      { "course": "lunch", "number": 1, "name": { "bg": "Пилешко с ориз и зеленчуци", "en": "Chicken with rice and vegetables" },
+          {
+            "bg": "60 г овесени ядки",
+            "en": "60 g rolled oats"
+          },
+          {
+            "bg": "2 яйца",
+            "en": "2 eggs"
+          },
+          {
+            "bg": "150 г белтъци",
+            "en": "150 g egg whites"
+          },
+          {
+            "bg": "100 г банан",
+            "en": "100 g banana"
+          },
+          {
+            "bg": "100 г Skyr",
+            "en": "100 g Skyr"
+          },
+          {
+            "bg": "канела",
+            "en": "cinnamon"
+          }
+        ],
+        "steps": {
+          "bg": "Смели овеса. Пасирай овеса, яйцата, белтъците и банана. Изсипвай малки количества от сместа в незалепващ тиган. Изпечи палачинките от двете страни. Сервирай със Skyr и канела.",
+          "en": "Grind the oats. Blend the oats, eggs, whites and banana. Pour small amounts into a non-stick pan and cook the pancakes on both sides. Serve with Skyr and cinnamon."
+        },
+        "kcal": 550,
+        "protein": [
+          45,
+          50
+        ]
+      },
+      {
+        "course": "lunch",
+        "number": 1,
+        "name": {
+          "bg": "Пилешко с ориз и зеленчуци",
+          "en": "Chicken with rice and vegetables"
+        },
         "ingredients": [
-          { "bg": "200 г пилешко филе", "en": "200 g chicken breast" }, { "bg": "80 г ориз", "en": "80 g rice (dry)" },
-          { "bg": "250 г зеленчуци", "en": "250 g vegetables" }, { "bg": "10 г зехтин", "en": "10 g olive oil" }, { "bg": "подправки", "en": "spices" } ],
-        "steps": { "bg": "Оризът се свари според инструкциите на опаковката. Пилешкото се нарязва и се запича на тиган или грил с подправки. Зеленчуците се задушават или запичат. Смеси ориза със зеленчуците и сервирай с пилешкото.", "en": "Cook the rice following the packet. Slice the chicken and pan-fry or grill with spices. Steam or roast the vegetables. Mix the rice with the vegetables and serve with the chicken." },
-        "kcal": [650, 700], "protein": [60, 65] },
-      { "course": "lunch", "number": 2, "name": { "bg": "Телешко с картофи", "en": "Beef with potatoes" },
+          {
+            "bg": "200 г пилешко филе",
+            "en": "200 g chicken breast"
+          },
+          {
+            "bg": "80 г ориз",
+            "en": "80 g rice (dry)"
+          },
+          {
+            "bg": "250 г зеленчуци",
+            "en": "250 g vegetables"
+          },
+          {
+            "bg": "10 г зехтин",
+            "en": "10 g olive oil"
+          },
+          {
+            "bg": "подправки",
+            "en": "spices"
+          }
+        ],
+        "steps": {
+          "bg": "Оризът се свари според инструкциите на опаковката. Пилешкото се нарязва и се запича на тиган или грил с подправки. Зеленчуците се задушават или запичат. Смеси ориза със зеленчуците и сервирай с пилешкото.",
+          "en": "Cook the rice following the packet. Slice the chicken and pan-fry or grill with spices. Steam or roast the vegetables. Mix the rice with the vegetables and serve with the chicken."
+        },
+        "kcal": [
+          650,
+          700
+        ],
+        "protein": [
+          60,
+          65
+        ]
+      },
+      {
+        "course": "lunch",
+        "number": 2,
+        "name": {
+          "bg": "Телешко с картофи",
+          "en": "Beef with potatoes"
+        },
         "ingredients": [
-          { "bg": "200 г постно телешко", "en": "200 g lean beef" }, { "bg": "350 г картофи", "en": "350 g potatoes" },
-          { "bg": "250 г салата", "en": "250 g salad" }, { "bg": "10 г зехтин", "en": "10 g olive oil" } ],
-        "steps": { "bg": "Картофите се нарязват, овкусяват се с червен пипер, чесън и малко сол и се пекат на 200°C за около 30–40 минути. Телешкото се запича на силно загрят тиган или грил до желаната степен. Салатата се овкусява със зехтина.", "en": "Cut the potatoes, season with paprika, garlic and a little salt and roast at 200°C for about 30–40 minutes. Sear the beef in a very hot pan or grill to taste. Dress the salad with the olive oil." },
-        "kcal": [650, 700], "protein": [55, 60] },
-      { "course": "lunch", "number": 3, "name": { "bg": "Свинско бонфиле с ориз", "en": "Pork tenderloin with rice" },
+          {
+            "bg": "200 г постно телешко",
+            "en": "200 g lean beef"
+          },
+          {
+            "bg": "350 г картофи",
+            "en": "350 g potatoes"
+          },
+          {
+            "bg": "250 г салата",
+            "en": "250 g salad"
+          },
+          {
+            "bg": "10 г зехтин",
+            "en": "10 g olive oil"
+          }
+        ],
+        "steps": {
+          "bg": "Картофите се нарязват, овкусяват се с червен пипер, чесън и малко сол и се пекат на 200°C за около 30–40 минути. Телешкото се запича на силно загрят тиган или грил до желаната степен. Салатата се овкусява със зехтина.",
+          "en": "Cut the potatoes, season with paprika, garlic and a little salt and roast at 200°C for about 30–40 minutes. Sear the beef in a very hot pan or grill to taste. Dress the salad with the olive oil."
+        },
+        "kcal": [
+          650,
+          700
+        ],
+        "protein": [
+          55,
+          60
+        ]
+      },
+      {
+        "course": "lunch",
+        "number": 3,
+        "name": {
+          "bg": "Свинско бонфиле с ориз",
+          "en": "Pork tenderloin with rice"
+        },
         "ingredients": [
-          { "bg": "200 г свинско бонфиле", "en": "200 g pork tenderloin" }, { "bg": "80 г ориз", "en": "80 g rice (dry)" },
-          { "bg": "250 г тиквички", "en": "250 g courgettes" }, { "bg": "10 г зехтин", "en": "10 g olive oil" } ],
-        "steps": { "bg": "Нарежи бонфилето на медальони. Запечи го на тиган от двете страни. Свари ориза. Тиквичките нарежи и запечи на тиган или във фурна. Добави зехтина след термичната обработка.", "en": "Slice the tenderloin into medallions and sear on both sides. Cook the rice. Slice the courgettes and pan-fry or roast. Add the olive oil after cooking." },
-        "kcal": 650, "protein": [55, 60] },
-      { "course": "lunch", "number": 4, "name": { "bg": "Пилешко с картофи на фурна", "en": "Oven-baked chicken with potatoes" },
+          {
+            "bg": "200 г свинско бонфиле",
+            "en": "200 g pork tenderloin"
+          },
+          {
+            "bg": "80 г ориз",
+            "en": "80 g rice (dry)"
+          },
+          {
+            "bg": "250 г тиквички",
+            "en": "250 g courgettes"
+          },
+          {
+            "bg": "10 г зехтин",
+            "en": "10 g olive oil"
+          }
+        ],
+        "steps": {
+          "bg": "Нарежи бонфилето на медальони. Запечи го на тиган от двете страни. Свари ориза. Тиквичките нарежи и запечи на тиган или във фурна. Добави зехтина след термичната обработка.",
+          "en": "Slice the tenderloin into medallions and sear on both sides. Cook the rice. Slice the courgettes and pan-fry or roast. Add the olive oil after cooking."
+        },
+        "kcal": 650,
+        "protein": [
+          55,
+          60
+        ]
+      },
+      {
+        "course": "lunch",
+        "number": 4,
+        "name": {
+          "bg": "Пилешко с картофи на фурна",
+          "en": "Oven-baked chicken with potatoes"
+        },
         "ingredients": [
-          { "bg": "220 г пилешко филе", "en": "220 g chicken breast" }, { "bg": "350 г картофи", "en": "350 g potatoes" },
-          { "bg": "200 г моркови", "en": "200 g carrots" }, { "bg": "10 г зехтин", "en": "10 g olive oil" },
-          { "bg": "червен пипер, чесън, мащерка", "en": "paprika, garlic, thyme" } ],
-        "steps": { "bg": "Нарежи картофите и морковите. Добави пилешкото на едри парчета. Овкуси и добави зехтина. Печи на 200°C около 35–45 минути, докато картофите и месото са напълно готови.", "en": "Cut the potatoes and carrots. Add the chicken in large pieces. Season and add the olive oil. Bake at 200°C for about 35–45 minutes until the potatoes and meat are cooked through." },
-        "kcal": [650, 700], "protein": 65 },
-      { "course": "lunch", "number": 5, "name": { "bg": "Телешка кайма с ориз", "en": "Minced beef with rice" },
+          {
+            "bg": "220 г пилешко филе",
+            "en": "220 g chicken breast"
+          },
+          {
+            "bg": "350 г картофи",
+            "en": "350 g potatoes"
+          },
+          {
+            "bg": "200 г моркови",
+            "en": "200 g carrots"
+          },
+          {
+            "bg": "10 г зехтин",
+            "en": "10 g olive oil"
+          },
+          {
+            "bg": "червен пипер, чесън, мащерка",
+            "en": "paprika, garlic, thyme"
+          }
+        ],
+        "steps": {
+          "bg": "Нарежи картофите и морковите. Добави пилешкото на едри парчета. Овкуси и добави зехтина. Печи на 200°C около 35–45 минути, докато картофите и месото са напълно готови.",
+          "en": "Cut the potatoes and carrots. Add the chicken in large pieces. Season and add the olive oil. Bake at 200°C for about 35–45 minutes until the potatoes and meat are cooked through."
+        },
+        "kcal": [
+          650,
+          700
+        ],
+        "protein": 65
+      },
+      {
+        "course": "lunch",
+        "number": 5,
+        "name": {
+          "bg": "Телешка кайма с ориз",
+          "en": "Minced beef with rice"
+        },
         "ingredients": [
-          { "bg": "200 г телешка кайма с ниско съдържание на мазнини", "en": "200 g lean minced beef" }, { "bg": "80 г ориз", "en": "80 g rice (dry)" },
-          { "bg": "150 г домати", "en": "150 g tomatoes" }, { "bg": "100 г чушки", "en": "100 g bell peppers" },
-          { "bg": "100 г лук", "en": "100 g onion" }, { "bg": "5 г зехтин", "en": "5 g olive oil" } ],
-        "steps": { "bg": "Запечи лука и чушките. Добави телешката кайма и готви до пълна готовност. Добави доматите и остави на слаб огън за 10–15 минути. Сервирай със сварения ориз.", "en": "Sauté the onion and peppers. Add the mince and cook through. Add the tomatoes and simmer for 10–15 minutes. Serve with the cooked rice." },
-        "kcal": 700, "protein": [50, 55] },
-      { "course": "lunch", "number": 6, "name": { "bg": "Пилешко с паста", "en": "Chicken with pasta" },
+          {
+            "bg": "200 г телешка кайма с ниско съдържание на мазнини",
+            "en": "200 g lean minced beef"
+          },
+          {
+            "bg": "80 г ориз",
+            "en": "80 g rice (dry)"
+          },
+          {
+            "bg": "150 г домати",
+            "en": "150 g tomatoes"
+          },
+          {
+            "bg": "100 г чушки",
+            "en": "100 g bell peppers"
+          },
+          {
+            "bg": "100 г лук",
+            "en": "100 g onion"
+          },
+          {
+            "bg": "5 г зехтин",
+            "en": "5 g olive oil"
+          }
+        ],
+        "steps": {
+          "bg": "Запечи лука и чушките. Добави телешката кайма и готви до пълна готовност. Добави доматите и остави на слаб огън за 10–15 минути. Сервирай със сварения ориз.",
+          "en": "Sauté the onion and peppers. Add the mince and cook through. Add the tomatoes and simmer for 10–15 minutes. Serve with the cooked rice."
+        },
+        "kcal": 700,
+        "protein": [
+          50,
+          55
+        ]
+      },
+      {
+        "course": "lunch",
+        "number": 6,
+        "name": {
+          "bg": "Пилешко с паста",
+          "en": "Chicken with pasta"
+        },
         "ingredients": [
-          { "bg": "200 г пилешко филе", "en": "200 g chicken breast" }, { "bg": "80 г пълнозърнеста паста", "en": "80 g wholegrain pasta (dry)" },
-          { "bg": "150 г доматен сос без добавена захар", "en": "150 g tomato sauce, no added sugar" }, { "bg": "20 г пармезан", "en": "20 g parmesan" },
-          { "bg": "5 г зехтин", "en": "5 g olive oil" }, { "bg": "босилек", "en": "basil" } ],
-        "steps": { "bg": "Свари пастата. Нарежи пилешкото и го запечи със зехтина. Добави доматения сос и босилека. Добави сварената паста и разбъркай. Накрая поръси с пармезан.", "en": "Cook the pasta. Slice the chicken and pan-fry in the olive oil. Add the tomato sauce and basil. Add the cooked pasta and stir. Sprinkle with parmesan to finish." },
-        "kcal": [650, 700], "protein": 60 },
-      { "course": "lunch", "number": 7, "name": { "bg": "Телешко (кайма шол) със сладък картоф", "en": "Beef (lean mince) with sweet potato" },
+          {
+            "bg": "200 г пилешко филе",
+            "en": "200 g chicken breast"
+          },
+          {
+            "bg": "80 г пълнозърнеста паста",
+            "en": "80 g wholegrain pasta (dry)"
+          },
+          {
+            "bg": "150 г доматен сос без добавена захар",
+            "en": "150 g tomato sauce, no added sugar"
+          },
+          {
+            "bg": "20 г пармезан",
+            "en": "20 g parmesan"
+          },
+          {
+            "bg": "5 г зехтин",
+            "en": "5 g olive oil"
+          },
+          {
+            "bg": "босилек",
+            "en": "basil"
+          }
+        ],
+        "steps": {
+          "bg": "Свари пастата. Нарежи пилешкото и го запечи със зехтина. Добави доматения сос и босилека. Добави сварената паста и разбъркай. Накрая поръси с пармезан.",
+          "en": "Cook the pasta. Slice the chicken and pan-fry in the olive oil. Add the tomato sauce and basil. Add the cooked pasta and stir. Sprinkle with parmesan to finish."
+        },
+        "kcal": [
+          650,
+          700
+        ],
+        "protein": 60
+      },
+      {
+        "course": "lunch",
+        "number": 7,
+        "name": {
+          "bg": "Телешко (кайма шол) със сладък картоф",
+          "en": "Beef (lean mince) with sweet potato"
+        },
         "ingredients": [
-          { "bg": "200 г телешко", "en": "200 g beef" }, { "bg": "300 г сладък картоф", "en": "300 g sweet potato" },
-          { "bg": "250 г зелена салата", "en": "250 g green salad" }, { "bg": "10 г зехтин", "en": "10 g olive oil" } ],
-        "steps": { "bg": "Нарежи сладкия картоф на кубчета и печи на 200°C около 25–30 минути. Телешкото се запича на грил/тиган. Салатата се овкусява със зехтина.", "en": "Dice the sweet potato and roast at 200°C for about 25–30 minutes. Grill or pan-fry the beef. Dress the salad with the olive oil." },
-        "kcal": 650, "protein": [50, 55] },
-      { "course": "lunch", "number": 8, "name": { "bg": "Пилешка купа", "en": "Chicken bowl" },
+          {
+            "bg": "200 г телешко",
+            "en": "200 g beef"
+          },
+          {
+            "bg": "300 г сладък картоф",
+            "en": "300 g sweet potato"
+          },
+          {
+            "bg": "250 г зелена салата",
+            "en": "250 g green salad"
+          },
+          {
+            "bg": "10 г зехтин",
+            "en": "10 g olive oil"
+          }
+        ],
+        "steps": {
+          "bg": "Нарежи сладкия картоф на кубчета и печи на 200°C около 25–30 минути. Телешкото се запича на грил/тиган. Салатата се овкусява със зехтина.",
+          "en": "Dice the sweet potato and roast at 200°C for about 25–30 minutes. Grill or pan-fry the beef. Dress the salad with the olive oil."
+        },
+        "kcal": 650,
+        "protein": [
+          50,
+          55
+        ]
+      },
+      {
+        "course": "lunch",
+        "number": 8,
+        "name": {
+          "bg": "Пилешка купа",
+          "en": "Chicken bowl"
+        },
         "ingredients": [
-          { "bg": "200 г пилешко", "en": "200 g chicken" }, { "bg": "70 г ориз", "en": "70 g rice (dry)" },
-          { "bg": "100 г краставица", "en": "100 g cucumber" }, { "bg": "100 г домати", "en": "100 g tomatoes" },
-          { "bg": "50 г авокадо", "en": "50 g avocado" }, { "bg": "100 г кисело мляко", "en": "100 g yogurt" },
-          { "bg": "лимон, подправки", "en": "lemon, spices" } ],
-        "steps": { "bg": "Свари ориза и запечи пилешкото. Нарежи зеленчуците и авокадото. Смеси киселото мляко с лимонов сок, чесън и копър и използвай като сос. Подреди всичко в купа.", "en": "Cook the rice and pan-fry the chicken. Chop the vegetables and avocado. Mix the yogurt with lemon juice, garlic and dill for a sauce. Arrange everything in a bowl." },
-        "kcal": [650, 700], "protein": 60 },
-      { "course": "lunch", "number": 9, "name": { "bg": "Свинско контрафиле с картофено пюре", "en": "Pork loin with mashed potatoes" },
+          {
+            "bg": "200 г пилешко",
+            "en": "200 g chicken"
+          },
+          {
+            "bg": "70 г ориз",
+            "en": "70 g rice (dry)"
+          },
+          {
+            "bg": "100 г краставица",
+            "en": "100 g cucumber"
+          },
+          {
+            "bg": "100 г домати",
+            "en": "100 g tomatoes"
+          },
+          {
+            "bg": "50 г авокадо",
+            "en": "50 g avocado"
+          },
+          {
+            "bg": "100 г кисело мляко",
+            "en": "100 g yogurt"
+          },
+          {
+            "bg": "лимон, подправки",
+            "en": "lemon, spices"
+          }
+        ],
+        "steps": {
+          "bg": "Свари ориза и запечи пилешкото. Нарежи зеленчуците и авокадото. Смеси киселото мляко с лимонов сок, чесън и копър и използвай като сос. Подреди всичко в купа.",
+          "en": "Cook the rice and pan-fry the chicken. Chop the vegetables and avocado. Mix the yogurt with lemon juice, garlic and dill for a sauce. Arrange everything in a bowl."
+        },
+        "kcal": [
+          650,
+          700
+        ],
+        "protein": 60
+      },
+      {
+        "course": "lunch",
+        "number": 9,
+        "name": {
+          "bg": "Свинско контрафиле с картофено пюре",
+          "en": "Pork loin with mashed potatoes"
+        },
         "ingredients": [
-          { "bg": "200 г свинско бонфиле", "en": "200 g pork tenderloin" }, { "bg": "350 г картофи", "en": "350 g potatoes" },
-          { "bg": "50 мл прясно мляко 1.5–2%", "en": "50 ml milk 1.5–2%" }, { "bg": "5 г масло", "en": "5 g butter" },
-          { "bg": "200 г зеленчуци", "en": "200 g vegetables" } ],
-        "steps": { "bg": "Свари картофите. Намачкай ги с млякото и маслото. Свинското се запича на тиган или грил. Сервирай със зеленчуците.", "en": "Boil the potatoes and mash with the milk and butter. Pan-fry or grill the pork. Serve with the vegetables." },
-        "kcal": [650, 700], "protein": 55 },
-      { "course": "lunch", "number": 10, "name": { "bg": "Телешко с ориз, зеленчуци и яйца", "en": "Beef with rice, vegetables and eggs" },
+          {
+            "bg": "200 г свинско бонфиле",
+            "en": "200 g pork tenderloin"
+          },
+          {
+            "bg": "350 г картофи",
+            "en": "350 g potatoes"
+          },
+          {
+            "bg": "50 мл прясно мляко 1.5–2%",
+            "en": "50 ml milk 1.5–2%"
+          },
+          {
+            "bg": "5 г масло",
+            "en": "5 g butter"
+          },
+          {
+            "bg": "200 г зеленчуци",
+            "en": "200 g vegetables"
+          }
+        ],
+        "steps": {
+          "bg": "Свари картофите. Намачкай ги с млякото и маслото. Свинското се запича на тиган или грил. Сервирай със зеленчуците.",
+          "en": "Boil the potatoes and mash with the milk and butter. Pan-fry or grill the pork. Serve with the vegetables."
+        },
+        "kcal": [
+          650,
+          700
+        ],
+        "protein": 55
+      },
+      {
+        "course": "lunch",
+        "number": 10,
+        "name": {
+          "bg": "Телешко с ориз, зеленчуци и яйца",
+          "en": "Beef with rice, vegetables and eggs"
+        },
         "ingredients": [
-          { "bg": "200 г телешко", "en": "200 g beef" }, { "bg": "60 г ориз", "en": "60 g rice (dry)" },
-          { "bg": "2 яйца", "en": "2 eggs" }, { "bg": "200 г зеленчуци", "en": "200 g vegetables" },
-          { "bg": "5 г зехтин", "en": "5 g olive oil" }, { "bg": "соев сос с намалено съдържание на сол – по желание", "en": "reduced-salt soy sauce – optional" } ],
-        "steps": { "bg": "Свари ориза. Запечи телешкото на тиган. Добави зеленчуците и след няколко минути добави сварения ориз. Направи място в тигана и добави двете яйца. Разбъркай всичко заедно.", "en": "Cook the rice. Sear the beef in a pan. Add the vegetables and after a few minutes the cooked rice. Make space in the pan and add the two eggs. Stir everything together." },
-        "kcal": 700, "protein": [55, 60] },
-
-      { "course": "dinner", "number": 1, "name": { "bg": "Телешки стек с картофи и салата", "en": "Beef steak with potatoes and salad" },
+          {
+            "bg": "200 г телешко",
+            "en": "200 g beef"
+          },
+          {
+            "bg": "60 г ориз",
+            "en": "60 g rice (dry)"
+          },
+          {
+            "bg": "2 яйца",
+            "en": "2 eggs"
+          },
+          {
+            "bg": "200 г зеленчуци",
+            "en": "200 g vegetables"
+          },
+          {
+            "bg": "5 г зехтин",
+            "en": "5 g olive oil"
+          },
+          {
+            "bg": "соев сос с намалено съдържание на сол – по желание",
+            "en": "reduced-salt soy sauce – optional"
+          }
+        ],
+        "steps": {
+          "bg": "Свари ориза. Запечи телешкото на тиган. Добави зеленчуците и след няколко минути добави сварения ориз. Направи място в тигана и добави двете яйца. Разбъркай всичко заедно.",
+          "en": "Cook the rice. Sear the beef in a pan. Add the vegetables and after a few minutes the cooked rice. Make space in the pan and add the two eggs. Stir everything together."
+        },
+        "kcal": 700,
+        "protein": [
+          55,
+          60
+        ]
+      },
+      {
+        "course": "dinner",
+        "number": 1,
+        "name": {
+          "bg": "Телешки стек с картофи и салата",
+          "en": "Beef steak with potatoes and salad"
+        },
         "ingredients": [
-          { "bg": "200 г телешки стек", "en": "200 g beef steak" }, { "bg": "300 г картофи", "en": "300 g potatoes" },
-          { "bg": "250 г салата", "en": "250 g salad" }, { "bg": "10 г зехтин", "en": "10 g olive oil" } ],
-        "steps": { "bg": "Картофите се нарязват и пекат на 200°C до златисто. Стекът се запича на силно загрят тиган/грил. След готвене остави месото да почине 5 минути. Сервирай със салата и зехтин.", "en": "Cut the potatoes and roast at 200°C until golden. Sear the steak in a very hot pan or grill. Rest the meat for 5 minutes after cooking. Serve with salad and olive oil." },
-        "kcal": [650, 700], "protein": [50, 55] },
-      { "course": "dinner", "number": 2, "name": { "bg": "Пилешко с печени зеленчуци", "en": "Chicken with roasted vegetables" },
+          {
+            "bg": "200 г телешки стек",
+            "en": "200 g beef steak"
+          },
+          {
+            "bg": "300 г картофи",
+            "en": "300 g potatoes"
+          },
+          {
+            "bg": "250 г салата",
+            "en": "250 g salad"
+          },
+          {
+            "bg": "10 г зехтин",
+            "en": "10 g olive oil"
+          }
+        ],
+        "steps": {
+          "bg": "Картофите се нарязват и пекат на 200°C до златисто. Стекът се запича на силно загрят тиган/грил. След готвене остави месото да почине 5 минути. Сервирай със салата и зехтин.",
+          "en": "Cut the potatoes and roast at 200°C until golden. Sear the steak in a very hot pan or grill. Rest the meat for 5 minutes after cooking. Serve with salad and olive oil."
+        },
+        "kcal": [
+          650,
+          700
+        ],
+        "protein": [
+          50,
+          55
+        ]
+      },
+      {
+        "course": "dinner",
+        "number": 2,
+        "name": {
+          "bg": "Пилешко с печени зеленчуци",
+          "en": "Chicken with roasted vegetables"
+        },
         "ingredients": [
-          { "bg": "220 г пилешко филе", "en": "220 g chicken breast" }, { "bg": "300 г зеленчуци – тиквички, моркови, чушки", "en": "300 g vegetables – courgettes, carrots, peppers" },
-          { "bg": "250 г картофи", "en": "250 g potatoes" }, { "bg": "10 г зехтин", "en": "10 g olive oil" } ],
-        "steps": { "bg": "Нарежи всички продукти. Овкуси със сол, черен пипер, чесън и мащерка. Печи на 200°C около 35 минути, като пилешкото се проверява за пълна готовност.", "en": "Chop everything. Season with salt, black pepper, garlic and thyme. Roast at 200°C for about 35 minutes, checking the chicken is cooked through." },
-        "kcal": 650, "protein": 65 },
-      { "course": "dinner", "number": 3, "name": { "bg": "Свинско бонфиле с ориз и тиквички", "en": "Pork tenderloin with rice and courgettes" },
+          {
+            "bg": "220 г пилешко филе",
+            "en": "220 g chicken breast"
+          },
+          {
+            "bg": "300 г зеленчуци – тиквички, моркови, чушки",
+            "en": "300 g vegetables – courgettes, carrots, peppers"
+          },
+          {
+            "bg": "250 г картофи",
+            "en": "250 g potatoes"
+          },
+          {
+            "bg": "10 г зехтин",
+            "en": "10 g olive oil"
+          }
+        ],
+        "steps": {
+          "bg": "Нарежи всички продукти. Овкуси със сол, черен пипер, чесън и мащерка. Печи на 200°C около 35 минути, като пилешкото се проверява за пълна готовност.",
+          "en": "Chop everything. Season with salt, black pepper, garlic and thyme. Roast at 200°C for about 35 minutes, checking the chicken is cooked through."
+        },
+        "kcal": 650,
+        "protein": 65
+      },
+      {
+        "course": "dinner",
+        "number": 3,
+        "name": {
+          "bg": "Свинско бонфиле с ориз и тиквички",
+          "en": "Pork tenderloin with rice and courgettes"
+        },
         "ingredients": [
-          { "bg": "200 г свинско бонфиле", "en": "200 g pork tenderloin" }, { "bg": "70 г ориз", "en": "70 g rice (dry)" },
-          { "bg": "250 г тиквички", "en": "250 g courgettes" }, { "bg": "10 г зехтин", "en": "10 g olive oil" } ],
-        "steps": { "bg": "Свари ориза. Нарежи бонфилето и го запечи на тиган. Тиквичките се запичат отделно. Комбинирай трите компонента и добави зехтина.", "en": "Cook the rice. Slice the tenderloin and sear it. Cook the courgettes separately. Combine all three and add the olive oil." },
-        "kcal": 650, "protein": [55, 60] },
-      { "course": "dinner", "number": 4, "name": { "bg": "Пилешка поке купа", "en": "Chicken poke bowl" },
+          {
+            "bg": "200 г свинско бонфиле",
+            "en": "200 g pork tenderloin"
+          },
+          {
+            "bg": "70 г ориз",
+            "en": "70 g rice (dry)"
+          },
+          {
+            "bg": "250 г тиквички",
+            "en": "250 g courgettes"
+          },
+          {
+            "bg": "10 г зехтин",
+            "en": "10 g olive oil"
+          }
+        ],
+        "steps": {
+          "bg": "Свари ориза. Нарежи бонфилето и го запечи на тиган. Тиквичките се запичат отделно. Комбинирай трите компонента и добави зехтина.",
+          "en": "Cook the rice. Slice the tenderloin and sear it. Cook the courgettes separately. Combine all three and add the olive oil."
+        },
+        "kcal": 650,
+        "protein": [
+          55,
+          60
+        ]
+      },
+      {
+        "course": "dinner",
+        "number": 4,
+        "name": {
+          "bg": "Пилешка поке купа",
+          "en": "Chicken poke bowl"
+        },
         "ingredients": [
-          { "bg": "200 г пилешко", "en": "200 g chicken" }, { "bg": "70 г ориз", "en": "70 g rice (dry)" },
-          { "bg": "100 г чушки", "en": "100 g bell peppers" }, { "bg": "100 г домати", "en": "100 g tomatoes" },
-          { "bg": "50 г лук", "en": "50 g onion" }, { "bg": "50 г авокадо", "en": "50 g avocado" },
-          { "bg": "5 г зехтин", "en": "5 g olive oil" }, { "bg": "пушен червен пипер, кимион", "en": "smoked paprika, cumin" } ],
-        "steps": { "bg": "Нарежи пилешкото и зеленчуците на ленти. Запечи пилешкото със зехтина и подправките. Добави чушките и лука. Сервирай върху сварения ориз и добави домата и авокадото.", "en": "Cut the chicken and vegetables into strips. Pan-fry the chicken with the olive oil and spices. Add the peppers and onion. Serve over the cooked rice with the tomato and avocado." },
-        "kcal": 700, "protein": 60 },
-      { "course": "dinner", "number": 5, "name": { "bg": "Телешки кюфтета от шол с картофи", "en": "Lean beef meatballs with potatoes" },
+          {
+            "bg": "200 г пилешко",
+            "en": "200 g chicken"
+          },
+          {
+            "bg": "70 г ориз",
+            "en": "70 g rice (dry)"
+          },
+          {
+            "bg": "100 г чушки",
+            "en": "100 g bell peppers"
+          },
+          {
+            "bg": "100 г домати",
+            "en": "100 g tomatoes"
+          },
+          {
+            "bg": "50 г лук",
+            "en": "50 g onion"
+          },
+          {
+            "bg": "50 г авокадо",
+            "en": "50 g avocado"
+          },
+          {
+            "bg": "5 г зехтин",
+            "en": "5 g olive oil"
+          },
+          {
+            "bg": "пушен червен пипер, кимион",
+            "en": "smoked paprika, cumin"
+          }
+        ],
+        "steps": {
+          "bg": "Нарежи пилешкото и зеленчуците на ленти. Запечи пилешкото със зехтина и подправките. Добави чушките и лука. Сервирай върху сварения ориз и добави домата и авокадото.",
+          "en": "Cut the chicken and vegetables into strips. Pan-fry the chicken with the olive oil and spices. Add the peppers and onion. Serve over the cooked rice with the tomato and avocado."
+        },
+        "kcal": 700,
+        "protein": 60
+      },
+      {
+        "course": "dinner",
+        "number": 5,
+        "name": {
+          "bg": "Телешки кюфтета от шол с картофи",
+          "en": "Lean beef meatballs with potatoes"
+        },
         "ingredients": [
-          { "bg": "200 г постна телешка кайма", "en": "200 g lean minced beef" }, { "bg": "300 г картофи", "en": "300 g potatoes" },
-          { "bg": "1 яйце", "en": "1 egg" }, { "bg": "50 г лук", "en": "50 g onion" },
-          { "bg": "магданоз", "en": "parsley" }, { "bg": "250 г салата", "en": "250 g salad" } ],
-        "steps": { "bg": "Смеси каймата, яйцето, лука и магданоза. Оформи кюфтета. Печи във фурна на 200°C около 20–25 минути или до пълна готовност. Картофите се пекат отделно.", "en": "Mix the mince, egg, onion and parsley. Shape into meatballs. Bake at 200°C for about 20–25 minutes or until cooked through. Roast the potatoes separately." },
-        "kcal": [650, 700], "protein": [50, 55] },
-      { "course": "dinner", "number": 6, "name": { "bg": "Пилешко (гърди) с пълнозърнеста паста", "en": "Chicken breast with wholegrain pasta" },
+          {
+            "bg": "200 г постна телешка кайма",
+            "en": "200 g lean minced beef"
+          },
+          {
+            "bg": "300 г картофи",
+            "en": "300 g potatoes"
+          },
+          {
+            "bg": "1 яйце",
+            "en": "1 egg"
+          },
+          {
+            "bg": "50 г лук",
+            "en": "50 g onion"
+          },
+          {
+            "bg": "магданоз",
+            "en": "parsley"
+          },
+          {
+            "bg": "250 г салата",
+            "en": "250 g salad"
+          }
+        ],
+        "steps": {
+          "bg": "Смеси каймата, яйцето, лука и магданоза. Оформи кюфтета. Печи във фурна на 200°C около 20–25 минути или до пълна готовност. Картофите се пекат отделно.",
+          "en": "Mix the mince, egg, onion and parsley. Shape into meatballs. Bake at 200°C for about 20–25 minutes or until cooked through. Roast the potatoes separately."
+        },
+        "kcal": [
+          650,
+          700
+        ],
+        "protein": [
+          50,
+          55
+        ]
+      },
+      {
+        "course": "dinner",
+        "number": 6,
+        "name": {
+          "bg": "Пилешко (гърди) с пълнозърнеста паста",
+          "en": "Chicken breast with wholegrain pasta"
+        },
         "ingredients": [
-          { "bg": "200 г пилешко", "en": "200 g chicken" }, { "bg": "80 г пълнозърнеста паста", "en": "80 g wholegrain pasta (dry)" },
-          { "bg": "150 г доматен сос", "en": "150 g tomato sauce" }, { "bg": "20 г пармезан", "en": "20 g parmesan" },
-          { "bg": "5 г зехтин", "en": "5 g olive oil" }, { "bg": "босилек", "en": "basil" } ],
-        "steps": { "bg": "Свари пастата. Запечи пилешкото в зехтина. Добави доматения сос и босилека. Смеси с пастата и поръси с пармезан.", "en": "Cook the pasta. Pan-fry the chicken in the olive oil. Add the tomato sauce and basil. Toss with the pasta and sprinkle with parmesan." },
-        "kcal": [650, 700], "protein": 60 },
-      { "course": "dinner", "number": 7, "name": { "bg": "Омлет за вечеря с пилешко", "en": "Chicken omelette for dinner" },
+          {
+            "bg": "200 г пилешко",
+            "en": "200 g chicken"
+          },
+          {
+            "bg": "80 г пълнозърнеста паста",
+            "en": "80 g wholegrain pasta (dry)"
+          },
+          {
+            "bg": "150 г доматен сос",
+            "en": "150 g tomato sauce"
+          },
+          {
+            "bg": "20 г пармезан",
+            "en": "20 g parmesan"
+          },
+          {
+            "bg": "5 г зехтин",
+            "en": "5 g olive oil"
+          },
+          {
+            "bg": "босилек",
+            "en": "basil"
+          }
+        ],
+        "steps": {
+          "bg": "Свари пастата. Запечи пилешкото в зехтина. Добави доматения сос и босилека. Смеси с пастата и поръси с пармезан.",
+          "en": "Cook the pasta. Pan-fry the chicken in the olive oil. Add the tomato sauce and basil. Toss with the pasta and sprinkle with parmesan."
+        },
+        "kcal": [
+          650,
+          700
+        ],
+        "protein": 60
+      },
+      {
+        "course": "dinner",
+        "number": 7,
+        "name": {
+          "bg": "Омлет за вечеря с пилешко",
+          "en": "Chicken omelette for dinner"
+        },
         "ingredients": [
-          { "bg": "3 яйца цели", "en": "3 whole eggs" }, { "bg": "150 г белтъци", "en": "150 g egg whites" },
-          { "bg": "150 г пилешко от бут накъсано или филе", "en": "150 g chicken thigh (shredded) or breast" }, { "bg": "150 г зеленчуци", "en": "150 g vegetables" },
-          { "bg": "30 г кашкавал", "en": "30 g kashkaval (yellow cheese)" }, { "bg": "5 г зехтин", "en": "5 g olive oil" } ],
-        "steps": { "bg": "Запечи пилешкото на малки парчета. Добави зеленчуците. След 2–3 минути добави яйцата и белтъците. Когато омлетът е почти готов, добави кашкавала и сгъни.", "en": "Pan-fry the chicken in small pieces. Add the vegetables. After 2–3 minutes add the eggs and whites. When almost set, add the cheese and fold." },
-        "kcal": [600, 650], "protein": 70 },
-      { "course": "dinner", "number": 8, "name": { "bg": "Телешко (шол) с ориз и зелен фасул", "en": "Lean beef with rice and green beans" },
+          {
+            "bg": "3 яйца цели",
+            "en": "3 whole eggs"
+          },
+          {
+            "bg": "150 г белтъци",
+            "en": "150 g egg whites"
+          },
+          {
+            "bg": "150 г пилешко от бут накъсано или филе",
+            "en": "150 g chicken thigh (shredded) or breast"
+          },
+          {
+            "bg": "150 г зеленчуци",
+            "en": "150 g vegetables"
+          },
+          {
+            "bg": "30 г кашкавал",
+            "en": "30 g kashkaval (yellow cheese)"
+          },
+          {
+            "bg": "5 г зехтин",
+            "en": "5 g olive oil"
+          }
+        ],
+        "steps": {
+          "bg": "Запечи пилешкото на малки парчета. Добави зеленчуците. След 2–3 минути добави яйцата и белтъците. Когато омлетът е почти готов, добави кашкавала и сгъни.",
+          "en": "Pan-fry the chicken in small pieces. Add the vegetables. After 2–3 minutes add the eggs and whites. When almost set, add the cheese and fold."
+        },
+        "kcal": [
+          600,
+          650
+        ],
+        "protein": 70
+      },
+      {
+        "course": "dinner",
+        "number": 8,
+        "name": {
+          "bg": "Телешко (шол) с ориз и зелен фасул",
+          "en": "Lean beef with rice and green beans"
+        },
         "ingredients": [
-          { "bg": "200 г телешко", "en": "200 g beef" }, { "bg": "70 г ориз", "en": "70 g rice (dry)" },
-          { "bg": "250 г зелен фасул", "en": "250 g green beans" }, { "bg": "10 г зехтин", "en": "10 g olive oil" } ],
-        "steps": { "bg": "Свари ориза и зеления фасул. Телешкото се запича на тиган или грил. Сервирай със зеленчуците и ориза. Добави зехтина след готвенето.", "en": "Boil the rice and green beans. Pan-fry or grill the beef. Serve with the vegetables and rice. Add the olive oil after cooking." },
-        "kcal": 650, "protein": [50, 55] },
-      { "course": "dinner", "number": 9, "name": { "bg": "Пилешко филе с булгур", "en": "Chicken breast with bulgur" },
+          {
+            "bg": "200 г телешко",
+            "en": "200 g beef"
+          },
+          {
+            "bg": "70 г ориз",
+            "en": "70 g rice (dry)"
+          },
+          {
+            "bg": "250 г зелен фасул",
+            "en": "250 g green beans"
+          },
+          {
+            "bg": "10 г зехтин",
+            "en": "10 g olive oil"
+          }
+        ],
+        "steps": {
+          "bg": "Свари ориза и зеления фасул. Телешкото се запича на тиган или грил. Сервирай със зеленчуците и ориза. Добави зехтина след готвенето.",
+          "en": "Boil the rice and green beans. Pan-fry or grill the beef. Serve with the vegetables and rice. Add the olive oil after cooking."
+        },
+        "kcal": 650,
+        "protein": [
+          50,
+          55
+        ]
+      },
+      {
+        "course": "dinner",
+        "number": 9,
+        "name": {
+          "bg": "Пилешко филе с булгур",
+          "en": "Chicken breast with bulgur"
+        },
         "ingredients": [
-          { "bg": "200 г пилешко", "en": "200 g chicken" }, { "bg": "80 г булгур", "en": "80 g bulgur (dry)" },
-          { "bg": "250 г зеленчуци", "en": "250 g vegetables" }, { "bg": "10 г зехтин", "en": "10 g olive oil" },
-          { "bg": "лимон, магданоз", "en": "lemon, parsley" } ],
-        "steps": { "bg": "Свари булгура. Пилешкото се нарязва и запича на тиган. Зеленчуците се добавят към него или се приготвят отделно. Смеси булгура с магданоз и лимонов сок.", "en": "Cook the bulgur. Slice and pan-fry the chicken. Add the vegetables to it or cook them separately. Mix the bulgur with parsley and lemon juice." },
-        "kcal": [650, 700], "protein": [60, 65] },
-      { "course": "dinner", "number": 10, "name": { "bg": "Домашна протеинова пица", "en": "Homemade protein pizza" },
+          {
+            "bg": "200 г пилешко",
+            "en": "200 g chicken"
+          },
+          {
+            "bg": "80 г булгур",
+            "en": "80 g bulgur (dry)"
+          },
+          {
+            "bg": "250 г зеленчуци",
+            "en": "250 g vegetables"
+          },
+          {
+            "bg": "10 г зехтин",
+            "en": "10 g olive oil"
+          },
+          {
+            "bg": "лимон, магданоз",
+            "en": "lemon, parsley"
+          }
+        ],
+        "steps": {
+          "bg": "Свари булгура. Пилешкото се нарязва и запича на тиган. Зеленчуците се добавят към него или се приготвят отделно. Смеси булгура с магданоз и лимонов сок.",
+          "en": "Cook the bulgur. Slice and pan-fry the chicken. Add the vegetables to it or cook them separately. Mix the bulgur with parsley and lemon juice."
+        },
+        "kcal": [
+          650,
+          700
+        ],
+        "protein": [
+          60,
+          65
+        ]
+      },
+      {
+        "course": "dinner",
+        "number": 10,
+        "name": {
+          "bg": "Домашна протеинова пица",
+          "en": "Homemade protein pizza"
+        },
         "ingredients": [
-          { "bg": "1 пълнозърнеста питка/тортила – около 70 г", "en": "1 wholegrain flatbread/tortilla – about 70 g" }, { "bg": "150 г пилешко", "en": "150 g chicken" },
-          { "bg": "50 г доматен сос", "en": "50 g tomato sauce" }, { "bg": "60 г моцарела light", "en": "60 g light mozzarella" },
-          { "bg": "100 г чушки", "en": "100 g bell peppers" }, { "bg": "100 г домати", "en": "100 g tomatoes" }, { "bg": "риган", "en": "oregano" } ],
-        "steps": { "bg": "Използвай питката като основа. Намажи с доматения сос. Добави нарязаното предварително сготвено пилешко, зеленчуците и моцарелата. Печи на 200–220°C около 8–12 минути, докато сиренето се разтопи и основата стане хрупкава.", "en": "Use the flatbread as the base. Spread with the tomato sauce. Add the pre-cooked sliced chicken, vegetables and mozzarella. Bake at 200–220°C for about 8–12 minutes until the cheese melts and the base is crisp." },
-        "kcal": [600, 650], "protein": 60 },
-
-      { "course": "snack", "number": 1, "name": { "bg": "Skyr с плод", "en": "Skyr with fruit" },
-        "ingredients": [ { "bg": "200 г Skyr плодов или без вкус", "en": "200 g Skyr, fruit or plain" }, { "bg": "100 г сезонен плод по желание", "en": "100 g seasonal fruit, optional" } ],
-        "steps": null, "kcal": [150, 180], "protein": 20 },
-      { "course": "snack", "number": 2, "name": { "bg": "Кисело мляко с протеин и боровинки", "en": "Yogurt with protein and blueberries" },
-        "ingredients": [ { "bg": "200 г кисело мляко", "en": "200 g yogurt" }, { "bg": "30 г протеин на прах", "en": "30 g protein powder" }, { "bg": "канела и 100 г боровинки", "en": "cinnamon and 100 g blueberries" } ],
-        "steps": null, "kcal": [200, 250], "protein": 30 },
-      { "course": "snack", "number": 3, "name": { "bg": "Извара със зеленчуци", "en": "Cottage cheese with vegetables" },
-        "ingredients": [ { "bg": "150–200 г извара", "en": "150–200 g cottage cheese (izvara)" }, { "bg": "краставица/домати", "en": "cucumber/tomatoes" } ],
-        "steps": null, "kcal": [180, 220], "protein": [25, 30] },
-      { "course": "snack", "number": 4, "name": { "bg": "Протеинов шейк", "en": "Protein shake" },
-        "ingredients": [ { "bg": "1 доза протеин на прах с вода", "en": "1 scoop protein powder with water" } ],
-        "steps": null, "kcal": [100, 140], "protein": [20, 25] }
+          {
+            "bg": "1 пълнозърнеста питка/тортила – около 70 г",
+            "en": "1 wholegrain flatbread/tortilla – about 70 g"
+          },
+          {
+            "bg": "150 г пилешко",
+            "en": "150 g chicken"
+          },
+          {
+            "bg": "50 г доматен сос",
+            "en": "50 g tomato sauce"
+          },
+          {
+            "bg": "60 г моцарела light",
+            "en": "60 g light mozzarella"
+          },
+          {
+            "bg": "100 г чушки",
+            "en": "100 g bell peppers"
+          },
+          {
+            "bg": "100 г домати",
+            "en": "100 g tomatoes"
+          },
+          {
+            "bg": "риган",
+            "en": "oregano"
+          }
+        ],
+        "steps": {
+          "bg": "Използвай питката като основа. Намажи с доматения сос. Добави нарязаното предварително сготвено пилешко, зеленчуците и моцарелата. Печи на 200–220°C около 8–12 минути, докато сиренето се разтопи и основата стане хрупкава.",
+          "en": "Use the flatbread as the base. Spread with the tomato sauce. Add the pre-cooked sliced chicken, vegetables and mozzarella. Bake at 200–220°C for about 8–12 minutes until the cheese melts and the base is crisp."
+        },
+        "kcal": [
+          600,
+          650
+        ],
+        "protein": 60
+      },
+      {
+        "course": "snack",
+        "number": 1,
+        "name": {
+          "bg": "Skyr с плод",
+          "en": "Skyr with fruit"
+        },
+        "ingredients": [
+          {
+            "bg": "200 г Skyr плодов или без вкус",
+            "en": "200 g Skyr, fruit or plain"
+          },
+          {
+            "bg": "100 г сезонен плод по желание",
+            "en": "100 g seasonal fruit, optional"
+          }
+        ],
+        "steps": null,
+        "kcal": [
+          150,
+          180
+        ],
+        "protein": 20
+      },
+      {
+        "course": "snack",
+        "number": 2,
+        "name": {
+          "bg": "Кисело мляко с протеин и боровинки",
+          "en": "Yogurt with protein and blueberries"
+        },
+        "ingredients": [
+          {
+            "bg": "200 г кисело мляко",
+            "en": "200 g yogurt"
+          },
+          {
+            "bg": "30 г протеин на прах",
+            "en": "30 g protein powder"
+          },
+          {
+            "bg": "канела и 100 г боровинки",
+            "en": "cinnamon and 100 g blueberries"
+          }
+        ],
+        "steps": null,
+        "kcal": [
+          200,
+          250
+        ],
+        "protein": 30
+      },
+      {
+        "course": "snack",
+        "number": 3,
+        "name": {
+          "bg": "Извара със зеленчуци",
+          "en": "Cottage cheese with vegetables"
+        },
+        "ingredients": [
+          {
+            "bg": "150–200 г извара",
+            "en": "150–200 g cottage cheese (izvara)"
+          },
+          {
+            "bg": "краставица/домати",
+            "en": "cucumber/tomatoes"
+          }
+        ],
+        "steps": null,
+        "kcal": [
+          180,
+          220
+        ],
+        "protein": [
+          25,
+          30
+        ]
+      },
+      {
+        "course": "snack",
+        "number": 4,
+        "name": {
+          "bg": "Протеинов шейк",
+          "en": "Protein shake"
+        },
+        "ingredients": [
+          {
+            "bg": "1 доза протеин на прах с вода",
+            "en": "1 scoop protein powder with water"
+          }
+        ],
+        "steps": null,
+        "kcal": [
+          100,
+          140
+        ],
+        "protein": [
+          20,
+          25
+        ]
+      }
     ],
     "week": [
-      { "weekday": 1, "breakfast": 1, "lunch": 1, "dinner": 1, "snacks": [] },
-      { "weekday": 2, "breakfast": 5, "lunch": 4, "dinner": 6, "snacks": [] },
-      { "weekday": 3, "breakfast": 3, "lunch": 7, "dinner": 2, "snacks": [] },
-      { "weekday": 4, "breakfast": 10, "lunch": 6, "dinner": 8, "snacks": [] },
-      { "weekday": 5, "breakfast": 2, "lunch": 3, "dinner": 10, "snacks": [] },
-      { "weekday": 6, "breakfast": 8, "lunch": 8, "dinner": 3, "snacks": [] },
-      { "weekday": 7, "breakfast": 6, "lunch": 10, "dinner": 5, "snacks": [] }
+      {
+        "weekday": 1,
+        "breakfast": 1,
+        "lunch": 1,
+        "dinner": 1,
+        "snacks": []
+      },
+      {
+        "weekday": 2,
+        "breakfast": 5,
+        "lunch": 4,
+        "dinner": 6,
+        "snacks": []
+      },
+      {
+        "weekday": 3,
+        "breakfast": 3,
+        "lunch": 7,
+        "dinner": 2,
+        "snacks": []
+      },
+      {
+        "weekday": 4,
+        "breakfast": 10,
+        "lunch": 6,
+        "dinner": 8,
+        "snacks": []
+      },
+      {
+        "weekday": 5,
+        "breakfast": 2,
+        "lunch": 3,
+        "dinner": 10,
+        "snacks": []
+      },
+      {
+        "weekday": 6,
+        "breakfast": 8,
+        "lunch": 8,
+        "dinner": 3,
+        "snacks": []
+      },
+      {
+        "weekday": 7,
+        "breakfast": 6,
+        "lunch": 10,
+        "dinner": 5,
+        "snacks": []
+      }
     ],
     "sections": [
-      { "title": { "bg": "Основни правила", "en": "Core rules" }, "items": [
-        { "bg": "Протеин: целта е приблизително 175–190 г дневно. При всяко основно хранене – качествен източник: пилешко, телешко, свинско бонфиле, яйца, белтъци, Skyr, извара, кисело мляко.", "en": "Protein: aim for roughly 175–190 g a day. A quality source at every main meal: chicken, beef, pork tenderloin, eggs, egg whites, Skyr, cottage cheese, yogurt." },
-        { "bg": "Зеленчуци: поне 500–700 г дневно, но при подуване количеството се увеличава постепенно. Ако суровите причиняват дискомфорт, част от тях могат да се заменят със задушени или печени.", "en": "Vegetables: at least 500–700 g a day, but increase gradually if bloated. If raw ones cause discomfort, swap some for steamed or roasted." },
-        { "bg": "Въглехидрати: ориз, картофи, сладки картофи, овес, булгур, пълнозърнеста паста, пълнозърнест хляб. Не е необходимо да бъдат изключвани заради отслабването.", "en": "Carbs: rice, potatoes, sweet potatoes, oats, bulgur, wholegrain pasta and bread. No need to cut them out to lose weight." },
-        { "bg": "Мазнини: зехтин, яйца, авокадо, ядки, умерено сирене/кашкавал. Зехтинът да се мери с кухненска везна – 1–2 допълнителни лъжици „на око“ могат значително да променят калориите.", "en": "Fats: olive oil, eggs, avocado, nuts, moderate cheese. Weigh olive oil on a kitchen scale – 1–2 extra eyeballed spoons can change calories a lot." } ] },
-      { "title": { "bg": "Алкохол", "en": "Alcohol" }, "items": [
-        { "bg": "Препоръчително е алкохолът да бъде ограничен до 1–2 дни седмично.", "en": "Keep alcohol to 1–2 days a week." },
-        { "bg": "1 бира е около 40–50 г въглехидрати/калории от алкохол според размера и марката; 150 мл вино – около 100–130 kcal.", "en": "1 beer is about 40–50 g of carbs/alcohol calories depending on size and brand; 150 ml of wine – about 100–130 kcal." },
-        { "bg": "Алкохолът трябва да се отчита към дневния калориен прием и не е добре да се комбинира с големи количества мазни и солени храни.", "en": "Count alcohol towards the day's calories, and don't combine it with lots of fatty, salty food." } ] },
-      { "title": { "bg": "Прием на вода", "en": "Water" }, "items": [
-        { "bg": "Не е необходимо да се насилваш да изпиваш огромни количества вода.", "en": "No need to force down huge amounts of water." },
-        { "bg": "Приемът се съобразява с жаждата, температурата, физическата активност, потоотделянето и приема на сол и храна.", "en": "Drink according to thirst, temperature, activity, sweating and salt/food intake." },
-        { "bg": "7 литра вода дневно не трябва да бъде поставяна като цел.", "en": "7 litres a day should not be a goal." } ] },
-      { "title": { "bg": "Подуване", "en": "Bloating" }, "style": "info", "items": [
-        { "bg": "1–2 таблетки Enzymil.", "en": "1–2 Enzymil tablets." } ] },
-      { "title": { "bg": "Тренировки и активност", "en": "Training and activity" }, "items": [
-        { "bg": "Храненето трябва да бъде комбинирано със силови тренировки: начална цел 3 силови тренировки седмично.", "en": "Combine the eating plan with strength training: start with 3 strength workouts a week." },
-        { "bg": "Постепенно увеличаване на движението от настоящите 6000 крачки към 7000–8000 дневно, а впоследствие при добра поносимост 8000–10 000.", "en": "Gradually increase from the current 6,000 steps to 7,000–8,000 a day, then 8,000–10,000 once that feels good." },
-        { "bg": "Не е необходимо да започваш с голямо количество кардио.", "en": "No need to start with lots of cardio." } ] },
-      { "title": { "bg": "Проследяване", "en": "Tracking" }, "items": [
-        { "bg": "Най-добре е да се следи седмичната средна стойност, а не отделното измерване.", "en": "Track the weekly average, not single weigh-ins." },
-        { "bg": "Талия – 1 път седмично; снимки – на всеки 2–4 седмици; тегла и повторения в тренировките.", "en": "Waist – once a week; photos – every 2–4 weeks; weights and reps in training." },
-        { "bg": "Първоначалната цел е приблизително 0.3–0.7 кг намаляване на теглото седмично. В началото теглото може временно да се колебае заради вода и гликоген.", "en": "The initial target is roughly 0.3–0.7 kg lost per week. Early on, weight can fluctuate from water and glycogen." },
-        { "bg": "След 2–3 седмици режимът се коригира според реалния резултат.", "en": "After 2–3 weeks, the plan is adjusted based on real results." } ] }
+      {
+        "title": {
+          "bg": "Основни правила",
+          "en": "Core rules"
+        },
+        "items": [
+          {
+            "bg": "Протеин: целта е приблизително 175–190 г дневно. При всяко основно хранене – качествен източник: пилешко, телешко, свинско бонфиле, яйца, белтъци, Skyr, извара, кисело мляко.",
+            "en": "Protein: aim for roughly 175–190 g a day. A quality source at every main meal: chicken, beef, pork tenderloin, eggs, egg whites, Skyr, cottage cheese, yogurt."
+          },
+          {
+            "bg": "Зеленчуци: поне 500–700 г дневно, но при подуване количеството се увеличава постепенно. Ако суровите причиняват дискомфорт, част от тях могат да се заменят със задушени или печени.",
+            "en": "Vegetables: at least 500–700 g a day, but increase gradually if bloated. If raw ones cause discomfort, swap some for steamed or roasted."
+          },
+          {
+            "bg": "Въглехидрати: ориз, картофи, сладки картофи, овес, булгур, пълнозърнеста паста, пълнозърнест хляб. Не е необходимо да бъдат изключвани заради отслабването.",
+            "en": "Carbs: rice, potatoes, sweet potatoes, oats, bulgur, wholegrain pasta and bread. No need to cut them out to lose weight."
+          },
+          {
+            "bg": "Мазнини: зехтин, яйца, авокадо, ядки, умерено сирене/кашкавал. Зехтинът да се мери с кухненска везна – 1–2 допълнителни лъжици „на око“ могат значително да променят калориите.",
+            "en": "Fats: olive oil, eggs, avocado, nuts, moderate cheese. Weigh olive oil on a kitchen scale – 1–2 extra eyeballed spoons can change calories a lot."
+          }
+        ]
+      },
+      {
+        "title": {
+          "bg": "Алкохол",
+          "en": "Alcohol"
+        },
+        "items": [
+          {
+            "bg": "Препоръчително е алкохолът да бъде ограничен до 1–2 дни седмично.",
+            "en": "Keep alcohol to 1–2 days a week."
+          },
+          {
+            "bg": "1 бира е около 40–50 г въглехидрати/калории от алкохол според размера и марката; 150 мл вино – около 100–130 kcal.",
+            "en": "1 beer is about 40–50 g of carbs/alcohol calories depending on size and brand; 150 ml of wine – about 100–130 kcal."
+          },
+          {
+            "bg": "Алкохолът трябва да се отчита към дневния калориен прием и не е добре да се комбинира с големи количества мазни и солени храни.",
+            "en": "Count alcohol towards the day's calories, and don't combine it with lots of fatty, salty food."
+          }
+        ]
+      },
+      {
+        "title": {
+          "bg": "Прием на вода",
+          "en": "Water"
+        },
+        "items": [
+          {
+            "bg": "Не е необходимо да се насилваш да изпиваш огромни количества вода.",
+            "en": "No need to force down huge amounts of water."
+          },
+          {
+            "bg": "Приемът се съобразява с жаждата, температурата, физическата активност, потоотделянето и приема на сол и храна.",
+            "en": "Drink according to thirst, temperature, activity, sweating and salt/food intake."
+          },
+          {
+            "bg": "7 литра вода дневно не трябва да бъде поставяна като цел.",
+            "en": "7 litres a day should not be a goal."
+          }
+        ]
+      },
+      {
+        "title": {
+          "bg": "Подуване",
+          "en": "Bloating"
+        },
+        "style": "info",
+        "items": [
+          {
+            "bg": "1–2 таблетки Enzymil.",
+            "en": "1–2 Enzymil tablets."
+          }
+        ]
+      },
+      {
+        "title": {
+          "bg": "Тренировки и активност",
+          "en": "Training and activity"
+        },
+        "items": [
+          {
+            "bg": "Храненето трябва да бъде комбинирано със силови тренировки: начална цел 3 силови тренировки седмично.",
+            "en": "Combine the eating plan with strength training: start with 3 strength workouts a week."
+          },
+          {
+            "bg": "Постепенно увеличаване на движението от настоящите 6000 крачки към 7000–8000 дневно, а впоследствие при добра поносимост 8000–10 000.",
+            "en": "Gradually increase from the current 6,000 steps to 7,000–8,000 a day, then 8,000–10,000 once that feels good."
+          },
+          {
+            "bg": "Не е необходимо да започваш с голямо количество кардио.",
+            "en": "No need to start with lots of cardio."
+          }
+        ]
+      },
+      {
+        "title": {
+          "bg": "Проследяване",
+          "en": "Tracking"
+        },
+        "items": [
+          {
+            "bg": "Най-добре е да се следи седмичната средна стойност, а не отделното измерване.",
+            "en": "Track the weekly average, not single weigh-ins."
+          },
+          {
+            "bg": "Талия – 1 път седмично; снимки – на всеки 2–4 седмици; тегла и повторения в тренировките.",
+            "en": "Waist – once a week; photos – every 2–4 weeks; weights and reps in training."
+          },
+          {
+            "bg": "Първоначалната цел е приблизително 0.3–0.7 кг намаляване на теглото седмично. В началото теглото може временно да се колебае заради вода и гликоген.",
+            "en": "The initial target is roughly 0.3–0.7 kg lost per week. Early on, weight can fluctuate from water and glycogen."
+          },
+          {
+            "bg": "След 2–3 седмици режимът се коригира според реалния резултат.",
+            "en": "After 2–3 weeks, the plan is adjusted based on real results."
+          }
+        ]
+      }
     ],
     "adjustments": null,
-    "important": { "bg": "Този режим е начална рамка, а не фиксирана диета за цял живот. След първите 2–3 седмици калориите трябва да се преценят според: тегло + талия + сила в тренировките + глад + възстановяване + храносмилане.", "en": "This plan is a starting framework, not a diet for life. After the first 2–3 weeks, calories are reassessed based on: weight + waist + training strength + hunger + recovery + digestion." }
+    "important": {
+      "bg": "Този режим е начална рамка, а не фиксирана диета за цял живот. След първите 2–3 седмици калориите трябва да се преценят според: тегло + талия + сила в тренировките + глад + възстановяване + храносмилане.",
+      "en": "This plan is a starting framework, not a diet for life. After the first 2–3 weeks, calories are reassessed based on: weight + waist + training strength + hunger + recovery + digestion."
+    }
   },
   "training": {
-    "title": { "bg": "Тренировъчна програма", "en": "Training program" },
-    "subtitle": { "bg": "Версия 2 · съобразена с хранителния режим", "en": "Version 2 · built around the eating plan" },
-    "stats": { "bg": "≈ 2200–2300 kcal · протеин 175–190 г · цел: −0.3 до −0.7 кг седмично при запазване и изграждане на мускул", "en": "≈ 2200–2300 kcal · protein 175–190 g · goal: −0.3 to −0.7 kg a week while keeping and building muscle" },
+    "title": {
+      "bg": "Тренировъчна програма",
+      "en": "Training program"
+    },
+    "subtitle": {
+      "bg": "Версия 2 · съобразена с хранителния режим",
+      "en": "Version 2 · built around the eating plan"
+    },
+    "stats": {
+      "bg": "≈ 2200–2300 kcal · протеин 175–190 г · цел: −0.3 до −0.7 кг седмично при запазване и изграждане на мускул",
+      "en": "≈ 2200–2300 kcal · protein 175–190 g · goal: −0.3 to −0.7 kg a week while keeping and building muscle"
+    },
     "schedule": [
-      [ { "kind": "workout", "workout": "A" }, { "kind": "steps" }, { "kind": "workout", "workout": "B" }, { "kind": "steps" }, { "kind": "workout", "workout": "A" }, { "kind": "walk" }, { "kind": "rest" } ],
-      [ { "kind": "workout", "workout": "B" }, { "kind": "steps" }, { "kind": "workout", "workout": "A" }, { "kind": "steps" }, { "kind": "workout", "workout": "B" }, { "kind": "walk" }, { "kind": "rest" } ]
+      [
+        {
+          "kind": "workout",
+          "workout": "A"
+        },
+        {
+          "kind": "steps"
+        },
+        {
+          "kind": "workout",
+          "workout": "B"
+        },
+        {
+          "kind": "steps"
+        },
+        {
+          "kind": "workout",
+          "workout": "A"
+        },
+        {
+          "kind": "walk"
+        },
+        {
+          "kind": "rest"
+        }
+      ],
+      [
+        {
+          "kind": "workout",
+          "workout": "B"
+        },
+        {
+          "kind": "steps"
+        },
+        {
+          "kind": "workout",
+          "workout": "A"
+        },
+        {
+          "kind": "steps"
+        },
+        {
+          "kind": "workout",
+          "workout": "B"
+        },
+        {
+          "kind": "walk"
+        },
+        {
+          "kind": "rest"
+        }
+      ]
     ],
-    "scheduleNote": { "bg": "Седмиците се редуват: A-B-A, после B-A-B. Крачки: седмици 1–2 → 7 000–8 000 на ден; от седмица 3 → 8 000–10 000. По желание 1–2 пъти седмично 30 мин ходене на пътечка с наклон – това стига като кардио.", "en": "Weeks alternate: A-B-A, then B-A-B. Steps: weeks 1–2 → 7,000–8,000 a day; from week 3 → 8,000–10,000. Optionally 1–2 × 30 min incline treadmill walks a week – that's enough cardio." },
+    "scheduleNote": {
+      "bg": "Седмиците се редуват: A-B-A, после B-A-B. Крачки: седмици 1–2 → 7 000–8 000 на ден; от седмица 3 → 8 000–10 000. По желание 1–2 пъти седмично 30 мин ходене на пътечка с наклон – това стига като кардио.",
+      "en": "Weeks alternate: A-B-A, then B-A-B. Steps: weeks 1–2 → 7,000–8,000 a day; from week 3 → 8,000–10,000. Optionally 1–2 × 30 min incline treadmill walks a week – that's enough cardio."
+    },
     "warmUp": [
-      { "bg": "4 мин бързо ходене на пътечка с наклон", "en": "4 min brisk incline treadmill walk" },
-      { "bg": "Разтягане на ластик (band pull-apart) 2×15", "en": "Band pull-apart 2×15" },
-      { "bg": "Клякания без тежест 2×10", "en": "Bodyweight squats 2×10" },
-      { "bg": "1–2 леки серии на първото упражнение: празна щанга → ~60% от работната тежест", "en": "1–2 light sets of the first exercise: empty bar → ~60% of working weight" }
+      {
+        "bg": "4 мин бързо ходене на пътечка с наклон",
+        "en": "4 min brisk incline treadmill walk"
+      },
+      {
+        "bg": "Разтягане на ластик (band pull-apart) 2×15",
+        "en": "Band pull-apart 2×15"
+      },
+      {
+        "bg": "Клякания без тежест 2×10",
+        "en": "Bodyweight squats 2×10"
+      },
+      {
+        "bg": "1–2 леки серии на първото упражнение: празна щанга → ~60% от работната тежест",
+        "en": "1–2 light sets of the first exercise: empty bar → ~60% of working weight"
+      }
     ],
     "callouts": [
-      { "title": { "bg": "Безопасност", "en": "Safety" }, "style": "warning", "items": [
-        { "bg": "Предпазните лостове на рака са задължителни при клек (малко под най-ниската точка) и лежанка (малко под гърдите). В дефицит силата варира повече от обикновено – ако едно повторение не върви, оставяш щангата на лостовете.", "en": "Rack safety bars are mandatory for squats (just below the lowest point) and bench press (just below the chest). Strength varies more in a deficit – if a rep won't go, leave the bar on the safeties." } ] }
+      {
+        "title": {
+          "bg": "Безопасност",
+          "en": "Safety"
+        },
+        "style": "warning",
+        "items": [
+          {
+            "bg": "Предпазните лостове на рака са задължителни при клек (малко под най-ниската точка) и лежанка (малко под гърдите). В дефицит силата варира повече от обикновено – ако едно повторение не върви, оставяш щангата на лостовете.",
+            "en": "Rack safety bars are mandatory for squats (just below the lowest point) and bench press (just below the chest). Strength varies more in a deficit – if a rep won't go, leave the bar on the safeties."
+          }
+        ]
+      }
     ],
     "workouts": [
-      { "id": "A", "short": { "bg": "A", "en": "A" }, "title": { "bg": "Тренировка A", "en": "Workout A" }, "duration": { "bg": "~60 мин", "en": "~60 min" }, "focus": { "bg": "клек, лежанка, гръб, корем", "en": "squat, bench, back, core" },
+      {
+        "id": "A",
+        "short": {
+          "bg": "A",
+          "en": "A"
+        },
+        "title": {
+          "bg": "Тренировка A",
+          "en": "Workout A"
+        },
+        "duration": {
+          "bg": "~60 мин",
+          "en": "~60 min"
+        },
+        "focus": {
+          "bg": "клек, лежанка, гръб, корем",
+          "en": "squat, bench, back, core"
+        },
         "exercises": [
-          { "label": "1", "name": { "bg": "Клек с щанга", "en": "Barbell back squat" }, "prescription": { "bg": "4 × 6–8", "en": "4 × 6–8" }, "rest": { "bg": "2–3 мин", "en": "2–3 min" }, "start": { "bg": "40–60 кг", "en": "40–60 kg" }, "exerciseID": "Barbell_Squat",
-            "cues": [ { "bg": "Щангата е на горната част на трапеца.", "en": "Bar on the upper traps." }, { "bg": "Коленете следват пръстите, слизаш поне до успоредно.", "en": "Knees track the toes, go at least to parallel." }, { "bg": "Седмици 1–2: 3 серии.", "en": "Weeks 1–2: 3 sets." } ] },
-          { "label": "2", "name": { "bg": "Лежанка с щанга", "en": "Barbell bench press" }, "prescription": { "bg": "4 × 6–8", "en": "4 × 6–8" }, "rest": { "bg": "2–3 мин", "en": "2–3 min" }, "start": { "bg": "30–50 кг", "en": "30–50 kg" }, "exerciseID": "Barbell_Bench_Press_-_Medium_Grip",
-            "cues": [ { "bg": "Лопатките събрани, стъпалата на пода.", "en": "Shoulder blades squeezed, feet on the floor." }, { "bg": "Щангата към долната част на гърдите, лакти ~45°.", "en": "Bar to the lower chest, elbows ~45°." }, { "bg": "Седмици 1–2: 3 серии.", "en": "Weeks 1–2: 3 sets." } ] },
-          { "label": "3", "name": { "bg": "Горен скрипец", "en": "Lat pulldown" }, "prescription": { "bg": "3 × 10–12", "en": "3 × 10–12" }, "rest": { "bg": "90 сек", "en": "90 s" }, "start": { "bg": "35–50 кг", "en": "35–50 kg" }, "exerciseID": "Wide-Grip_Lat_Pulldown",
-            "cues": [ { "bg": "Дърпай към горната част на гърдите.", "en": "Pull to the upper chest." }, { "bg": "Без люлеене, връщай бавно.", "en": "No swinging, return slowly." } ] },
-          { "label": "4", "name": { "bg": "Румънска мъртва тяга с дъмбели", "en": "Dumbbell Romanian deadlift" }, "prescription": { "bg": "3 × 10–12", "en": "3 × 10–12" }, "rest": { "bg": "90 сек", "en": "90 s" }, "start": { "bg": "2 × 12–16 кг", "en": "2 × 12–16 kg" }, "exerciseID": "Stiff-Legged_Dumbbell_Deadlift",
-            "cues": [ { "bg": "Тазът назад, гърбът прав, коленете леко свити.", "en": "Hips back, back straight, knees slightly bent." }, { "bg": "Опън в задните бедра, после стискаш седалището нагоре.", "en": "Feel the hamstring stretch, then squeeze the glutes to stand." } ] },
-          { "label": "5a", "name": { "bg": "Face pull с ластик", "en": "Banded face pull" }, "prescription": { "bg": "3 × 15", "en": "3 × 15" }, "rest": { "bg": "без почивка → 5b", "en": "no rest → 5b" }, "start": null, "exerciseID": "Face_Pull",
-            "cues": [ { "bg": "Дърпай към челото с разтворени лакти, задръж 1 сек.", "en": "Pull to the forehead with elbows wide, hold 1 s." } ] },
-          { "label": "5b", "name": { "bg": "Страничен планк", "en": "Side plank" }, "prescription": { "bg": "3 × 30 сек на страна", "en": "3 × 30 s per side" }, "rest": { "bg": "60 сек", "en": "60 s" }, "start": null, "exerciseID": "Side_Bridge",
-            "cues": [ { "bg": "Лакътят под рамото, тялото права линия.", "en": "Elbow under the shoulder, body in a straight line." }, { "bg": "Тазът не провисва. Прогресия: +5–10 сек седмично до 60 сек.", "en": "Hips don't sag. Progression: +5–10 s a week up to 60 s." } ] },
-          { "label": "6", "name": { "bg": "Коремни преси на горен скрипец", "en": "Cable crunch" }, "prescription": { "bg": "3 × 12–15", "en": "3 × 12–15" }, "rest": { "bg": "60 сек", "en": "60 s" }, "start": { "bg": "15–25 кг", "en": "15–25 kg" }, "exerciseID": "Cable_Crunch",
-            "cues": [ { "bg": "Коленичи с лице към рака, въжето до главата.", "en": "Kneel facing the rack, rope beside the head." }, { "bg": "Сгъни гърба надолу към коленете – движението е от корема, не от ханша.", "en": "Curl the spine down towards the knees – the movement comes from the abs, not the hips." }, { "bg": "Тазът стои неподвижен.", "en": "Hips stay still." } ] }
+          {
+            "label": "1",
+            "name": {
+              "bg": "Клек с щанга",
+              "en": "Barbell back squat"
+            },
+            "prescription": {
+              "bg": "4 × 6–8",
+              "en": "4 × 6–8"
+            },
+            "rest": {
+              "bg": "2–3 мин",
+              "en": "2–3 min"
+            },
+            "start": {
+              "bg": "40–60 кг",
+              "en": "40–60 kg"
+            },
+            "exerciseID": "Barbell_Squat",
+            "cues": [
+              {
+                "bg": "Щангата е на горната част на трапеца.",
+                "en": "Bar on the upper traps."
+              },
+              {
+                "bg": "Коленете следват пръстите, слизаш поне до успоредно.",
+                "en": "Knees track the toes, go at least to parallel."
+              },
+              {
+                "bg": "Седмици 1–2: 3 серии.",
+                "en": "Weeks 1–2: 3 sets."
+              }
+            ],
+            "tracking": {
+              "sets": 4,
+              "perSide": false,
+              "load": "barbell",
+              "restSeconds": 120,
+              "reps": [
+                6,
+                8
+              ],
+              "start": [
+                40,
+                60
+              ],
+              "step": 5,
+              "setRules": [
+                {
+                  "from": 1,
+                  "to": 2,
+                  "sets": 3
+                }
+              ]
+            },
+            "alternatives": [
+              {
+                "name": {
+                  "bg": "Гоблет клек",
+                  "en": "Goblet squat"
+                },
+                "exerciseID": "Goblet_Squat",
+                "place": "home"
+              },
+              {
+                "name": {
+                  "bg": "Лег преса",
+                  "en": "Leg press"
+                },
+                "exerciseID": "Leg_Press",
+                "place": "gym"
+              }
+            ]
+          },
+          {
+            "label": "2",
+            "name": {
+              "bg": "Лежанка с щанга",
+              "en": "Barbell bench press"
+            },
+            "prescription": {
+              "bg": "4 × 6–8",
+              "en": "4 × 6–8"
+            },
+            "rest": {
+              "bg": "2–3 мин",
+              "en": "2–3 min"
+            },
+            "start": {
+              "bg": "30–50 кг",
+              "en": "30–50 kg"
+            },
+            "exerciseID": "Barbell_Bench_Press_-_Medium_Grip",
+            "cues": [
+              {
+                "bg": "Лопатките събрани, стъпалата на пода.",
+                "en": "Shoulder blades squeezed, feet on the floor."
+              },
+              {
+                "bg": "Щангата към долната част на гърдите, лакти ~45°.",
+                "en": "Bar to the lower chest, elbows ~45°."
+              },
+              {
+                "bg": "Седмици 1–2: 3 серии.",
+                "en": "Weeks 1–2: 3 sets."
+              }
+            ],
+            "tracking": {
+              "sets": 4,
+              "perSide": false,
+              "load": "barbell",
+              "restSeconds": 120,
+              "reps": [
+                6,
+                8
+              ],
+              "start": [
+                30,
+                50
+              ],
+              "step": 2.5,
+              "setRules": [
+                {
+                  "from": 1,
+                  "to": 2,
+                  "sets": 3
+                }
+              ]
+            },
+            "alternatives": [
+              {
+                "name": {
+                  "bg": "Лежанка с дъмбели",
+                  "en": "Dumbbell bench press"
+                },
+                "exerciseID": "Dumbbell_Bench_Press",
+                "place": "home"
+              }
+            ]
+          },
+          {
+            "label": "3",
+            "name": {
+              "bg": "Горен скрипец",
+              "en": "Lat pulldown"
+            },
+            "prescription": {
+              "bg": "3 × 10–12",
+              "en": "3 × 10–12"
+            },
+            "rest": {
+              "bg": "90 сек",
+              "en": "90 s"
+            },
+            "start": {
+              "bg": "35–50 кг",
+              "en": "35–50 kg"
+            },
+            "exerciseID": "Wide-Grip_Lat_Pulldown",
+            "cues": [
+              {
+                "bg": "Дърпай към горната част на гърдите.",
+                "en": "Pull to the upper chest."
+              },
+              {
+                "bg": "Без люлеене, връщай бавно.",
+                "en": "No swinging, return slowly."
+              }
+            ],
+            "tracking": {
+              "sets": 3,
+              "perSide": false,
+              "load": "cable",
+              "restSeconds": 90,
+              "reps": [
+                10,
+                12
+              ],
+              "start": [
+                35,
+                50
+              ],
+              "step": 2.5
+            },
+            "alternatives": [
+              {
+                "name": {
+                  "bg": "Гребане с дъмбел с една ръка",
+                  "en": "One-arm dumbbell row"
+                },
+                "exerciseID": "One-Arm_Dumbbell_Row",
+                "place": "home"
+              },
+              {
+                "name": {
+                  "bg": "Набирания с ластик",
+                  "en": "Band-assisted pull-ups"
+                },
+                "exerciseID": "Band_Assisted_Pull-Up",
+                "place": "any"
+              }
+            ]
+          },
+          {
+            "label": "4",
+            "name": {
+              "bg": "Румънска мъртва тяга с дъмбели",
+              "en": "Dumbbell Romanian deadlift"
+            },
+            "prescription": {
+              "bg": "3 × 10–12",
+              "en": "3 × 10–12"
+            },
+            "rest": {
+              "bg": "90 сек",
+              "en": "90 s"
+            },
+            "start": {
+              "bg": "2 × 12–16 кг",
+              "en": "2 × 12–16 kg"
+            },
+            "exerciseID": "Stiff-Legged_Dumbbell_Deadlift",
+            "cues": [
+              {
+                "bg": "Тазът назад, гърбът прав, коленете леко свити.",
+                "en": "Hips back, back straight, knees slightly bent."
+              },
+              {
+                "bg": "Опън в задните бедра, после стискаш седалището нагоре.",
+                "en": "Feel the hamstring stretch, then squeeze the glutes to stand."
+              }
+            ],
+            "tracking": {
+              "sets": 3,
+              "perSide": false,
+              "load": "dumbbells",
+              "restSeconds": 90,
+              "reps": [
+                10,
+                12
+              ],
+              "start": [
+                12,
+                16
+              ],
+              "step": 2
+            },
+            "alternatives": [
+              {
+                "name": {
+                  "bg": "Румънска мъртва тяга с щанга",
+                  "en": "Barbell Romanian deadlift"
+                },
+                "exerciseID": "Romanian_Deadlift",
+                "place": "any"
+              }
+            ]
+          },
+          {
+            "label": "5a",
+            "name": {
+              "bg": "Face pull с ластик",
+              "en": "Banded face pull"
+            },
+            "prescription": {
+              "bg": "3 × 15",
+              "en": "3 × 15"
+            },
+            "rest": {
+              "bg": "без почивка → 5b",
+              "en": "no rest → 5b"
+            },
+            "start": null,
+            "exerciseID": "Face_Pull",
+            "cues": [
+              {
+                "bg": "Дърпай към челото с разтворени лакти, задръж 1 сек.",
+                "en": "Pull to the forehead with elbows wide, hold 1 s."
+              }
+            ],
+            "tracking": {
+              "sets": 3,
+              "perSide": false,
+              "load": "band",
+              "restSeconds": 0,
+              "reps": [
+                15,
+                15
+              ]
+            },
+            "alternatives": [
+              {
+                "name": {
+                  "bg": "Обратни разтваряния с дъмбели",
+                  "en": "Dumbbell reverse flyes"
+                },
+                "exerciseID": "Reverse_Flyes",
+                "place": "home"
+              },
+              {
+                "name": {
+                  "bg": "Разтягане на ластик",
+                  "en": "Band pull-apart"
+                },
+                "exerciseID": "Band_Pull_Apart",
+                "place": "home"
+              }
+            ]
+          },
+          {
+            "label": "5b",
+            "name": {
+              "bg": "Страничен планк",
+              "en": "Side plank"
+            },
+            "prescription": {
+              "bg": "3 × 30 сек на страна",
+              "en": "3 × 30 s per side"
+            },
+            "rest": {
+              "bg": "60 сек",
+              "en": "60 s"
+            },
+            "start": null,
+            "exerciseID": "Side_Bridge",
+            "cues": [
+              {
+                "bg": "Лакътят под рамото, тялото права линия.",
+                "en": "Elbow under the shoulder, body in a straight line."
+              },
+              {
+                "bg": "Тазът не провисва. Прогресия: +5–10 сек седмично до 60 сек.",
+                "en": "Hips don't sag. Progression: +5–10 s a week up to 60 s."
+              }
+            ],
+            "tracking": {
+              "sets": 3,
+              "perSide": true,
+              "load": "bodyweight",
+              "restSeconds": 60,
+              "seconds": [
+                30,
+                30
+              ],
+              "maxSeconds": 60
+            },
+            "alternatives": []
+          },
+          {
+            "label": "6",
+            "name": {
+              "bg": "Коремни преси на горен скрипец",
+              "en": "Cable crunch"
+            },
+            "prescription": {
+              "bg": "3 × 12–15",
+              "en": "3 × 12–15"
+            },
+            "rest": {
+              "bg": "60 сек",
+              "en": "60 s"
+            },
+            "start": {
+              "bg": "15–25 кг",
+              "en": "15–25 kg"
+            },
+            "exerciseID": "Cable_Crunch",
+            "cues": [
+              {
+                "bg": "Коленичи с лице към рака, въжето до главата.",
+                "en": "Kneel facing the rack, rope beside the head."
+              },
+              {
+                "bg": "Сгъни гърба надолу към коленете – движението е от корема, не от ханша.",
+                "en": "Curl the spine down towards the knees – the movement comes from the abs, not the hips."
+              },
+              {
+                "bg": "Тазът стои неподвижен.",
+                "en": "Hips stay still."
+              }
+            ],
+            "tracking": {
+              "sets": 3,
+              "perSide": false,
+              "load": "cable",
+              "restSeconds": 60,
+              "reps": [
+                12,
+                15
+              ],
+              "start": [
+                15,
+                25
+              ],
+              "step": 2.5
+            },
+            "alternatives": [
+              {
+                "name": {
+                  "bg": "Обратни коремни преси",
+                  "en": "Reverse crunch"
+                },
+                "exerciseID": "Reverse_Crunch",
+                "place": "home"
+              },
+              {
+                "name": {
+                  "bg": "Коремни преси на наклонена пейка",
+                  "en": "Decline crunch"
+                },
+                "exerciseID": "Decline_Crunch",
+                "place": "home"
+              }
+            ]
+          }
         ],
-        "finisher": { "bg": "Финал: пътечка с наклон 10 мин – наклон 8–12%, бързо ходене, без да се държиш. От седмица 5 по желание въже 6 × 30/30 сек вместо това.", "en": "Finisher: 10 min incline treadmill – 8–12% incline, brisk walk, hands off. From week 5, optionally skipping rope 6 × 30/30 s instead." } },
-      { "id": "B", "short": { "bg": "B", "en": "B" }, "title": { "bg": "Тренировка B", "en": "Workout B" }, "duration": { "bg": "~60 мин", "en": "~60 min" }, "focus": { "bg": "мъртва тяга, рамене, набирания, корем", "en": "deadlift, shoulders, pull-ups, core" },
+        "finisher": {
+          "bg": "Финал: пътечка с наклон 10 мин – наклон 8–12%, бързо ходене, без да се държиш. От седмица 5 по желание въже 6 × 30/30 сек вместо това.",
+          "en": "Finisher: 10 min incline treadmill – 8–12% incline, brisk walk, hands off. From week 5, optionally skipping rope 6 × 30/30 s instead."
+        }
+      },
+      {
+        "id": "B",
+        "short": {
+          "bg": "B",
+          "en": "B"
+        },
+        "title": {
+          "bg": "Тренировка B",
+          "en": "Workout B"
+        },
+        "duration": {
+          "bg": "~60 мин",
+          "en": "~60 min"
+        },
+        "focus": {
+          "bg": "мъртва тяга, рамене, набирания, корем",
+          "en": "deadlift, shoulders, pull-ups, core"
+        },
         "exercises": [
-          { "label": "1", "name": { "bg": "Мъртва тяга с щанга", "en": "Barbell deadlift" }, "prescription": { "bg": "3 × 5–6", "en": "3 × 5–6" }, "rest": { "bg": "3 мин", "en": "3 min" }, "start": { "bg": "50–70 кг", "en": "50–70 kg" }, "exerciseID": "Barbell_Deadlift",
-            "cues": [ { "bg": "Щангата над средата на стъпалото, гърбът прав.", "en": "Bar over mid-foot, back straight." }, { "bg": "Всяко повторение започва от пода.", "en": "Every rep starts from the floor." }, { "bg": "Седмици 1–2: максимум 70% усилие.", "en": "Weeks 1–2: max 70% effort." } ] },
-          { "label": "2", "name": { "bg": "Раменна преса с щанга", "en": "Barbell overhead press" }, "prescription": { "bg": "3 × 6–8", "en": "3 × 6–8" }, "rest": { "bg": "2 мин", "en": "2 min" }, "start": { "bg": "20–30 кг", "en": "20–30 kg" }, "exerciseID": "Standing_Military_Press",
-            "cues": [ { "bg": "Стегни корем и седалище, без извиване в кръста.", "en": "Brace abs and glutes, no arching in the low back." }, { "bg": "Главата минава под щангата.", "en": "Head moves through under the bar." } ] },
-          { "label": "3", "name": { "bg": "Гребане на долен скрипец", "en": "Seated cable row" }, "prescription": { "bg": "3 × 10–12", "en": "3 × 10–12" }, "rest": { "bg": "90 сек", "en": "90 s" }, "start": { "bg": "35–50 кг", "en": "35–50 kg" }, "exerciseID": "Seated_Cable_Rows",
-            "cues": [ { "bg": "Дърпай към пъпа, събирай лопатките.", "en": "Pull to the belly button, squeeze the shoulder blades." }, { "bg": "Без люлеене.", "en": "No swinging." } ] },
-          { "label": "4", "name": { "bg": "Български клек с дъмбели", "en": "Dumbbell Bulgarian split squat" }, "prescription": { "bg": "3 × 8–10 на крак", "en": "3 × 8–10 per leg" }, "rest": { "bg": "90 сек", "en": "90 s" }, "start": { "bg": "2 × 8–12 кг", "en": "2 × 8–12 kg" }, "exerciseID": "Split_Squat_with_Dumbbells",
-            "cues": [ { "bg": "Задното стъпало на пейката.", "en": "Rear foot on the bench." }, { "bg": "Седмица 1 без тежест – балансът е по-трудното.", "en": "Week 1 bodyweight – balance is the hard part." } ] },
-          { "label": "5", "name": { "bg": "Набирания", "en": "Pull-ups" }, "prescription": { "bg": "3 × 3–8", "en": "3 × 3–8" }, "rest": { "bg": "2 мин", "en": "2 min" }, "start": { "bg": "ластик / негативи", "en": "band / negatives" }, "exerciseID": "Band_Assisted_Pull-Up",
-            "cues": [ { "bg": "При 97 кг: с ластик за помощ или само негативи – скачаш горе и слизаш за 3–4 сек.", "en": "At 97 kg: band-assisted or negatives only – jump to the top and lower over 3–4 s." }, { "bg": "Целта е 3 × 8 чисти без ластик.", "en": "The goal is 3 × 8 clean reps without a band." } ] },
-          { "label": "6a", "name": { "bg": "Повдигане на колене във вис", "en": "Hanging knee raise" }, "prescription": { "bg": "3 × 10–12", "en": "3 × 10–12" }, "rest": { "bg": "без почивка → 6b", "en": "no rest → 6b" }, "start": null, "exerciseID": "Hanging_Leg_Raise",
-            "cues": [ { "bg": "Без люлеене, тазът се завърта леко нагоре.", "en": "No swinging, tilt the pelvis slightly up." } ] },
-          { "label": "6b", "name": { "bg": "Pallof преса с ластик", "en": "Banded Pallof press" }, "prescription": { "bg": "3 × 10 на страна", "en": "3 × 10 per side" }, "rest": { "bg": "60 сек", "en": "60 s" }, "start": null, "exerciseID": "Pallof_Press",
-            "cues": [ { "bg": "Ластикът е закачен встрани на височината на гърдите.", "en": "Band anchored to the side at chest height." }, { "bg": "Изпъни ръцете напред и задръж 2 сек – не позволявай на ластика да те завърти.", "en": "Press the arms forward and hold 2 s – don't let the band rotate you." } ] }
+          {
+            "label": "1",
+            "name": {
+              "bg": "Мъртва тяга с щанга",
+              "en": "Barbell deadlift"
+            },
+            "prescription": {
+              "bg": "3 × 5–6",
+              "en": "3 × 5–6"
+            },
+            "rest": {
+              "bg": "3 мин",
+              "en": "3 min"
+            },
+            "start": {
+              "bg": "50–70 кг",
+              "en": "50–70 kg"
+            },
+            "exerciseID": "Barbell_Deadlift",
+            "cues": [
+              {
+                "bg": "Щангата над средата на стъпалото, гърбът прав.",
+                "en": "Bar over mid-foot, back straight."
+              },
+              {
+                "bg": "Всяко повторение започва от пода.",
+                "en": "Every rep starts from the floor."
+              },
+              {
+                "bg": "Седмици 1–2: максимум 70% усилие.",
+                "en": "Weeks 1–2: max 70% effort."
+              }
+            ],
+            "tracking": {
+              "sets": 3,
+              "perSide": false,
+              "load": "barbell",
+              "restSeconds": 180,
+              "reps": [
+                5,
+                6
+              ],
+              "start": [
+                50,
+                70
+              ],
+              "step": 5
+            },
+            "alternatives": [
+              {
+                "name": {
+                  "bg": "Мъртва тяга с трап щанга",
+                  "en": "Trap bar deadlift"
+                },
+                "exerciseID": "Trap_Bar_Deadlift",
+                "place": "gym"
+              }
+            ]
+          },
+          {
+            "label": "2",
+            "name": {
+              "bg": "Раменна преса с щанга",
+              "en": "Barbell overhead press"
+            },
+            "prescription": {
+              "bg": "3 × 6–8",
+              "en": "3 × 6–8"
+            },
+            "rest": {
+              "bg": "2 мин",
+              "en": "2 min"
+            },
+            "start": {
+              "bg": "20–30 кг",
+              "en": "20–30 kg"
+            },
+            "exerciseID": "Standing_Military_Press",
+            "cues": [
+              {
+                "bg": "Стегни корем и седалище, без извиване в кръста.",
+                "en": "Brace abs and glutes, no arching in the low back."
+              },
+              {
+                "bg": "Главата минава под щангата.",
+                "en": "Head moves through under the bar."
+              }
+            ],
+            "tracking": {
+              "sets": 3,
+              "perSide": false,
+              "load": "barbell",
+              "restSeconds": 120,
+              "reps": [
+                6,
+                8
+              ],
+              "start": [
+                20,
+                30
+              ],
+              "step": 2.5
+            },
+            "alternatives": [
+              {
+                "name": {
+                  "bg": "Раменна преса с дъмбели",
+                  "en": "Dumbbell shoulder press"
+                },
+                "exerciseID": "Dumbbell_Shoulder_Press",
+                "place": "home"
+              }
+            ]
+          },
+          {
+            "label": "3",
+            "name": {
+              "bg": "Гребане на долен скрипец",
+              "en": "Seated cable row"
+            },
+            "prescription": {
+              "bg": "3 × 10–12",
+              "en": "3 × 10–12"
+            },
+            "rest": {
+              "bg": "90 сек",
+              "en": "90 s"
+            },
+            "start": {
+              "bg": "35–50 кг",
+              "en": "35–50 kg"
+            },
+            "exerciseID": "Seated_Cable_Rows",
+            "cues": [
+              {
+                "bg": "Дърпай към пъпа, събирай лопатките.",
+                "en": "Pull to the belly button, squeeze the shoulder blades."
+              },
+              {
+                "bg": "Без люлеене.",
+                "en": "No swinging."
+              }
+            ],
+            "tracking": {
+              "sets": 3,
+              "perSide": false,
+              "load": "cable",
+              "restSeconds": 90,
+              "reps": [
+                10,
+                12
+              ],
+              "start": [
+                35,
+                50
+              ],
+              "step": 2.5
+            },
+            "alternatives": [
+              {
+                "name": {
+                  "bg": "Гребане с два дъмбела в наклон",
+                  "en": "Bent-over two-dumbbell row"
+                },
+                "exerciseID": "Bent_Over_Two-Dumbbell_Row",
+                "place": "home"
+              }
+            ]
+          },
+          {
+            "label": "4",
+            "name": {
+              "bg": "Български клек с дъмбели",
+              "en": "Dumbbell Bulgarian split squat"
+            },
+            "prescription": {
+              "bg": "3 × 8–10 на крак",
+              "en": "3 × 8–10 per leg"
+            },
+            "rest": {
+              "bg": "90 сек",
+              "en": "90 s"
+            },
+            "start": {
+              "bg": "2 × 8–12 кг",
+              "en": "2 × 8–12 kg"
+            },
+            "exerciseID": "Split_Squat_with_Dumbbells",
+            "cues": [
+              {
+                "bg": "Задното стъпало на пейката.",
+                "en": "Rear foot on the bench."
+              },
+              {
+                "bg": "Седмица 1 без тежест – балансът е по-трудното.",
+                "en": "Week 1 bodyweight – balance is the hard part."
+              }
+            ],
+            "tracking": {
+              "sets": 3,
+              "perSide": true,
+              "load": "dumbbells",
+              "restSeconds": 90,
+              "reps": [
+                8,
+                10
+              ],
+              "start": [
+                8,
+                12
+              ],
+              "step": 2,
+              "bodyweightWeeks": 1
+            },
+            "alternatives": [
+              {
+                "name": {
+                  "bg": "Напади с дъмбели",
+                  "en": "Dumbbell lunges"
+                },
+                "exerciseID": "Dumbbell_Lunges",
+                "place": "home"
+              }
+            ]
+          },
+          {
+            "label": "5",
+            "name": {
+              "bg": "Набирания",
+              "en": "Pull-ups"
+            },
+            "prescription": {
+              "bg": "3 × 3–8",
+              "en": "3 × 3–8"
+            },
+            "rest": {
+              "bg": "2 мин",
+              "en": "2 min"
+            },
+            "start": {
+              "bg": "ластик / негативи",
+              "en": "band / negatives"
+            },
+            "exerciseID": "Band_Assisted_Pull-Up",
+            "cues": [
+              {
+                "bg": "При 97 кг: с ластик за помощ или само негативи – скачаш горе и слизаш за 3–4 сек.",
+                "en": "At 97 kg: band-assisted or negatives only – jump to the top and lower over 3–4 s."
+              },
+              {
+                "bg": "Целта е 3 × 8 чисти без ластик.",
+                "en": "The goal is 3 × 8 clean reps without a band."
+              }
+            ],
+            "tracking": {
+              "sets": 3,
+              "perSide": false,
+              "load": "assisted",
+              "restSeconds": 120,
+              "reps": [
+                3,
+                8
+              ]
+            },
+            "alternatives": [
+              {
+                "name": {
+                  "bg": "Горен скрипец",
+                  "en": "Lat pulldown"
+                },
+                "exerciseID": "Wide-Grip_Lat_Pulldown",
+                "place": "gym"
+              },
+              {
+                "name": {
+                  "bg": "Набирания с обратен хват",
+                  "en": "Chin-ups"
+                },
+                "exerciseID": "Chin-Up",
+                "place": "any"
+              }
+            ]
+          },
+          {
+            "label": "6a",
+            "name": {
+              "bg": "Повдигане на колене във вис",
+              "en": "Hanging knee raise"
+            },
+            "prescription": {
+              "bg": "3 × 10–12",
+              "en": "3 × 10–12"
+            },
+            "rest": {
+              "bg": "без почивка → 6b",
+              "en": "no rest → 6b"
+            },
+            "start": null,
+            "exerciseID": "Hanging_Leg_Raise",
+            "cues": [
+              {
+                "bg": "Без люлеене, тазът се завърта леко нагоре.",
+                "en": "No swinging, tilt the pelvis slightly up."
+              }
+            ],
+            "tracking": {
+              "sets": 3,
+              "perSide": false,
+              "load": "bodyweight",
+              "restSeconds": 0,
+              "reps": [
+                10,
+                12
+              ]
+            },
+            "alternatives": [
+              {
+                "name": {
+                  "bg": "Повдигане на крака от пейка",
+                  "en": "Lying leg raise on a bench"
+                },
+                "exerciseID": "Flat_Bench_Lying_Leg_Raise",
+                "place": "home"
+              },
+              {
+                "name": {
+                  "bg": "Колене към гърдите на успоредка",
+                  "en": "Knee raise on parallel bars"
+                },
+                "exerciseID": "Knee_Hip_Raise_On_Parallel_Bars",
+                "place": "gym"
+              }
+            ]
+          },
+          {
+            "label": "6b",
+            "name": {
+              "bg": "Pallof преса с ластик",
+              "en": "Banded Pallof press"
+            },
+            "prescription": {
+              "bg": "3 × 10 на страна",
+              "en": "3 × 10 per side"
+            },
+            "rest": {
+              "bg": "60 сек",
+              "en": "60 s"
+            },
+            "start": null,
+            "exerciseID": "Pallof_Press",
+            "cues": [
+              {
+                "bg": "Ластикът е закачен встрани на височината на гърдите.",
+                "en": "Band anchored to the side at chest height."
+              },
+              {
+                "bg": "Изпъни ръцете напред и задръж 2 сек – не позволявай на ластика да те завърти.",
+                "en": "Press the arms forward and hold 2 s – don't let the band rotate you."
+              }
+            ],
+            "tracking": {
+              "sets": 3,
+              "perSide": true,
+              "load": "band",
+              "restSeconds": 60,
+              "reps": [
+                10,
+                10
+              ]
+            },
+            "alternatives": []
+          }
         ],
-        "finisher": { "bg": "Финал: пътечка с наклон 10 мин – същото като в A.", "en": "Finisher: 10 min incline treadmill – same as A." } }
+        "finisher": {
+          "bg": "Финал: пътечка с наклон 10 мин – същото като в A.",
+          "en": "Finisher: 10 min incline treadmill – same as A."
+        }
+      }
     ],
     "sections": [
-      { "title": { "bg": "Защо програмата е такава", "en": "Why the program looks like this" }, "items": [
-        { "bg": "Кардио: крачки вместо кардио дни (7 000–8 000 → 8 000–10 000). При дефицит повече кардио яде от възстановяването.", "en": "Cardio: steps instead of cardio days (7,000–8,000 → 8,000–10,000). In a deficit, extra cardio eats into recovery." },
-        { "bg": "Въже: пътечка с наклон 10 мин вместо въже. При 97 кг и пауза от година скачането натоварва много коленете и ахилесите. Въжето – по желание от седмица 5.", "en": "Rope: 10 min incline treadmill instead of skipping. At 97 kg after a year off, jumping loads the knees and Achilles a lot. Rope is optional from week 5." },
-        { "bg": "Основни упражнения: клек и лежанка 4 × 6–8. При дефицит по-тежките серии са най-силният сигнал тялото да пази мускула.", "en": "Main lifts: squat and bench 4 × 6–8. In a deficit, heavier sets are the strongest signal to keep muscle." },
-        { "bg": "Корем: коремни на скрипец, страничен планк, Pallof преса + колене във вис – по 2 упражнения на тренировка.", "en": "Core: cable crunch, side plank, Pallof press + hanging knee raise – 2 exercises per workout." } ] },
-      { "title": { "bg": "Седмица 1: намиране на работните тежести", "en": "Week 1: finding working weights" }, "items": [
-        { "bg": "Започни от долната граница на стартовата тежест.", "en": "Start at the low end of the starting weight." },
-        { "bg": "Ако направиш всички серии с повече от 3 повторения в запас → следващата тренировка +5 кг (крака) / +2.5 кг (горна част).", "en": "If every set has more than 3 reps in reserve → next workout +5 kg (legs) / +2.5 kg (upper body)." },
-        { "bg": "Повтаряш, докато намериш тежест, при която последната серия е с 2 повторения в запас. Това е работната ти тежест.", "en": "Repeat until the last set has 2 reps in reserve. That's your working weight." } ] },
-      { "title": { "bg": "Как се покачват тежестите", "en": "How to progress" }, "items": [
-        { "bg": "Двойна прогресия: стигнеш ли горната граница на повторенията във всички серии (напр. 4 × 8 на клек), следващия път добавяш тежест и започваш от долната граница (4 × 6).", "en": "Double progression: once you hit the top of the rep range on all sets (e.g. 4 × 8 squat), add weight next time and start at the bottom (4 × 6)." },
-        { "bg": "Крака и мъртва тяга: +5 кг · горна част: +2.5 кг · дъмбели: следващата тежест · скрипец: +1 стъпка.", "en": "Legs and deadlift: +5 kg · upper body: +2.5 kg · dumbbells: the next pair up · cable: +1 plate." },
-        { "bg": "Важно при дефицит: първите 6–10 седмици силата ще расте бързо (връщаш се след пауза). След това е нормално прогресът да се забави. Запазената сила при сваляне на килограми = запазен мускул. Това е успех.", "en": "Important in a deficit: strength will climb fast for the first 6–10 weeks (you're coming back from a break). After that, slower progress is normal. Keeping strength while losing weight = keeping muscle. That's a win." },
-        { "bg": "Разтоварване: на всеки 6–8 седмици една седмица със същите тежести, но с половината серии.", "en": "Deload: every 6–8 weeks, one week at the same weights with half the sets." } ] },
-      { "title": { "bg": "Връзка с хранителния режим", "en": "Link with the eating plan" }, "items": [
-        { "bg": "Тренирай 1.5–3 часа след основно хранене. Ако тренираш вечер, обядът е предтренировъчното хранене, а вечерята – следтренировъчното.", "en": "Train 1.5–3 hours after a main meal. If training in the evening, lunch is the pre-workout meal and dinner the post-workout one." },
-        { "bg": "Ако тренираш сутрин преди закуска – вземи протеинов шейк (междинно №4) или кисело мляко с плод преди тренировка.", "en": "If training in the morning before breakfast – have a protein shake (snack #4) or yogurt with fruit first." },
-        { "bg": "В тренировъчни дни, ако не стигаш 175 г протеин – добави междинно №2 или №4 след тренировката.", "en": "On training days, if you're short of 175 g protein – add snack #2 or #4 after the workout." },
-        { "bg": "Въглехидратите в обеда/вечерята преди тренировка (ориз, картофи) дават енергия за тежките серии – не ги махай в тези дни.", "en": "Carbs at the meal before training (rice, potatoes) fuel the heavy sets – don't drop them on those days." },
-        { "bg": "Алкохол: не в деня преди и в деня на тренировка. Влошава съня и възстановяването повече от калориите.", "en": "Alcohol: not the day before or the day of training. It hurts sleep and recovery more than the calories do." },
-        { "bg": "Сън 7–8 часа – при дефицит той е разликата между запазване и загуба на мускул.", "en": "Sleep 7–8 hours – in a deficit it's the difference between keeping and losing muscle." } ] }
+      {
+        "title": {
+          "bg": "Защо програмата е такава",
+          "en": "Why the program looks like this"
+        },
+        "items": [
+          {
+            "bg": "Кардио: крачки вместо кардио дни (7 000–8 000 → 8 000–10 000). При дефицит повече кардио яде от възстановяването.",
+            "en": "Cardio: steps instead of cardio days (7,000–8,000 → 8,000–10,000). In a deficit, extra cardio eats into recovery."
+          },
+          {
+            "bg": "Въже: пътечка с наклон 10 мин вместо въже. При 97 кг и пауза от година скачането натоварва много коленете и ахилесите. Въжето – по желание от седмица 5.",
+            "en": "Rope: 10 min incline treadmill instead of skipping. At 97 kg after a year off, jumping loads the knees and Achilles a lot. Rope is optional from week 5."
+          },
+          {
+            "bg": "Основни упражнения: клек и лежанка 4 × 6–8. При дефицит по-тежките серии са най-силният сигнал тялото да пази мускула.",
+            "en": "Main lifts: squat and bench 4 × 6–8. In a deficit, heavier sets are the strongest signal to keep muscle."
+          },
+          {
+            "bg": "Корем: коремни на скрипец, страничен планк, Pallof преса + колене във вис – по 2 упражнения на тренировка.",
+            "en": "Core: cable crunch, side plank, Pallof press + hanging knee raise – 2 exercises per workout."
+          }
+        ]
+      },
+      {
+        "title": {
+          "bg": "Седмица 1: намиране на работните тежести",
+          "en": "Week 1: finding working weights"
+        },
+        "items": [
+          {
+            "bg": "Започни от долната граница на стартовата тежест.",
+            "en": "Start at the low end of the starting weight."
+          },
+          {
+            "bg": "Ако направиш всички серии с повече от 3 повторения в запас → следващата тренировка +5 кг (крака) / +2.5 кг (горна част).",
+            "en": "If every set has more than 3 reps in reserve → next workout +5 kg (legs) / +2.5 kg (upper body)."
+          },
+          {
+            "bg": "Повтаряш, докато намериш тежест, при която последната серия е с 2 повторения в запас. Това е работната ти тежест.",
+            "en": "Repeat until the last set has 2 reps in reserve. That's your working weight."
+          }
+        ]
+      },
+      {
+        "title": {
+          "bg": "Как се покачват тежестите",
+          "en": "How to progress"
+        },
+        "items": [
+          {
+            "bg": "Двойна прогресия: стигнеш ли горната граница на повторенията във всички серии (напр. 4 × 8 на клек), следващия път добавяш тежест и започваш от долната граница (4 × 6).",
+            "en": "Double progression: once you hit the top of the rep range on all sets (e.g. 4 × 8 squat), add weight next time and start at the bottom (4 × 6)."
+          },
+          {
+            "bg": "Крака и мъртва тяга: +5 кг · горна част: +2.5 кг · дъмбели: следващата тежест · скрипец: +1 стъпка.",
+            "en": "Legs and deadlift: +5 kg · upper body: +2.5 kg · dumbbells: the next pair up · cable: +1 plate."
+          },
+          {
+            "bg": "Важно при дефицит: първите 6–10 седмици силата ще расте бързо (връщаш се след пауза). След това е нормално прогресът да се забави. Запазената сила при сваляне на килограми = запазен мускул. Това е успех.",
+            "en": "Important in a deficit: strength will climb fast for the first 6–10 weeks (you're coming back from a break). After that, slower progress is normal. Keeping strength while losing weight = keeping muscle. That's a win."
+          },
+          {
+            "bg": "Разтоварване: на всеки 6–8 седмици една седмица със същите тежести, но с половината серии.",
+            "en": "Deload: every 6–8 weeks, one week at the same weights with half the sets."
+          }
+        ]
+      },
+      {
+        "title": {
+          "bg": "Връзка с хранителния режим",
+          "en": "Link with the eating plan"
+        },
+        "items": [
+          {
+            "bg": "Тренирай 1.5–3 часа след основно хранене. Ако тренираш вечер, обядът е предтренировъчното хранене, а вечерята – следтренировъчното.",
+            "en": "Train 1.5–3 hours after a main meal. If training in the evening, lunch is the pre-workout meal and dinner the post-workout one."
+          },
+          {
+            "bg": "Ако тренираш сутрин преди закуска – вземи протеинов шейк (междинно №4) или кисело мляко с плод преди тренировка.",
+            "en": "If training in the morning before breakfast – have a protein shake (snack #4) or yogurt with fruit first."
+          },
+          {
+            "bg": "В тренировъчни дни, ако не стигаш 175 г протеин – добави междинно №2 или №4 след тренировката.",
+            "en": "On training days, if you're short of 175 g protein – add snack #2 or #4 after the workout."
+          },
+          {
+            "bg": "Въглехидратите в обеда/вечерята преди тренировка (ориз, картофи) дават енергия за тежките серии – не ги махай в тези дни.",
+            "en": "Carbs at the meal before training (rice, potatoes) fuel the heavy sets – don't drop them on those days."
+          },
+          {
+            "bg": "Алкохол: не в деня преди и в деня на тренировка. Влошава съня и възстановяването повече от калориите.",
+            "en": "Alcohol: not the day before or the day of training. It hurts sleep and recovery more than the calories do."
+          },
+          {
+            "bg": "Сън 7–8 часа – при дефицит той е разликата между запазване и загуба на мускул.",
+            "en": "Sleep 7–8 hours – in a deficit it's the difference between keeping and losing muscle."
+          }
+        ]
+      }
     ],
-    "adjustments": { "title": { "bg": "Проследяване и корекции (на 2–3 седмици)", "en": "Tracking and adjustments (every 2–3 weeks)" }, "rows": [
-      { "when": { "bg": "Теглото пада 0.3–0.7 кг/седм., силата расте или се пази", "en": "Losing 0.3–0.7 kg/week, strength rising or holding" }, "action": { "bg": "Нищо – всичко работи", "en": "Nothing – it's working" } },
-      { "when": { "bg": "Теглото пада > 1 кг/седм. (след първите 2 седм.) или силата пада 2+ седмици", "en": "Losing > 1 kg/week (after the first 2 weeks) or strength dropping for 2+ weeks" }, "action": { "bg": "+150–200 kcal (междинно хранене) и 1 серия по-малко на упражнение за 1 седмица", "en": "+150–200 kcal (a snack) and 1 fewer set per exercise for 1 week" } },
-      { "when": { "bg": "Теглото не мърда 2–3 седмици", "en": "Weight not moving for 2–3 weeks" }, "action": { "bg": "Първо провери крачките и зехтина/алкохола. После −150–200 kcal", "en": "First check steps and olive oil/alcohol. Then −150–200 kcal" } },
-      { "when": { "bg": "Постоянна умора, лош сън, болки в ставите", "en": "Constant fatigue, poor sleep, joint pain" }, "action": { "bg": "Разтоварваща седмица", "en": "Deload week" } } ] }
-  }
+    "adjustments": {
+      "title": {
+        "bg": "Проследяване и корекции (на 2–3 седмици)",
+        "en": "Tracking and adjustments (every 2–3 weeks)"
+      },
+      "rows": [
+        {
+          "when": {
+            "bg": "Теглото пада 0.3–0.7 кг/седм., силата расте или се пази",
+            "en": "Losing 0.3–0.7 kg/week, strength rising or holding"
+          },
+          "action": {
+            "bg": "Нищо – всичко работи",
+            "en": "Nothing – it's working"
+          },
+          "trigger": {
+            "type": "onTrack",
+            "minLossPerWeek": 0.3,
+            "maxLossPerWeek": 0.7
+          }
+        },
+        {
+          "when": {
+            "bg": "Теглото пада > 1 кг/седм. (след първите 2 седм.) или силата пада 2+ седмици",
+            "en": "Losing > 1 kg/week (after the first 2 weeks) or strength dropping for 2+ weeks"
+          },
+          "action": {
+            "bg": "+150–200 kcal (междинно хранене) и 1 серия по-малко на упражнение за 1 седмица",
+            "en": "+150–200 kcal (a snack) and 1 fewer set per exercise for 1 week"
+          },
+          "trigger": {
+            "type": "losing",
+            "perWeek": 1.0,
+            "afterWeek": 2
+          }
+        },
+        {
+          "when": {
+            "bg": "Теглото не мърда 2–3 седмици",
+            "en": "Weight not moving for 2–3 weeks"
+          },
+          "action": {
+            "bg": "Първо провери крачките и зехтина/алкохола. После −150–200 kcal",
+            "en": "First check steps and olive oil/alcohol. Then −150–200 kcal"
+          },
+          "trigger": {
+            "type": "stalled",
+            "weeks": 2
+          }
+        },
+        {
+          "when": {
+            "bg": "Постоянна умора, лош сън, болки в ставите",
+            "en": "Constant fatigue, poor sleep, joint pain"
+          },
+          "action": {
+            "bg": "Разтоварваща седмица",
+            "en": "Deload week"
+          },
+          "trigger": {
+            "type": "flags",
+            "anyOf": [
+              "fatigue",
+              "poorSleep",
+              "jointPain"
+            ]
+          }
+        }
+      ]
+    },
+    "deloadEvery": [
+      6,
+      8
+    ]
+  },
+  "checkIn": {
+    "fields": [
+      "weight",
+      "waist",
+      "steps"
+    ],
+    "flags": [
+      "fatigue",
+      "poorSleep",
+      "jointPain"
+    ]
+  },
+  "adviceSource": "training"
 }

@@ -3,14 +3,16 @@ import SwiftUI
 enum WorkoutRoute: Hashable {
     case library
     case guide
+    case logbook
 }
 
 /// Workouts tab: the personal training program when a plan is active, otherwise the exercise library.
 struct WorkoutsView: View {
     @Environment(ProfileStore.self) private var store
+    @State private var path = NavigationPath()
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             Group {
                 if let plan = store.activePlan {
                     ProgramOverview(plan: plan)
@@ -27,11 +29,22 @@ struct WorkoutsView: View {
             }
             .navigationDestination(for: Exercise.self) { ExerciseDetailView(exercise: $0) }
             .navigationDestination(for: ProgramWorkout.self) { ProgramWorkoutView(workout: $0) }
+            #if DEBUG
+            // `-openWorkout <id>` opens a workout page directly, for simulator screenshots.
+            .onAppear {
+                if path.isEmpty, let id = UserDefaults.standard.string(forKey: "openWorkout"),
+                   let workout = store.activePlan?.training.workout(id: id) {
+                    path.append(workout)
+                }
+            }
+            #endif
             .navigationDestination(for: WorkoutRoute.self) { route in
                 switch route {
                 case .library:
                     ExerciseLibraryView()
                         .navigationTitle(store.t("Библиотека", "Exercise library"))
+                case .logbook:
+                    LogbookView()
                 case .guide:
                     if let program = store.activePlan?.training {
                         PlanGuideView(title: Localized(bg: "Прогресия и съвети", en: "Progression & tips"),
@@ -67,6 +80,9 @@ private struct ProgramOverview: View {
                 ForEach(program.callouts) { InfoSectionView(section: $0) }
                 VStack(alignment: .leading, spacing: Theme.Spacing.m) {
                     SectionHeader(title: store.t("Още", "More"))
+                    NavigationLink(value: WorkoutRoute.logbook) {
+                        GuideLinkRow(title: store.t("Дневник", "Logbook"), systemImage: "book.closed.fill", tint: plan.accentColor)
+                    }
                     NavigationLink(value: WorkoutRoute.guide) {
                         GuideLinkRow(title: store.t("Прогресия и съвети", "Progression & tips"), systemImage: "chart.line.uptrend.xyaxis", tint: plan.accentColor)
                     }
@@ -237,10 +253,15 @@ struct WarmUpCard: View {
 
 struct ProgramWorkoutView: View {
     @Environment(ProfileStore.self) private var store
+    @Environment(TrainingLog.self) private var log
     let workout: ProgramWorkout
+    /// Debug builds accept `-startWorkout YES` to open the live session straight away.
+    @State private var isRunning = UserDefaults.standard.bool(forKey: "startWorkout") && _isDebugAssertConfiguration()
 
     private var lang: ContentLanguage { store.language }
-    private var tint: Color { store.activePlan?.accentColor ?? Theme.Palette.berry }
+    private var plan: PersonalPlan? { store.activePlan }
+    private var tint: Color { plan?.accentColor ?? Theme.Palette.berry }
+    private var week: Int { store.programDay()?.week ?? 1 }
 
     var body: some View {
         ScrollView {
@@ -249,19 +270,29 @@ struct ProgramWorkoutView: View {
                     Text(workout.title[lang])
                         .font(.displayTitle)
                         .foregroundStyle(Theme.Palette.ink)
-                    Text([workout.duration[lang], workout.focus?[lang]].compactMap { $0 }.joined(separator: " · "))
+                    Text([workout.duration[lang], workout.focus?[lang], store.t("седмица \(week)", "week \(week)")]
+                        .compactMap { $0 }.joined(separator: " · "))
                         .font(.subheadline)
                         .foregroundStyle(Theme.Palette.inkSecondary)
                 }
 
-                if let warmUp = store.activePlan?.training.warmUp, !warmUp.isEmpty {
+                if plan != nil {
+                    Button { isRunning = true } label: {
+                        Label(store.t("Започни тренировка", "Start workout"), systemImage: "play.fill")
+                    }
+                    .buttonStyle(PrimaryButtonStyle(tint: tint))
+                }
+
+                if let warmUp = plan?.training.warmUp, !warmUp.isEmpty {
                     WarmUpCard(items: warmUp)
                 }
 
                 VStack(alignment: .leading, spacing: Theme.Spacing.m) {
                     SectionHeader(title: store.t("Упражнения", "Exercises"),
                                   subtitle: store.t("a/b = суперсерия, без почивка между тях", "a/b = superset, no rest in between"))
-                    ForEach(workout.exercises) { ProgramExerciseCard(item: $0, tint: tint) }
+                    ForEach(workout.exercises) { item in
+                        ProgramExerciseCard(item: item, workoutID: workout.id, week: week, tint: tint)
+                    }
                 }
 
                 if let finisher = workout.finisher {
@@ -273,16 +304,32 @@ struct ProgramWorkoutView: View {
         .background(Theme.Palette.background.ignoresSafeArea())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { ToolbarItem(placement: .topBarTrailing) { LanguageMenu() } }
+        .fullScreenCover(isPresented: $isRunning) {
+            if let plan {
+                LiveWorkoutView(plan: plan, workout: workout, week: week)
+                    .environment(store)
+                    .environment(log)
+            }
+        }
     }
 }
 
 private struct ProgramExerciseCard: View {
     @Environment(ProfileStore.self) private var store
+    @Environment(TrainingLog.self) private var log
     let item: ProgramExercise
+    let workoutID: String
+    let week: Int
     let tint: Color
 
     private var lang: ContentLanguage { store.language }
-    private var linked: Exercise? { item.exerciseID.flatMap(ExerciseLibrary.shared.exercise(id:)) }
+    private var planID: String { store.activePlan?.id ?? "" }
+    private var optionIndex: Int { log.option(planID: planID, workoutID: workoutID, slot: item.label) }
+    private var option: ExerciseOption { item.option(optionIndex) }
+
+    private var history: [(week: Int, date: Date, exercise: LoggedExercise)] {
+        log.history(planID: planID, workoutID: workoutID, slot: item.label, option: optionIndex)
+    }
 
     var body: some View {
         Card {
@@ -294,16 +341,21 @@ private struct ProgramExerciseCard: View {
                         .frame(width: 34, height: 34)
                         .background(tint.opacity(0.14), in: Circle())
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(item.name[lang])
+                        Text(option.name[lang])
                             .font(.cardTitle)
                             .foregroundStyle(Theme.Palette.ink)
                             .fixedSize(horizontal: false, vertical: true)
+                        if !option.isOriginal {
+                            Text(store.t("Вместо: ", "Instead of: ") + item.name[lang])
+                                .font(.caption)
+                                .foregroundStyle(Theme.Palette.inkSecondary)
+                        }
                         Text(item.prescription[lang])
                             .font(.system(.title3, design: .rounded).weight(.bold).monospacedDigit())
                             .foregroundStyle(tint)
                     }
                     Spacer(minLength: 0)
-                    if let linked {
+                    if let linked = option.exercise {
                         NavigationLink(value: linked) {
                             ExerciseImage(url: linked.thumbnailURL, cornerRadius: Theme.Radius.small)
                                 .frame(width: 64, height: 64)
@@ -319,19 +371,12 @@ private struct ProgramExerciseCard: View {
                 }
 
                 FlowLayout(spacing: 6) {
-                    Label(item.rest[lang], systemImage: "timer")
-                        .font(.caption.weight(.semibold))
-                        .padding(.horizontal, 8).padding(.vertical, 4)
-                        .foregroundStyle(Theme.Palette.inkSecondary)
-                        .background(Theme.Palette.surfaceMuted, in: Capsule())
-                    if let start = item.start {
-                        Label(store.t("Старт: ", "Start: ") + start[lang], systemImage: "scalemass")
-                            .font(.caption.weight(.semibold))
-                            .padding(.horizontal, 8).padding(.vertical, 4)
-                            .foregroundStyle(Theme.Palette.inkSecondary)
-                            .background(Theme.Palette.surfaceMuted, in: Capsule())
-                    }
+                    pill(item.rest[lang], "timer")
+                    if let start = item.start { pill(store.t("Старт: ", "Start: ") + start[lang], "scalemass") }
+                    if item.options.count > 1 { swapMenu }
                 }
+
+                if store.activePlan != nil { nextTime }
 
                 if !item.cues.isEmpty {
                     VStack(alignment: .leading, spacing: 6) {
@@ -342,5 +387,61 @@ private struct ProgramExerciseCard: View {
                 }
             }
         }
+    }
+
+    private var nextTime: some View {
+        let suggestion = ProgressionCoach.suggest(for: item.tracking, week: week,
+                                                  history: history.map { ($0.week, $0.exercise) })
+        return VStack(alignment: .leading, spacing: 4) {
+            HStack(spacing: 6) {
+                Image(systemName: "target").foregroundStyle(tint)
+                Text(store.t("Днес: ", "Today: ") + suggestion.summary(store, load: item.tracking.load, perSide: item.tracking.perSide))
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Theme.Palette.ink)
+            }
+            Text(suggestion.reason[lang])
+                .font(.caption)
+                .foregroundStyle(Theme.Palette.inkSecondary)
+                .fixedSize(horizontal: false, vertical: true)
+            if let last = history.first, let set = last.exercise.lastDoneSet {
+                Text(store.t("Последно: ", "Last time: ") + set.summary(store) + " · " + last.date.formatted(.dateTime.day().month(.abbreviated)))
+                    .font(.caption)
+                    .foregroundStyle(Theme.Palette.inkSecondary)
+            }
+        }
+        .padding(Theme.Spacing.m)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(tint.opacity(0.08), in: RoundedRectangle(cornerRadius: Theme.Radius.small, style: .continuous))
+    }
+
+    private var swapMenu: some View {
+        Menu {
+            ForEach(item.options) { opt in
+                Button {
+                    log.setOption(opt.index, planID: planID, workoutID: workoutID, slot: item.label)
+                } label: {
+                    let place = opt.place.map { " · " + $0.title[lang] } ?? store.t(" · от плана", " · from the plan")
+                    if opt.index == optionIndex {
+                        Label(opt.name[lang] + place, systemImage: "checkmark")
+                    } else {
+                        Text(opt.name[lang] + place)
+                    }
+                }
+            }
+        } label: {
+            Label(store.t("Смени (\(item.options.count))", "Swap (\(item.options.count))"), systemImage: "arrow.triangle.2.circlepath")
+                .font(.caption.weight(.semibold))
+                .padding(.horizontal, 8).padding(.vertical, 4)
+                .foregroundStyle(tint)
+                .background(tint.opacity(0.12), in: Capsule())
+        }
+    }
+
+    private func pill(_ text: String, _ icon: String) -> some View {
+        Label(text, systemImage: icon)
+            .font(.caption.weight(.semibold))
+            .padding(.horizontal, 8).padding(.vertical, 4)
+            .foregroundStyle(Theme.Palette.inkSecondary)
+            .background(Theme.Palette.surfaceMuted, in: Capsule())
     }
 }
