@@ -13,6 +13,8 @@ struct UserProfile: Codable, Equatable {
     /// Monday the training program started on; drives "Week N" and A/B rotation.
     var programStart: Date?
     var language: ContentLanguage?
+    /// Training equipment for the "more exercises" section; nil = the default home-gym set.
+    var gear: Set<HomeGear>?
 
     var firstName: String {
         name.split(separator: " ").first.map(String.init) ?? ""

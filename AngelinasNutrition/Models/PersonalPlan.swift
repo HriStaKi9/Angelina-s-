@@ -270,6 +270,13 @@ struct TrainingProgram: Codable, Hashable {
     let shortVersion: ShortVersion?
     /// Deload every N–M weeks.
     let deloadEvery: [Int]?
+    /// Rules for the "more exercises" section (e.g. no jumping postpartum).
+    let extraExercises: ExtraExercises?
+
+    struct ExtraExercises: Codable, Hashable {
+        let avoidCategories: [Exercise.Category]
+        let note: Localized
+    }
 
     struct ShortVersion: Codable, Hashable {
         let exercises: Int

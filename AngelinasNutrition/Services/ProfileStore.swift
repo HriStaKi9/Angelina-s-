@@ -36,6 +36,11 @@ final class ProfileStore {
         set { profile.language = newValue }
     }
 
+    var gear: Set<HomeGear> {
+        get { profile.gear ?? HomeGear.defaultSet }
+        set { profile.gear = newValue }
+    }
+
     /// Picks interface copy for plan screens in the current content language.
     func t(_ bg: String, _ en: String) -> String { language == .bg ? bg : en }
 
