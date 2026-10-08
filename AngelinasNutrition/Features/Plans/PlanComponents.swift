@@ -267,3 +267,39 @@ struct PlanGuideView: View {
         .toolbar { ToolbarItem(placement: .topBarTrailing) { LanguageMenu() } }
     }
 }
+
+extension Double {
+    /// "42.5" / "40" – weights and measurements without trailing zeros.
+    var trimmed: String { formatted(.number.precision(.fractionLength(0...1))) }
+}
+
+extension SetSuggestion {
+    /// "4 × 6–8 · 45 кг", "3 × 8–10 · без тежест", "2 × 35 сек".
+    func summary(_ store: ProfileStore, load: ExerciseTracking.Load, perSide: Bool) -> String {
+        var amount: String
+        if let seconds {
+            amount = "\(sets) × \(seconds) \(store.t("сек", "s"))"
+        } else if let reps {
+            amount = "\(sets) × \(reps.lowerBound == reps.upperBound ? "\(reps.lowerBound)" : "\(reps.lowerBound)–\(reps.upperBound)")"
+        } else {
+            amount = "\(sets)"
+        }
+        if perSide { amount += store.t(" на страна", " per side") }
+        if let weight {
+            let perHand = load == .dumbbells ? store.t("2 × ", "2 × ") : ""
+            return "\(amount) · \(perHand)\(weight.trimmed) \(store.t("кг", "kg"))"
+        }
+        if load.usesWeight { return "\(amount) · \(store.t("без тежест", "bodyweight"))" }
+        return amount
+    }
+}
+
+extension LoggedSet {
+    /// "45 × 8", "35 s", "× 10".
+    func summary(_ store: ProfileStore) -> String {
+        if let seconds { return "\(seconds) \(store.t("сек", "s"))" }
+        let reps = reps.map(String.init) ?? "–"
+        if let weight { return "\(weight.trimmed) × \(reps)" }
+        return "× \(reps)"
+    }
+}
