@@ -3851,5 +3851,14 @@
       "jointPain"
     ]
   },
-  "adviceSource": "training"
+  "adviceSource": "training",
+  "body": {
+    "sex": "male",
+    "weight": 97,
+    "height": 188,
+    "age": 29,
+    "activity": 1.375,
+    "weeklyChange": -0.5,
+    "breastfeeding": false
+  }
 }

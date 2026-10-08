@@ -4279,5 +4279,14 @@
       "hunger"
     ]
   },
-  "adviceSource": "nutrition"
+  "adviceSource": "nutrition",
+  "body": {
+    "sex": "female",
+    "weight": 58,
+    "height": 170,
+    "age": 26,
+    "activity": 1.45,
+    "weeklyChange": 0,
+    "breastfeeding": true
+  }
 }

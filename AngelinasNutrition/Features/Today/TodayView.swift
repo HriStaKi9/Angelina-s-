@@ -1,7 +1,11 @@
 import SwiftUI
 
+enum TodayRoute: Hashable { case diary }
+
 struct TodayView: View {
     @Environment(ProfileStore.self) private var store
+    @Environment(FoodDiaryStore.self) private var diary
+    @State private var showProfile = false
 
     private var profile: UserProfile { store.profile }
     private var workout: Workout { WorkoutPlanner(library: .shared).workout(for: profile) }
@@ -11,6 +15,8 @@ struct TodayView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: Theme.Spacing.xl) {
                     header
+                    NavigationLink(value: TodayRoute.diary) { caloriesCard }
+                        .buttonStyle(.plain)
                     if let plan = store.activePlan {
                         PlanTodaySection(plan: plan)
                     } else {
@@ -28,11 +34,46 @@ struct TodayView: View {
                 if store.activePlan != nil {
                     ToolbarItem(placement: .topBarTrailing) { LanguageMenu() }
                 }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button { showProfile = true } label: { Image(systemName: "person.crop.circle") }
+                        .accessibilityLabel("Profile")
+                }
             }
+            .sheet(isPresented: $showProfile) { ProfileView() }
+            .navigationDestination(for: TodayRoute.self) { _ in DiaryContent() }
             .askClaudeButton()
             .navigationDestination(for: Exercise.self) { ExerciseDetailView(exercise: $0) }
             .navigationDestination(for: Meal.self) { MealDetailView(meal: $0) }
             .navigationDestination(for: ProgramWorkout.self) { ProgramWorkoutView(workout: $0) }
+        }
+    }
+
+    /// Eaten vs. goal for today; opens the diary.
+    private var caloriesCard: some View {
+        let goal = diary.goal(for: store.activePlan)
+        let eaten = diary.totals(on: .now)
+        let tint = store.activePlan?.accentColor ?? Theme.Palette.berry
+        let usesPlan = store.activePlan != nil
+        return Card {
+            HStack(spacing: Theme.Spacing.m) {
+                ZStack {
+                    Circle().stroke(Theme.Palette.surfaceMuted, lineWidth: 7)
+                    Circle().trim(from: 0, to: min(1, eaten.kcal / Double(max(goal.kcal, 1))))
+                        .stroke(tint, style: StrokeStyle(lineWidth: 7, lineCap: .round))
+                        .rotationEffect(.degrees(-90))
+                    Image(systemName: "fork.knife").font(.footnote).foregroundStyle(tint)
+                }
+                .frame(width: 48, height: 48)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(usesPlan ? store.t("Калории днес", "Calories today") : "Calories today")
+                        .font(.cardTitle).foregroundStyle(Theme.Palette.ink)
+                    Text("\(Int(eaten.kcal.rounded())) / \(goal.kcal) kcal · \(Int(eaten.protein.rounded()))\(goal.protein.map { " / \($0)" } ?? "") \(usesPlan ? store.t("г протеин", "g protein") : "g protein")")
+                        .font(.subheadline.monospacedDigit())
+                        .foregroundStyle(Theme.Palette.inkSecondary)
+                }
+                Spacer(minLength: 0)
+                Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(Theme.Palette.inkSecondary)
+            }
         }
     }
 
