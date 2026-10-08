@@ -6,6 +6,7 @@ struct AngelinasNutritionApp: App {
     @State private var trainingLog = TrainingLog()
     @State private var weekMenus = WeekMenuStore()
     @State private var assistant = AssistantStore()
+    @State private var foodDiary = FoodDiaryStore()
 
     var body: some Scene {
         WindowGroup {
@@ -14,6 +15,7 @@ struct AngelinasNutritionApp: App {
                 .environment(trainingLog)
                 .environment(weekMenus)
                 .environment(assistant)
+                .environment(foodDiary)
                 .tint(Theme.Palette.berry)
         }
     }
@@ -37,17 +39,17 @@ struct RootView: View {
 }
 
 struct MainTabView: View {
-    enum TabID: String { case today, workouts, nutrition, progress, profile }
+    enum TabID: String { case today, diary, workouts, nutrition, progress }
 
     @State private var selection: TabID = Self.initialTab
 
     var body: some View {
         TabView(selection: $selection) {
             Tab("Today", systemImage: "sun.max.fill", value: .today) { TodayView() }
+            Tab("Diary", systemImage: "fork.knife.circle.fill", value: .diary) { DiaryView() }
             Tab("Workouts", systemImage: "figure.strengthtraining.functional", value: .workouts) { WorkoutsView() }
             Tab("Nutrition", systemImage: "leaf.fill", value: .nutrition) { NutritionView() }
             Tab("Progress", systemImage: "chart.line.uptrend.xyaxis", value: .progress) { ProgressTabView() }
-            Tab("Profile", systemImage: "person.crop.circle.fill", value: .profile) { ProfileView() }
         }
     }
 

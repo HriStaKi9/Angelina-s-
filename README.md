@@ -55,7 +55,7 @@ Exercises come from [free-exercise-db](https://github.com/yuhonas/free-exercise-
 3. ~~Workout tracking: live sessions, the program's "Дневник", progression rules, exercise alternatives, weekly check-ins with plan advice~~
 4. ~~Weekly groceries: pick meals for the week from all the plan's options, get a shopping list~~
 5. ~~Ask Claude (own API key) and one-page plan/program summaries~~
-6. Nutrition: food diary, logging meals from the plan, food search
+6. ~~Food diary and calorie calculator (MyFitnessPal-style)~~
 7. Plan sync: training adapts to what was eaten that day
 
 ## Ask Claude
@@ -65,3 +65,7 @@ The ✨ button on Today, Workouts, Nutrition and Progress opens a chat with Clau
 ## More exercises
 
 Workouts → **More exercises** lists database exercises the user can do with their equipment (Profile → My equipment: power rack, barbell, bench, dumbbells, pull-up bar, bands, kettlebell, gym). `Exercise.isDoable(with:)` infers rack, bench and bar needs from the exercise name. A curated power-rack collection (`PowerRackCollection`) comes first, then exercises by muscle area. Plans can exclude categories via `training.extraExercises` (Tsveti: no plyometrics postpartum).
+
+## Food diary
+
+The **Diary** tab is a MyFitnessPal-style calorie counter: goal − food = remaining, protein/carbs/fat, and Breakfast/Lunch/Dinner/Snacks entries per day. Food can be added from the plan (one tap, or "log the day's menu"), the built-in basic foods (`Resources/basic-foods.json`, ≈ per 100 g), [Open Food Facts](https://world.openfoodfacts.org) search and barcode scanning (VisionKit), or quick add. The goal defaults to the middle of the plan's kcal and protein ranges; the calorie calculator (Mifflin-St Jeor, pre-filled from the plan's `body` stats, +400 kcal and an 1800 kcal floor while breastfeeding) can set a custom one. Stored by `FoodDiaryStore` in `Application Support/food-diary.json`. Profile moved to the 👤 button on Today.

@@ -1,0 +1,688 @@
+[
+ {
+  "id": "basic:chicken_breast",
+  "name": {
+   "bg": "Пилешко филе (сурово)",
+   "en": "Chicken breast (raw)"
+  },
+  "per100": {
+   "kcal": 110,
+   "protein": 23.1,
+   "carbs": 0,
+   "fat": 1.2
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:chicken_thigh",
+  "name": {
+   "bg": "Пилешко бутче без кожа (сурово)",
+   "en": "Chicken thigh, skinless (raw)"
+  },
+  "per100": {
+   "kcal": 121,
+   "protein": 19.7,
+   "carbs": 0,
+   "fat": 4.1
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:beef_lean",
+  "name": {
+   "bg": "Постно телешко (сурово)",
+   "en": "Lean beef (raw)"
+  },
+  "per100": {
+   "kcal": 135,
+   "protein": 22,
+   "carbs": 0,
+   "fat": 5
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:beef_mince",
+  "name": {
+   "bg": "Телешка кайма постна (сурова)",
+   "en": "Lean minced beef (raw)"
+  },
+  "per100": {
+   "kcal": 137,
+   "protein": 21.4,
+   "carbs": 0,
+   "fat": 5
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:pork_tenderloin",
+  "name": {
+   "bg": "Свинско бонфиле (сурово)",
+   "en": "Pork tenderloin (raw)"
+  },
+  "per100": {
+   "kcal": 120,
+   "protein": 21,
+   "carbs": 0,
+   "fat": 3.5
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:salmon",
+  "name": {
+   "bg": "Сьомга (сурова)",
+   "en": "Salmon (raw)"
+  },
+  "per100": {
+   "kcal": 208,
+   "protein": 20,
+   "carbs": 0,
+   "fat": 13
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:trout",
+  "name": {
+   "bg": "Пъстърва (сурова)",
+   "en": "Trout (raw)"
+  },
+  "per100": {
+   "kcal": 141,
+   "protein": 20,
+   "carbs": 0,
+   "fat": 6.6
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:mackerel",
+  "name": {
+   "bg": "Скумрия (сурова)",
+   "en": "Mackerel (raw)"
+  },
+  "per100": {
+   "kcal": 205,
+   "protein": 18.6,
+   "carbs": 0,
+   "fat": 13.9
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:egg",
+  "name": {
+   "bg": "Яйце",
+   "en": "Egg"
+  },
+  "per100": {
+   "kcal": 143,
+   "protein": 12.6,
+   "carbs": 0.7,
+   "fat": 9.5
+  },
+  "portion": 50
+ },
+ {
+  "id": "basic:egg_white",
+  "name": {
+   "bg": "Белтъци",
+   "en": "Egg whites"
+  },
+  "per100": {
+   "kcal": 52,
+   "protein": 10.9,
+   "carbs": 0.7,
+   "fat": 0.2
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:rice",
+  "name": {
+   "bg": "Ориз (сух)",
+   "en": "Rice (dry)"
+  },
+  "per100": {
+   "kcal": 360,
+   "protein": 6.6,
+   "carbs": 79,
+   "fat": 0.6
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:oats",
+  "name": {
+   "bg": "Овесени ядки",
+   "en": "Rolled oats"
+  },
+  "per100": {
+   "kcal": 372,
+   "protein": 13.5,
+   "carbs": 58.7,
+   "fat": 7
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:pasta_wholegrain",
+  "name": {
+   "bg": "Пълнозърнеста паста (суха)",
+   "en": "Wholegrain pasta (dry)"
+  },
+  "per100": {
+   "kcal": 350,
+   "protein": 13,
+   "carbs": 66,
+   "fat": 2.5
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:bulgur",
+  "name": {
+   "bg": "Булгур (сух)",
+   "en": "Bulgur (dry)"
+  },
+  "per100": {
+   "kcal": 342,
+   "protein": 12.3,
+   "carbs": 76,
+   "fat": 1.3
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:bread_wholegrain",
+  "name": {
+   "bg": "Пълнозърнест хляб",
+   "en": "Wholegrain bread"
+  },
+  "per100": {
+   "kcal": 247,
+   "protein": 13,
+   "carbs": 41,
+   "fat": 3.4
+  },
+  "portion": 30
+ },
+ {
+  "id": "basic:tortilla",
+  "name": {
+   "bg": "Пълнозърнеста тортила",
+   "en": "Wholegrain tortilla"
+  },
+  "per100": {
+   "kcal": 300,
+   "protein": 9,
+   "carbs": 48,
+   "fat": 7
+  },
+  "portion": 70
+ },
+ {
+  "id": "basic:potato",
+  "name": {
+   "bg": "Картофи (сурови)",
+   "en": "Potatoes (raw)"
+  },
+  "per100": {
+   "kcal": 77,
+   "protein": 2,
+   "carbs": 17,
+   "fat": 0.1
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:sweet_potato",
+  "name": {
+   "bg": "Сладки картофи (сурови)",
+   "en": "Sweet potato (raw)"
+  },
+  "per100": {
+   "kcal": 86,
+   "protein": 1.6,
+   "carbs": 20,
+   "fat": 0.1
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:skyr",
+  "name": {
+   "bg": "Skyr натурален",
+   "en": "Skyr, plain"
+  },
+  "per100": {
+   "kcal": 63,
+   "protein": 11,
+   "carbs": 4,
+   "fat": 0.2
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:yogurt_2",
+  "name": {
+   "bg": "Кисело мляко 2%",
+   "en": "Yogurt 2%"
+  },
+  "per100": {
+   "kcal": 50,
+   "protein": 3.3,
+   "carbs": 4,
+   "fat": 2
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:cottage",
+  "name": {
+   "bg": "Извара",
+   "en": "Cottage cheese (izvara)"
+  },
+  "per100": {
+   "kcal": 85,
+   "protein": 13,
+   "carbs": 3.5,
+   "fat": 2
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:milk_15",
+  "name": {
+   "bg": "Прясно мляко 1.5% (мл)",
+   "en": "Milk 1.5% (ml)"
+  },
+  "per100": {
+   "kcal": 46,
+   "protein": 3.4,
+   "carbs": 4.8,
+   "fat": 1.5
+  },
+  "portion": 250
+ },
+ {
+  "id": "basic:sirene",
+  "name": {
+   "bg": "Сирене",
+   "en": "White cheese (sirene)"
+  },
+  "per100": {
+   "kcal": 250,
+   "protein": 17,
+   "carbs": 1,
+   "fat": 20
+  },
+  "portion": 30
+ },
+ {
+  "id": "basic:kashkaval",
+  "name": {
+   "bg": "Кашкавал",
+   "en": "Kashkaval (yellow cheese)"
+  },
+  "per100": {
+   "kcal": 350,
+   "protein": 24,
+   "carbs": 1.5,
+   "fat": 28
+  },
+  "portion": 30
+ },
+ {
+  "id": "basic:mozzarella_light",
+  "name": {
+   "bg": "Моцарела light",
+   "en": "Light mozzarella"
+  },
+  "per100": {
+   "kcal": 165,
+   "protein": 20,
+   "carbs": 1,
+   "fat": 9
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:parmesan",
+  "name": {
+   "bg": "Пармезан",
+   "en": "Parmesan"
+  },
+  "per100": {
+   "kcal": 392,
+   "protein": 35.8,
+   "carbs": 3.2,
+   "fat": 25.8
+  },
+  "portion": 15
+ },
+ {
+  "id": "basic:cream_cheese_light",
+  "name": {
+   "bg": "Крема сирене light",
+   "en": "Light cream cheese"
+  },
+  "per100": {
+   "kcal": 147,
+   "protein": 7.4,
+   "carbs": 4.1,
+   "fat": 11
+  },
+  "portion": 30
+ },
+ {
+  "id": "basic:butter",
+  "name": {
+   "bg": "Масло",
+   "en": "Butter"
+  },
+  "per100": {
+   "kcal": 717,
+   "protein": 0.9,
+   "carbs": 0.1,
+   "fat": 81
+  },
+  "portion": 5
+ },
+ {
+  "id": "basic:olive_oil",
+  "name": {
+   "bg": "Зехтин",
+   "en": "Olive oil"
+  },
+  "per100": {
+   "kcal": 884,
+   "protein": 0,
+   "carbs": 0,
+   "fat": 100
+  },
+  "portion": 10
+ },
+ {
+  "id": "basic:peanut_butter",
+  "name": {
+   "bg": "Фъстъчено масло",
+   "en": "Peanut butter"
+  },
+  "per100": {
+   "kcal": 588,
+   "protein": 25,
+   "carbs": 20,
+   "fat": 50
+  },
+  "portion": 15
+ },
+ {
+  "id": "basic:walnuts",
+  "name": {
+   "bg": "Орехи",
+   "en": "Walnuts"
+  },
+  "per100": {
+   "kcal": 654,
+   "protein": 15.2,
+   "carbs": 13.7,
+   "fat": 65.2
+  },
+  "portion": 15
+ },
+ {
+  "id": "basic:almonds",
+  "name": {
+   "bg": "Бадеми",
+   "en": "Almonds"
+  },
+  "per100": {
+   "kcal": 579,
+   "protein": 21.2,
+   "carbs": 21.6,
+   "fat": 49.9
+  },
+  "portion": 30
+ },
+ {
+  "id": "basic:honey",
+  "name": {
+   "bg": "Мед",
+   "en": "Honey"
+  },
+  "per100": {
+   "kcal": 304,
+   "protein": 0.3,
+   "carbs": 82.4,
+   "fat": 0
+  },
+  "portion": 10
+ },
+ {
+  "id": "basic:whey",
+  "name": {
+   "bg": "Протеин на прах (суроватъчен)",
+   "en": "Whey protein powder"
+  },
+  "per100": {
+   "kcal": 390,
+   "protein": 78,
+   "carbs": 8,
+   "fat": 6
+  },
+  "portion": 30
+ },
+ {
+  "id": "basic:avocado",
+  "name": {
+   "bg": "Авокадо",
+   "en": "Avocado"
+  },
+  "per100": {
+   "kcal": 160,
+   "protein": 2,
+   "carbs": 8.5,
+   "fat": 14.7
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:banana",
+  "name": {
+   "bg": "Банан",
+   "en": "Banana"
+  },
+  "per100": {
+   "kcal": 89,
+   "protein": 1.1,
+   "carbs": 22.8,
+   "fat": 0.3
+  },
+  "portion": 100
+ },
+ {
+  "id": "basic:apple",
+  "name": {
+   "bg": "Ябълка",
+   "en": "Apple"
+  },
+  "per100": {
+   "kcal": 52,
+   "protein": 0.3,
+   "carbs": 13.8,
+   "fat": 0.2
+  },
+  "portion": 150
+ },
+ {
+  "id": "basic:strawberries",
+  "name": {
+   "bg": "Ягоди",
+   "en": "Strawberries"
+  },
+  "per100": {
+   "kcal": 32,
+   "protein": 0.7,
+   "carbs": 7.7,
+   "fat": 0.3
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:blueberries",
+  "name": {
+   "bg": "Боровинки",
+   "en": "Blueberries"
+  },
+  "per100": {
+   "kcal": 57,
+   "protein": 0.7,
+   "carbs": 14.5,
+   "fat": 0.3
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:tomato",
+  "name": {
+   "bg": "Домати",
+   "en": "Tomatoes"
+  },
+  "per100": {
+   "kcal": 18,
+   "protein": 0.9,
+   "carbs": 3.9,
+   "fat": 0.2
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:cucumber",
+  "name": {
+   "bg": "Краставица",
+   "en": "Cucumber"
+  },
+  "per100": {
+   "kcal": 15,
+   "protein": 0.7,
+   "carbs": 3.6,
+   "fat": 0.1
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:pepper",
+  "name": {
+   "bg": "Чушки",
+   "en": "Bell peppers"
+  },
+  "per100": {
+   "kcal": 26,
+   "protein": 1,
+   "carbs": 6,
+   "fat": 0.3
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:mushrooms",
+  "name": {
+   "bg": "Гъби",
+   "en": "Mushrooms"
+  },
+  "per100": {
+   "kcal": 22,
+   "protein": 3.1,
+   "carbs": 3.3,
+   "fat": 0.3
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:onion",
+  "name": {
+   "bg": "Лук",
+   "en": "Onion"
+  },
+  "per100": {
+   "kcal": 40,
+   "protein": 1.1,
+   "carbs": 9.3,
+   "fat": 0.1
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:carrots",
+  "name": {
+   "bg": "Моркови",
+   "en": "Carrots"
+  },
+  "per100": {
+   "kcal": 41,
+   "protein": 0.9,
+   "carbs": 9.6,
+   "fat": 0.2
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:courgette",
+  "name": {
+   "bg": "Тиквички",
+   "en": "Courgettes"
+  },
+  "per100": {
+   "kcal": 17,
+   "protein": 1.2,
+   "carbs": 3.1,
+   "fat": 0.3
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:green_beans",
+  "name": {
+   "bg": "Зелен фасул",
+   "en": "Green beans"
+  },
+  "per100": {
+   "kcal": 31,
+   "protein": 1.8,
+   "carbs": 7,
+   "fat": 0.2
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:salad",
+  "name": {
+   "bg": "Зелена салата",
+   "en": "Lettuce"
+  },
+  "per100": {
+   "kcal": 15,
+   "protein": 1.4,
+   "carbs": 2.9,
+   "fat": 0.2
+  },
+  "portion": null
+ },
+ {
+  "id": "basic:tomato_sauce",
+  "name": {
+   "bg": "Доматен сос (пасата)",
+   "en": "Tomato sauce (passata)"
+  },
+  "per100": {
+   "kcal": 30,
+   "protein": 1.3,
+   "carbs": 5.5,
+   "fat": 0.2
+  },
+  "portion": null
+ }
+]

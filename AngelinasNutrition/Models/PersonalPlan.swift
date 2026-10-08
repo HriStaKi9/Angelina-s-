@@ -13,6 +13,8 @@ struct PersonalPlan: Codable, Identifiable, Hashable {
     let checkIn: CheckInSpec
     /// Which plan section's adjustment table drives automatic advice: "nutrition" or "training".
     let adviceSource: String
+    /// Starting body stats, used to pre-fill the calorie calculator.
+    let body: BodyStats?
 
     var adviceTable: AdjustmentTable? {
         adviceSource == "training" ? training.adjustments : nutrition.adjustments

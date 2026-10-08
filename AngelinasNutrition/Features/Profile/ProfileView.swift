@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @Environment(\.dismiss) private var dismiss
     @Environment(ProfileStore.self) private var store
     @Environment(AssistantStore.self) private var assistant
     @State private var confirmReset = false
@@ -99,6 +100,7 @@ struct ProfileView: View {
             .scrollContentBackground(.hidden)
             .background(Theme.Palette.background.ignoresSafeArea())
             .navigationTitle("Profile")
+            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
             .confirmationDialog("Reset your profile and go back to onboarding?", isPresented: $confirmReset, titleVisibility: .visible) {
                 Button("Start over", role: .destructive) { store.reset() }
             }
