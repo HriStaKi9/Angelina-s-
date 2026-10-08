@@ -68,6 +68,11 @@ final class ProfileStore {
         set { profile.gear = newValue }
     }
 
+    /// The look in use: the chosen one, or automatically Steel when the active plan is a man's.
+    var theme: ThemeVariant {
+        profile.theme ?? (activePlan?.body?.sex == .male ? .steel : .rose)
+    }
+
     /// Picks interface copy for plan screens in the current content language.
     func t(_ bg: String, _ en: String) -> String { language == .bg ? bg : en }
 

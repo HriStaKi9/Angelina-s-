@@ -89,3 +89,7 @@ Workouts → **Recommended programs** (also Profile → Goal) builds a full prog
 ## Body measurements
 
 Progress → **Measurements** (or the Progress tab itself without a personal plan): weight, waist, hips, chest, neck, upper arm, thigh, calf and body fat %, with how-to tips, latest values, change since last time and since the start, a chart per measurement, and an optional weekly reminder notification. Stored as check-ins (`CheckIn.extra` for the extra measurements), so they're part of the account backup.
+
+## Themes
+
+Two looks: **Rose** (the original warm berry/apricot) and **Steel** (slate, steel blue, teal and amber). Profile → App look: Automatic (Steel when the active plan is a man's, e.g. Hristomir; Rose otherwise), Rose or Steel. Every color in `Theme.Palette` has light/dark values per theme (`Color.themed`); `RootView` redraws on a change and switches the Home Screen icon to the matching alternate icon (`AppIconSteel`, source `design/app-icon-steel.svg`).

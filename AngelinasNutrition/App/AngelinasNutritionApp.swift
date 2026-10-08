@@ -36,6 +36,9 @@ struct RootView: View {
     @Environment(ProfileStore.self) private var store
 
     var body: some View {
+        let theme = store.theme
+        // Themed colors read this when they draw; `.id(theme)` below redraws everything on a change.
+        let _ = { ThemeVariant.current = theme }()
         Group {
             if store.hasCompletedOnboarding {
                 MainTabView()
@@ -46,6 +49,10 @@ struct RootView: View {
             }
         }
         .animation(.easeInOut(duration: 0.35), value: store.hasCompletedOnboarding)
+        .id(theme)
+        .tint(Theme.Palette.berry)
+        .onAppear { AppIconSwitcher.apply(theme) }
+        .onChange(of: theme) { _, new in AppIconSwitcher.apply(new) }
         #if DEBUG
         // `-debugSheet account|import` opens those screens at launch, for simulator screenshots.
         .sheet(isPresented: .constant(UserDefaults.standard.string(forKey: "debugSheet") != nil)) {
@@ -77,5 +84,17 @@ struct MainTabView: View {
         #else
         .today
         #endif
+    }
+}
+
+/// Matches the Home Screen icon to the theme (iOS shows a short notice when it changes).
+enum AppIconSwitcher {
+    static func apply(_ theme: ThemeVariant) {
+        let wanted: String? = theme == .steel ? "AppIconSteel" : nil
+        let app = UIApplication.shared
+        guard app.supportsAlternateIcons, app.alternateIconName != wanted else { return }
+        app.setAlternateIconName(wanted) { error in
+            if let error { print("Couldn't change the app icon: \(error.localizedDescription)") }
+        }
     }
 }

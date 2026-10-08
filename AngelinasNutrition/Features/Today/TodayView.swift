@@ -298,7 +298,9 @@ private struct PlanTodaySection: View {
         .padding(Theme.Spacing.xl)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
-            LinearGradient(colors: [plan.accentColor, Theme.Palette.apricot.opacity(0.9)], startPoint: .topLeading, endPoint: .bottomTrailing),
+            ThemeVariant.current == .steel
+                ? Theme.Gradients.hero
+                : LinearGradient(colors: [plan.accentColor, Theme.Palette.apricot.opacity(0.9)], startPoint: .topLeading, endPoint: .bottomTrailing),
             in: RoundedRectangle(cornerRadius: Theme.Radius.large, style: .continuous)
         )
         .shadow(color: plan.accentColor.opacity(0.3), radius: 16, y: 8)
