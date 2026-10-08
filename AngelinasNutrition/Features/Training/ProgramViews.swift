@@ -179,17 +179,28 @@ struct WeekScheduleStrip: View {
     private static let bg = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"]
     private static let en = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
+    /// Debug builds accept `-openScheduleEditor YES`, for simulator screenshots.
+    @State private var isEditing = UserDefaults.standard.bool(forKey: "openScheduleEditor") && _isDebugAssertConfiguration()
+
     var body: some View {
-        let monday = TrainingProgram.mondayOfWeek(containing: .now)
         let todayIndex = TrainingProgram.mondayBasedWeekday(of: .now) - 1
-        HStack(spacing: 6) {
-            ForEach(0..<7, id: \.self) { offset in
-                let date = Calendar.current.date(byAdding: .day, value: offset, to: monday) ?? monday
-                if let (_, day) = plan.training.day(on: date, startedOn: store.programStart) {
+        // This week as the user arranged it (moves and swaps included).
+        let days = store.programDay().flatMap { store.scheduledWeek($0.week) } ?? []
+        VStack(alignment: .trailing, spacing: Theme.Spacing.s) {
+            HStack(spacing: 6) {
+                ForEach(Array(days.enumerated()), id: \.offset) { offset, day in
                     cell(label: (store.language == .bg ? Self.bg : Self.en)[offset], day: day, isToday: offset == todayIndex)
                 }
             }
+            if !days.isEmpty {
+                Button { isEditing = true } label: {
+                    Label(store.t("Подреди седмицата", "Arrange the week"), systemImage: "arrow.left.arrow.right")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(plan.accentColor)
+                }
+            }
         }
+        .sheet(isPresented: $isEditing) { ScheduleEditorView() }
     }
 
     @ViewBuilder
