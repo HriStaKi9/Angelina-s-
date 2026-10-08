@@ -51,7 +51,8 @@ final class ProfileStore {
             training: recommended.program,
             checkIn: base?.checkIn ?? CheckInSpec(fields: [.weight, .waist], flags: [.fatigue]),
             adviceSource: base?.adviceSource ?? "nutrition",
-            body: base?.body)
+            body: base?.body,
+            steps: base?.steps)
     }
 
     func startRecommended(_ recommended: RecommendedProgram) {

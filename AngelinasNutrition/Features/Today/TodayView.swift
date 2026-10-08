@@ -5,6 +5,7 @@ enum TodayRoute: Hashable { case diary }
 struct TodayView: View {
     @Environment(ProfileStore.self) private var store
     @Environment(FoodDiaryStore.self) private var diary
+    @Environment(HealthService.self) private var health
     @State private var showProfile = false
 
     private var profile: UserProfile { store.profile }
@@ -17,6 +18,7 @@ struct TodayView: View {
                     header
                     NavigationLink(value: TodayRoute.diary) { caloriesCard }
                         .buttonStyle(.plain)
+                    if health.isConnected { StepsCard() }
                     if let plan = store.trainingPlan {
                         PlanTodaySection(plan: plan)
                     } else {
@@ -315,5 +317,55 @@ private struct PlanTodaySection: View {
             in: RoundedRectangle(cornerRadius: Theme.Radius.large, style: .continuous)
         )
         .shadow(color: plan.accentColor.opacity(0.3), radius: 16, y: 8)
+    }
+}
+
+/// Today's steps from Apple Health against the plan's target, plus active energy and distance.
+private struct StepsCard: View {
+    @Environment(ProfileStore.self) private var store
+    @Environment(HealthService.self) private var health
+
+    var body: some View {
+        let plan = store.trainingPlan ?? store.activePlan
+        let target = StepTarget.target(plan?.steps, week: store.programDay()?.week ?? 1)
+        let steps = health.activity.steps
+        let tint = plan?.accentColor ?? Theme.Palette.berry
+        let reached = steps >= Double(target.min)
+        Card {
+            VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+                HStack(spacing: Theme.Spacing.m) {
+                    ZStack {
+                        Circle().stroke(Theme.Palette.surfaceMuted, lineWidth: 7)
+                        Circle().trim(from: 0, to: min(1, steps / Double(max(target.min, 1))))
+                            .stroke(reached ? Theme.Palette.sage : tint, style: StrokeStyle(lineWidth: 7, lineCap: .round))
+                            .rotationEffect(.degrees(-90))
+                        Image(systemName: reached ? "checkmark" : "shoeprints.fill").font(.footnote).foregroundStyle(reached ? Theme.Palette.sage : tint)
+                    }
+                    .frame(width: 48, height: 48)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(store.t("Крачки днес", "Steps today")).font(.cardTitle).foregroundStyle(Theme.Palette.ink)
+                        Text("\(Int(steps).formatted()) / \(target.min.formatted())–\(target.max.formatted())")
+                            .font(.subheadline.monospacedDigit())
+                            .foregroundStyle(Theme.Palette.inkSecondary)
+                    }
+                    Spacer(minLength: 0)
+                    Image(systemName: "heart.fill").font(.caption).foregroundStyle(Theme.Palette.berry.opacity(0.7))
+                }
+                HStack {
+                    metric(store.t("Активни kcal", "Active kcal"), "\(Int(health.activity.activeEnergy))")
+                    metric(store.t("Разстояние", "Distance"), "\(health.activity.distanceKm.formatted(.number.precision(.fractionLength(1)))) km")
+                    metric(store.t("Средно 7 дни", "7-day avg"), Int(health.activity.stepsWeekAverage).formatted())
+                }
+            }
+        }
+        .task { await health.refreshActivity() }
+    }
+
+    private func metric(_ title: String, _ value: String) -> some View {
+        VStack(alignment: .leading, spacing: 1) {
+            Text(value).font(.subheadline.weight(.semibold).monospacedDigit()).foregroundStyle(Theme.Palette.ink)
+            Text(title).font(.caption2).foregroundStyle(Theme.Palette.inkSecondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

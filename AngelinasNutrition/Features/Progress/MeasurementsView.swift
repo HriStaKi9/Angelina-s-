@@ -7,8 +7,10 @@ import UserNotifications
 struct MeasurementsView: View {
     @Environment(ProfileStore.self) private var store
     @Environment(TrainingLog.self) private var log
+    @Environment(HealthService.self) private var health
     @State private var selected: CheckInField = .waist
     @State private var isMeasuring = false
+    @State private var importMessage: String?
 
     private var plan: PersonalPlan? { store.trainingPlan ?? store.activePlan }
     private var logID: String { plan?.id ?? "personal" }
@@ -26,6 +28,20 @@ struct MeasurementsView: View {
                 }
                 .buttonStyle(PrimaryButtonStyle(tint: tint))
                 .padding(.top, Theme.Spacing.s)
+
+                if health.isConnected {
+                    Button { Task { await importFromHealth() } } label: {
+                        Label(store.t("Вземи от Apple Health", "Import from Apple Health"), systemImage: "heart.fill")
+                            .font(.subheadline.weight(.semibold))
+                            .frame(maxWidth: .infinity, minHeight: 44)
+                            .foregroundStyle(tint)
+                            .background(tint.opacity(0.1), in: RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous))
+                    }
+                    .buttonStyle(.plain)
+                    if let importMessage {
+                        Text(importMessage).font(.caption).foregroundStyle(Theme.Palette.inkSecondary)
+                    }
+                }
 
                 if measured.isEmpty {
                     Card {
@@ -50,6 +66,18 @@ struct MeasurementsView: View {
             CheckInSheet(logID: logID, fields: [], flags: [], tint: tint, expandMeasurements: true)
         }
         .onAppear { if let first = measured.first, !measured.contains(selected) { selected = first } }
+    }
+
+    /// Weight, body fat and waist from a smart scale or other apps (last 90 days), one check-in per day.
+    private func importFromHealth() async {
+        let since = Calendar.current.date(byAdding: .day, value: -90, to: .now) ?? .now
+        let samples = await health.bodySamples(since: since)
+        let result = HealthImport.checkIns(from: samples, alreadyImported: HealthImport.importedIDs, logID: logID)
+        for checkIn in result.checkIns { log.add(checkIn) }
+        HealthImport.importedIDs.formUnion(result.importedIDs)
+        importMessage = result.checkIns.isEmpty
+            ? store.t("Няма нови измервания в Apple Health.", "No new measurements in Apple Health.")
+            : store.t("Добавени \(result.checkIns.count) дни с измервания.", "Added \(result.checkIns.count) days of measurements.")
     }
 
     private func points(_ field: CheckInField) -> [(date: Date, value: Double)] {

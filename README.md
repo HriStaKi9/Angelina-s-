@@ -97,3 +97,7 @@ Two looks: **Rose** (the original warm berry/apricot) and **Steel** (slate, stee
 ## Arranging the week
 
 Workouts → week strip → **Arrange the week**: drag sessions between days or tap a day to change it (any workout, steps, walk, rest), for this week or next, applied to that week only or to every week (for A-B-A / B-A-B programs, every week of the same type). Today has "Can't today – move to tomorrow". Edits live in `UserProfile.scheduleEdits` per person and program; `ProfileStore.scheduledWeek` / `programDay` apply them, and "Reset to the plan's schedule" removes them.
+
+## Apple Health
+
+Profile → **Apple Health** → Connect (HealthKit works with the free developer account). Reads steps, active energy, distance, weight, body fat and waist; writes what the user enables: measurements from check-ins, every food-diary entry as a Health food entry with calories and macros (removed again when the entry is deleted), and finished workouts as strength-training workouts. Today shows steps against the plan's target (`steps` in the plan JSON, by program week); check-ins pre-fill the 7-day step average; Measurements → "Import from Apple Health" adds smart-scale and other apps' weight, body fat and waist (one check-in per day, never twice). `HealthService` (HealthKit) and `HealthImport` (testable logic).

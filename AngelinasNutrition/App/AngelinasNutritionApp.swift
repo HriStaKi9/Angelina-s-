@@ -8,6 +8,7 @@ struct AngelinasNutritionApp: App {
     @State private var assistant = AssistantStore()
     @State private var foodDiary = FoodDiaryStore()
     @State private var account = AccountStore()
+    @State private var health = HealthService()
     @Environment(\.scenePhase) private var scenePhase
 
     var body: some Scene {
@@ -19,7 +20,18 @@ struct AngelinasNutritionApp: App {
                 .environment(assistant)
                 .environment(foodDiary)
                 .environment(account)
+                .environment(health)
+                .onAppear {
+                    // Mirror the food diary into Apple Health (when connected and enabled).
+                    foodDiary.onAdd = { [health] entry in
+                        Task { await health.save(entry, date: HealthImport.date(forDayKey: entry.day)) }
+                    }
+                    foodDiary.onDelete = { [health] entry in
+                        Task { await health.deleteDiaryEntry(id: entry.id) }
+                    }
+                }
                 .onChange(of: scenePhase) { _, phase in
+                    if phase == .active { Task { await health.refreshActivity() } }
                     // Back up when the app goes to the background, if signed in.
                     guard phase == .background, account.isSignedIn else { return }
                     Task {

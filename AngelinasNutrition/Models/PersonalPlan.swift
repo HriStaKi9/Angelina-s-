@@ -15,6 +15,8 @@ struct PersonalPlan: Codable, Identifiable, Hashable {
     let adviceSource: String
     /// Starting body stats, used to pre-fill the calorie calculator.
     let body: BodyStats?
+    /// Daily step targets by program week.
+    var steps: [StepTarget]? = nil
 
     var adviceTable: AdjustmentTable? {
         adviceSource == "training" ? training.adjustments : nutrition.adjustments
@@ -561,7 +563,7 @@ extension NutritionPlan {
 extension PersonalPlan {
     func with(training: TrainingProgram) -> PersonalPlan {
         PersonalPlan(id: id, name: name, accent: accent, nutrition: nutrition, training: training,
-                     checkIn: checkIn, adviceSource: adviceSource, body: body)
+                     checkIn: checkIn, adviceSource: adviceSource, body: body, steps: steps)
     }
 }
 
@@ -570,5 +572,18 @@ extension TrainingProgram {
         TrainingProgram(title: title, subtitle: subtitle, stats: stats, schedule: schedule, scheduleNote: scheduleNote,
                         warmUp: warmUp, callouts: callouts, workouts: workouts, sections: sections, adjustments: adjustments,
                         shortVersion: shortVersion, deloadEvery: deloadEvery, extraExercises: extraExercises)
+    }
+}
+
+struct StepTarget: Codable, Hashable {
+    let from: Int
+    let to: Int?
+    let min: Int
+    let max: Int
+
+    /// The target for a program week; plans without one get a general 8,000–10,000.
+    static func target(_ targets: [StepTarget]?, week: Int) -> StepTarget {
+        targets?.first { week >= $0.from && week <= ($0.to ?? .max) }
+            ?? StepTarget(from: 1, to: nil, min: 8000, max: 10000)
     }
 }
