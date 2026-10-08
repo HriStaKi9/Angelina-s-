@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @Environment(ProfileStore.self) private var store
+    @Environment(AssistantStore.self) private var assistant
     @State private var confirmReset = false
 
     var body: some View {
@@ -52,6 +53,20 @@ struct ProfileView: View {
                     }
                     Stepper("Workouts per week: \(store.profile.sessionsPerWeek)",
                             value: $store.profile.sessionsPerWeek, in: 2...6)
+                }
+                Section {
+                    if assistant.hasKey {
+                        Label("API key saved in Keychain", systemImage: "checkmark.seal.fill")
+                            .foregroundStyle(Theme.Palette.sage)
+                        Button("Remove API key", role: .destructive) { assistant.removeKey() }
+                    } else {
+                        Text("Tap ✨ on any tab to add your Anthropic API key.")
+                            .foregroundStyle(Theme.Palette.inkSecondary)
+                    }
+                } header: {
+                    Text("Ask Claude")
+                } footer: {
+                    Text("Uses \(ClaudeClient.model) with your own key; chats are billed to your Anthropic account.")
                 }
                 if store.profile.location == .home {
                     Section("Home equipment") {

@@ -29,6 +29,7 @@ struct ProgressTabView: View {
                     ToolbarItem(placement: .topBarTrailing) { LanguageMenu() }
                 }
             }
+            .askClaudeButton()
             .navigationDestination(for: ProgressRoute.self) { _ in LogbookView() }
         }
     }

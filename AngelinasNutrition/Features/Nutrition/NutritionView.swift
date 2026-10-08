@@ -1,6 +1,7 @@
 import SwiftUI
 
 enum NutritionRoute: Hashable {
+    case overview
     case groceries
     case library(Meal.Course)
     case about
@@ -27,12 +28,16 @@ struct NutritionView: View {
                     ToolbarItem(placement: .topBarTrailing) { LanguageMenu() }
                 }
             }
+            .askClaudeButton()
             .navigationDestination(for: Meal.self) { MealDetailView(meal: $0) }
             #if DEBUG
             // `-openGroceries YES` opens the shopping list directly, for simulator screenshots.
             .onAppear {
                 if path.isEmpty, store.activePlan != nil, UserDefaults.standard.bool(forKey: "openGroceries") {
                     path.append(NutritionRoute.groceries)
+                }
+                if path.isEmpty, store.activePlan != nil, UserDefaults.standard.bool(forKey: "openOverview") {
+                    path.append(NutritionRoute.overview)
                 }
             }
             #endif
@@ -45,6 +50,8 @@ struct NutritionView: View {
     @ViewBuilder
     private func destination(_ route: NutritionRoute, plan: NutritionPlan) -> some View {
         switch route {
+        case .overview:
+            if let plan = store.activePlan { NutritionOverviewView(plan: plan) }
         case .groceries:
             GroceryListView()
         case .library(let course):
@@ -130,6 +137,9 @@ private struct PlanNutritionContent: View {
     private var guide: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.m) {
             SectionHeader(title: store.t("Ръководство", "Guide"))
+            NavigationLink(value: NutritionRoute.overview) {
+                GuideLinkRow(title: store.t("Целият режим на една страница", "The whole plan on one page"), systemImage: "doc.text.magnifyingglass", tint: plan.accentColor)
+            }
             NavigationLink(value: NutritionRoute.about) {
                 GuideLinkRow(title: nutrition.aboutTitle[lang], systemImage: "function")
             }

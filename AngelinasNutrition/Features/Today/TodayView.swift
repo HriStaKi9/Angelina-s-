@@ -29,6 +29,7 @@ struct TodayView: View {
                     ToolbarItem(placement: .topBarTrailing) { LanguageMenu() }
                 }
             }
+            .askClaudeButton()
             .navigationDestination(for: Exercise.self) { ExerciseDetailView(exercise: $0) }
             .navigationDestination(for: Meal.self) { MealDetailView(meal: $0) }
             .navigationDestination(for: ProgramWorkout.self) { ProgramWorkoutView(workout: $0) }
