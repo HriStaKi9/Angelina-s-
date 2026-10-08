@@ -59,7 +59,7 @@ private struct PlanProgressContent: View {
                 }
                 .buttonStyle(PrimaryButtonStyle(tint: plan.accentColor))
 
-                if log.shouldSuggestDeload(planID: plan.id, currentWeek: currentWeek, every: plan.training.deloadEvery) {
+                if log.shouldSuggestDeload(planID: plan.id, currentWeek: currentWeek, every: store.trainingPlan?.training.deloadEvery) {
                     Callout(title: store.t("Време е за разтоварване", "Time for a deload"),
                             items: [store.t("Минаха 6+ седмици. Тази седмица: същите тежести, половината серии (включи го при старт на тренировката).",
                                             "6+ weeks have passed. This week: same weights, half the sets (switch it on when you start a workout).")],

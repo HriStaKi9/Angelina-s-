@@ -1,6 +1,7 @@
 import SwiftUI
 
 enum WorkoutRoute: Hashable {
+    case recommended
     case moreExercises
     case muscleArea(MuscleArea)
     case overview
@@ -17,17 +18,21 @@ struct WorkoutsView: View {
     var body: some View {
         NavigationStack(path: $path) {
             Group {
-                if let plan = store.activePlan {
+                if let plan = store.trainingPlan {
                     ProgramOverview(plan: plan)
                 } else {
                     ExerciseLibraryView()
                 }
             }
             .background(Theme.Palette.background.ignoresSafeArea())
-            .navigationTitle(store.activePlan == nil ? "Workouts" : store.t("Тренировки", "Workouts"))
+            .navigationTitle(store.trainingPlan == nil ? "Workouts" : store.t("Тренировки", "Workouts"))
             .toolbar {
-                if store.activePlan != nil {
+                if store.trainingPlan != nil {
                     ToolbarItem(placement: .topBarTrailing) { LanguageMenu() }
+                } else {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        NavigationLink(value: WorkoutRoute.recommended) { Label("Programs", systemImage: "wand.and.stars") }
+                    }
                 }
             }
             .askClaudeButton()
@@ -37,14 +42,17 @@ struct WorkoutsView: View {
             // `-openWorkout <id>` opens a workout page directly, for simulator screenshots.
             .onAppear {
                 if path.isEmpty, let id = UserDefaults.standard.string(forKey: "openWorkout"),
-                   let workout = store.activePlan?.training.workout(id: id) {
+                   let workout = store.trainingPlan?.training.workout(id: id) {
                     path.append(workout)
                 }
-                if path.isEmpty, store.activePlan != nil, UserDefaults.standard.bool(forKey: "openOverview") {
+                if path.isEmpty, store.trainingPlan != nil, UserDefaults.standard.bool(forKey: "openOverview") {
                     path.append(WorkoutRoute.overview)
                 }
                 if path.isEmpty, UserDefaults.standard.bool(forKey: "openMoreExercises") {
                     path.append(WorkoutRoute.moreExercises)
+                }
+                if path.isEmpty, UserDefaults.standard.bool(forKey: "openRecommended") {
+                    path.append(WorkoutRoute.recommended)
                 }
             }
             #endif
@@ -53,16 +61,18 @@ struct WorkoutsView: View {
                 case .library:
                     ExerciseLibraryView()
                         .navigationTitle(store.t("Библиотека", "Exercise library"))
+                case .recommended:
+                    RecommendedProgramsView(goal: store.profile.goal, sessions: store.profile.sessionsPerWeek)
                 case .moreExercises:
                     MoreExercisesView()
                 case .muscleArea(let area):
                     MuscleAreaListView(area: area)
                 case .overview:
-                    if let plan = store.activePlan { TrainingOverviewView(plan: plan) }
+                    if let plan = store.trainingPlan { TrainingOverviewView(plan: plan) }
                 case .logbook:
                     LogbookView()
                 case .guide:
-                    if let program = store.activePlan?.training {
+                    if let program = store.trainingPlan?.training {
                         PlanGuideView(title: Localized(bg: "Прогресия и съвети", en: "Progression & tips"),
                                       sections: program.sections, adjustments: program.adjustments)
                     }
@@ -92,6 +102,8 @@ private struct ProgramOverview: View {
                         .padding(.top, -Theme.Spacing.m)
                 }
                 workouts
+                NavigationLink(value: WorkoutRoute.recommended) { RecommendedProgramsCard(tint: plan.accentColor) }
+                    .buttonStyle(.plain)
                 NavigationLink(value: WorkoutRoute.moreExercises) { MoreExercisesCard(tint: plan.accentColor) }
                     .buttonStyle(.plain)
                 WarmUpCard(items: program.warmUp)
@@ -280,7 +292,7 @@ struct ProgramWorkoutView: View {
     @State private var isRunning = UserDefaults.standard.bool(forKey: "startWorkout") && _isDebugAssertConfiguration()
 
     private var lang: ContentLanguage { store.language }
-    private var plan: PersonalPlan? { store.activePlan }
+    private var plan: PersonalPlan? { store.trainingPlan }
     private var tint: Color { plan?.accentColor ?? Theme.Palette.berry }
     private var week: Int { store.programDay()?.week ?? 1 }
 
@@ -344,7 +356,7 @@ private struct ProgramExerciseCard: View {
     let tint: Color
 
     private var lang: ContentLanguage { store.language }
-    private var planID: String { store.activePlan?.id ?? "" }
+    private var planID: String { store.trainingPlan?.id ?? "" }
     private var optionIndex: Int { log.option(planID: planID, workoutID: workoutID, slot: item.label) }
     private var option: ExerciseOption { item.option(optionIndex) }
 
@@ -397,7 +409,7 @@ private struct ProgramExerciseCard: View {
                     if item.options.count > 1 { swapMenu }
                 }
 
-                if store.activePlan != nil { nextTime }
+                if store.trainingPlan != nil { nextTime }
 
                 if !item.cues.isEmpty {
                     VStack(alignment: .leading, spacing: 6) {

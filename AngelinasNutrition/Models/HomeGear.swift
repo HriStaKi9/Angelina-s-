@@ -44,11 +44,13 @@ extension Exercise {
         let needsBench = ["bench", "incline", "decline", "seated"].contains { name.contains($0) } && !name.contains("floor")
         if needsBench && !gear.contains(.bench) { return false }
         let hangs = ["pull-up", "pullup", "chin-up", "hanging", "muscle up"].contains { name.contains($0) }
+        // The database files goblet squats under kettlebells, but a dumbbell works the same.
+        if name.contains("goblet") { return gear.contains(.dumbbells) || gear.contains(.kettlebells) }
 
         switch resolvedEquipment {
         case .bodyOnly:
             if hangs { return hasBar }
-            if name.contains("dip") { return false }
+            if name.contains("dip") && !name.contains("bench dip") { return false }
             if name.contains("inverted row") { return gear.contains(.powerRack) && gear.contains(.barbell) }
             return true
         case .barbell, .ezCurlBar:

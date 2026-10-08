@@ -9,7 +9,7 @@ struct LogbookView: View {
     private var lang: ContentLanguage { store.language }
 
     var body: some View {
-        if let plan = store.activePlan {
+        if let plan = store.trainingPlan {
             let selected = workoutID ?? plan.training.workouts.first?.id
             ScrollView {
                 VStack(alignment: .leading, spacing: Theme.Spacing.xl) {

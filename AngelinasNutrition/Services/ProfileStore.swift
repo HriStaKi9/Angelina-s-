@@ -30,6 +30,33 @@ final class ProfileStore {
 
     var activePlan: PersonalPlan? { PlanLibrary.shared.plan(id: profile.planID) }
 
+    /// The plan whose training program is in use: the coach's, or a started recommended program
+    /// (wrapped as a plan so workouts, logging and progression work the same way).
+    var trainingPlan: PersonalPlan? {
+        guard let recommended = profile.recommendedProgram else { return activePlan }
+        let base = activePlan
+        return PersonalPlan(
+            id: base?.id ?? "personal",
+            name: base?.name ?? Localized(bg: profile.firstName.isEmpty ? "Аз" : profile.firstName,
+                                          en: profile.firstName.isEmpty ? "Me" : profile.firstName),
+            accent: base?.accent ?? "berry",
+            nutrition: base?.nutrition ?? .empty,
+            training: recommended.program,
+            checkIn: base?.checkIn ?? CheckInSpec(fields: [.weight, .waist], flags: [.fatigue]),
+            adviceSource: base?.adviceSource ?? "nutrition",
+            body: base?.body)
+    }
+
+    func startRecommended(_ recommended: RecommendedProgram) {
+        profile.recommendedProgram = recommended
+        profile.programStart = TrainingProgram.mondayOfWeek(containing: .now)
+    }
+
+    func stopRecommended() {
+        profile.recommendedProgram = nil
+        profile.programStart = profile.planID == nil ? nil : TrainingProgram.mondayOfWeek(containing: .now)
+    }
+
     /// Language for plan content. Plans are written in Bulgarian, so that's the default.
     var language: ContentLanguage {
         get { profile.language ?? .bg }
@@ -56,7 +83,7 @@ final class ProfileStore {
 
     /// Where `date` falls in the active training program.
     func programDay(on date: Date = .now) -> (week: Int, day: ScheduleDay, workout: ProgramWorkout?)? {
-        guard let program = activePlan?.training,
+        guard let program = trainingPlan?.training,
               let (week, day) = program.day(on: date, startedOn: programStart) else { return nil }
         return (week, day, day.workout.flatMap(program.workout(id:)))
     }
