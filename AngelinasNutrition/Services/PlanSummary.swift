@@ -151,7 +151,7 @@ enum PlanSummary {
             out.append("")
             out.append("Recent workouts (newest first, weight × reps per set):")
             for session in workouts {
-                let title = plan.training.workout(id: session.workoutID)?.title.en ?? session.workoutID
+                let title = (store.trainingPlan ?? plan).training.workout(id: session.workoutID)?.title.en ?? session.workoutID
                 out.append("- \(session.date.formatted(.iso8601.year().month().day())) \(title), week \(session.week)\(session.isShort ? ", short version" : "")\(session.isDeload ? ", deload" : "")")
                 for exercise in session.exercises {
                     let sets = exercise.doneSets.map { set -> String in

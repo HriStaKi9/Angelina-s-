@@ -242,7 +242,7 @@ struct AssistantView: View {
     }
 
     private func send(_ text: String) {
-        assistant.send(text, stablePrompt: AssistantPrompt.stable(plan: plan, menus: menus),
+        assistant.send(text, stablePrompt: AssistantPrompt.stable(plan: plan, training: store.trainingPlan, menus: menus),
                        context: PlanSummary.todayContext(plan: plan, store: store, log: log, menus: menus))
         draft = ""
     }
@@ -254,7 +254,7 @@ struct AssistantView: View {
 
 enum AssistantPrompt {
     /// Stable part of the system prompt: role plus the full plan. Kept byte-identical between messages so it caches.
-    static func stable(plan: PersonalPlan?, menus: WeekMenuStore) -> String {
+    static func stable(plan: PersonalPlan?, training: PersonalPlan?, menus: WeekMenuStore) -> String {
         var out = """
         You are the assistant inside "Angelina's Nutrition", an iPhone app for following a coach-written eating plan and training program.
 
@@ -264,11 +264,14 @@ enum AssistantPrompt {
 
         Reply in the language the user writes in (the plan is written in Bulgarian). Answers are read on a phone: keep them short and practical, with brief lists where useful.
         """
-        guard let plan else { return out }
-        out += "\n\n=== EATING PLAN ===\n"
-        out += PlanSummary.nutrition(plan, week: plan.nutrition.week, language: .bg, includeSteps: true)
-        out += "\n\n=== TRAINING PROGRAM ===\n"
-        out += PlanSummary.training(plan, language: .bg)
+        if let plan {
+            out += "\n\n=== EATING PLAN ===\n"
+            out += PlanSummary.nutrition(plan, week: plan.nutrition.week, language: .bg, includeSteps: true)
+        }
+        if let program = training ?? plan, !program.training.workouts.isEmpty {
+            out += "\n\n=== TRAINING PROGRAM ===\n"
+            out += PlanSummary.training(program, language: .bg)
+        }
         return out
     }
 }

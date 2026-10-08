@@ -289,7 +289,7 @@ extension SetSuggestion {
             let perHand = load == .dumbbells ? store.t("2 × ", "2 × ") : ""
             return "\(amount) · \(perHand)\(weight.trimmed) \(store.t("кг", "kg"))"
         }
-        if load.usesWeight { return "\(amount) · \(store.t("без тежест", "bodyweight"))" }
+        if load.usesWeight { return "\(amount) · \(chooseWeight ? store.t("избери тежест", "pick a weight") : store.t("без тежест", "bodyweight"))" }
         return amount
     }
 }

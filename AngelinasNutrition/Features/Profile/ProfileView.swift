@@ -8,6 +8,7 @@ struct ProfileView: View {
     @State private var confirmReset = false
     @State private var showAccount = false
     @State private var showImport = false
+    @State private var showRecommended = false
 
     var body: some View {
         @Bindable var store = store
@@ -63,12 +64,23 @@ struct ProfileView: View {
                         Text("The start date sets the program week (\"Week N\") and which A/B rotation applies.")
                     }
                 }
-                Section("Goal") {
+                Section {
                     Picker("Goal", selection: $store.profile.goal) {
                         ForEach(FitnessGoal.allCases) { Label($0.title, systemImage: $0.systemImage).tag($0) }
                     }
                     .pickerStyle(.inline)
                     .labelsHidden()
+                    Button("See the recommended training program", systemImage: "wand.and.stars") { showRecommended = true }
+                } header: {
+                    Text("Goal")
+                } footer: {
+                    if let running = store.profile.recommendedProgram {
+                        Text(running.goal == store.profile.goal
+                             ? "Training with: \(running.program.title.en)."
+                             : "Your goal changed – the active program is still \(running.program.title.en). Open the recommendation to switch.")
+                    } else {
+                        Text("Each goal gets its own program, built for your equipment and level.")
+                    }
                 }
                 Section("Training") {
                     Picker("Where", selection: $store.profile.location) {
@@ -128,6 +140,12 @@ struct ProfileView: View {
             .navigationTitle("Profile")
             .sheet(isPresented: $showAccount) { AccountView() }
             .sheet(isPresented: $showImport) { ImportPlanView() }
+            .sheet(isPresented: $showRecommended) {
+                NavigationStack {
+                    RecommendedProgramsView(goal: store.profile.goal, sessions: store.profile.sessionsPerWeek)
+                        .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { showRecommended = false } } }
+                }
+            }
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
             .confirmationDialog("Reset your profile and go back to onboarding?", isPresented: $confirmReset, titleVisibility: .visible) {
                 Button("Start over", role: .destructive) { store.reset() }

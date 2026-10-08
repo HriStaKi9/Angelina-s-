@@ -518,3 +518,12 @@ struct AdviceTrigger: Codable, Hashable {
     let maxLossPerWeek: Double?
     let minLossPerWeek: Double?
 }
+
+extension NutritionPlan {
+    /// Stand-in for people training with a recommended program but no personal eating plan.
+    static let empty = NutritionPlan(
+        title: Localized(bg: "", en: ""), goal: Localized(bg: "", en: ""), stats: Localized(bg: "", en: ""),
+        kcal: ApproxRange(0, 0), protein: ApproxRange(0, 0), mealsPerDay: Localized(bg: "", en: ""),
+        pace: Localized(bg: "", en: ""), aboutTitle: Localized(bg: "", en: ""), about: [], meals: [], week: [],
+        weekNote: nil, dayFlow: nil, sections: [], adjustments: nil, important: nil)
+}

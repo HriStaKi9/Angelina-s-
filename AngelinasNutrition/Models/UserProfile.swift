@@ -15,6 +15,8 @@ struct UserProfile: Codable, Equatable {
     var language: ContentLanguage?
     /// Training equipment for the "more exercises" section; nil = the default home-gym set.
     var gear: Set<HomeGear>?
+    /// A recommended program the user started; replaces the coach's training program until removed.
+    var recommendedProgram: RecommendedProgram?
 
     var firstName: String {
         name.split(separator: " ").first.map(String.init) ?? ""
@@ -70,4 +72,10 @@ struct Prescription: Equatable {
     let reps: String
     let restSeconds: Int
     let style: String
+}
+
+struct RecommendedProgram: Codable, Equatable {
+    let goal: FitnessGoal
+    let sessionsPerWeek: Int
+    let program: TrainingProgram
 }

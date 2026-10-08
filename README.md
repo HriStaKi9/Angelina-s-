@@ -79,3 +79,7 @@ Setup: create a project → SQL Editor → run the script shown in the app (Prof
 ## Import a plan from PDF
 
 Profile or Nutrition → **Import plan from PDF**. Claude (`claude-opus-5-5`, the user's API key) reads the PDF and answers in a fixed JSON schema (structured outputs, `PlanImporter.schema`): targets, every meal option with ingredients mapped to grocery items, the sample week, rules and adjustments, in Bulgarian and English. The plan is saved in `Application Support/ImportedPlans/` as a new person, or replaces an existing person's eating plan (their training program is kept; "Restore the coach's original plan" undoes it).
+
+## Recommended programs
+
+Workouts → **Recommended programs** (also Profile → Goal) builds a full program for each goal from the exercise database (`ProgramRecommender`): fat loss (3 × 12–15, short rests, cardio finisher, steps days), tone & sculpt (glute emphasis), build muscle (4 × 6–10 main lifts, 2 min rests) and stay healthy. The split follows workouts per week (2–3 full body A/B, 4 upper/lower, 5–6 push/pull/legs for muscle), and exercises are picked from movement-pattern lists by the user's equipment and level, with alternatives. Starting one replaces the coach's training program (`ProfileStore.trainingPlan`) until "Back to the coach's program"; logging and progression work the same.

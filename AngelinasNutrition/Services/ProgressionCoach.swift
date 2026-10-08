@@ -8,6 +8,8 @@ struct SetSuggestion: Equatable {
     let reps: ClosedRange<Int>?
     let seconds: Int?
     let reason: Localized
+    /// No starting weight in the program: the user picks one (week-1 rule) instead of "bodyweight".
+    var chooseWeight = false
 }
 
 /// Applies the training program's progression rules:
@@ -48,6 +50,12 @@ enum ProgressionCoach {
 
         let lastWeight = last?.topWeight
         guard let last, lastWeight != nil || tracking.bodyweightFirst == true else {
+            guard let startWeight else {
+                return SetSuggestion(sets: sets, weight: nil, reps: reps, seconds: nil,
+                                     reason: Localized(bg: "Намери работната тежест: последната серия с 2–3 повторения в запас.",
+                                                       en: "Find your working weight: the last set with 2–3 reps in reserve."),
+                                     chooseWeight: true)
+            }
             return SetSuggestion(sets: sets, weight: startWeight, reps: reps, seconds: nil,
                                  reason: Localized(bg: "Започни от долната граница на стартовата тежест.",
                                                    en: "Start at the low end of the starting weight."))

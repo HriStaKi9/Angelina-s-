@@ -17,7 +17,7 @@ struct TodayView: View {
                     header
                     NavigationLink(value: TodayRoute.diary) { caloriesCard }
                         .buttonStyle(.plain)
-                    if let plan = store.activePlan {
+                    if let plan = store.trainingPlan {
                         PlanTodaySection(plan: plan)
                     } else {
                         WorkoutHeroCard(workout: workout, location: profile.location)
@@ -249,7 +249,7 @@ private struct PlanTodaySection: View {
         }
 
         let nutrition = plan.nutrition
-        if let menu = menus.menu(for: plan, weekday: TrainingProgram.mondayBasedWeekday(of: .now)) {
+        if store.activePlan != nil, let menu = menus.menu(for: plan, weekday: TrainingProgram.mondayBasedWeekday(of: .now)) {
             let totals = menu.totals(in: nutrition)
             VStack(alignment: .leading, spacing: Theme.Spacing.m) {
                 SectionHeader(title: store.t("Днешно меню", "Today's menu"),

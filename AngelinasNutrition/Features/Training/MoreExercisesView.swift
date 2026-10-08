@@ -42,7 +42,7 @@ struct MoreExercisesView: View {
     @State private var query = ""
 
     private var lang: ContentLanguage { store.language }
-    private var plan: PersonalPlan? { store.activePlan }
+    private var plan: PersonalPlan? { store.trainingPlan }
     private var tint: Color { plan?.accentColor ?? Theme.Palette.berry }
 
     /// Training exercises (no stretches, strongman or Olympic lifts) doable with the chosen gear.
@@ -193,7 +193,7 @@ struct MuscleAreaListView: View {
     let area: MuscleArea
 
     var body: some View {
-        let avoid = Set(store.activePlan?.training.extraExercises?.avoidCategories ?? [])
+        let avoid = Set(store.trainingPlan?.training.extraExercises?.avoidCategories ?? [])
         let list = MoreExercisesView.featured(ExerciseLibrary.shared.exercises.filter {
             [.strength, .powerlifting, .plyometrics].contains($0.category) && !avoid.contains($0.category)
                 && $0.isDoable(with: store.gear) && $0.primaryMuscles.contains(where: area.contains)
