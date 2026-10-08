@@ -1,16 +1,6 @@
 import SwiftUI
 import UIKit
 
-/// The two looks of the app: Rose (the original) and Steel (cooler slate and blue).
-enum ThemeVariant: String, Codable, CaseIterable, Identifiable {
-    case rose, steel
-
-    var id: String { rawValue }
-
-    /// Read by every themed color at draw time; RootView rebuilds the view tree when it changes.
-    nonisolated(unsafe) static var current: ThemeVariant = .rose
-}
-
 /// Design tokens for the whole app. Every color adapts to light and dark mode and to the theme,
 /// so views never reach for raw `Color.white` / `Color.black`.
 enum Theme {

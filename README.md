@@ -93,3 +93,7 @@ Progress → **Measurements** (or the Progress tab itself without a personal pla
 ## Themes
 
 Two looks: **Rose** (the original warm berry/apricot) and **Steel** (slate, steel blue, teal and amber). Profile → App look: Automatic (Steel when the active plan is a man's, e.g. Hristomir; Rose otherwise), Rose or Steel. Every color in `Theme.Palette` has light/dark values per theme (`Color.themed`); `RootView` redraws on a change and switches the Home Screen icon to the matching alternate icon (`AppIconSteel`, source `design/app-icon-steel.svg`).
+
+## Arranging the week
+
+Workouts → week strip → **Arrange the week**: drag sessions between days or tap a day to change it (any workout, steps, walk, rest), for this week or next, applied to that week only or to every week (for A-B-A / B-A-B programs, every week of the same type). Today has "Can't today – move to tomorrow". Edits live in `UserProfile.scheduleEdits` per person and program; `ProfileStore.scheduledWeek` / `programDay` apply them, and "Reset to the plan's schedule" removes them.

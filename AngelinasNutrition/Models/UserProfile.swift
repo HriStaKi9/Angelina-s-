@@ -19,6 +19,8 @@ struct UserProfile: Codable, Equatable {
     var recommendedProgram: RecommendedProgram?
     /// App look: nil = automatic (Steel for a male plan, otherwise Rose).
     var theme: ThemeVariant?
+    /// The user's changes to program schedules, keyed by `ProfileStore.scheduleKey`.
+    var scheduleEdits: [String: ScheduleEdits]?
 
     var firstName: String {
         name.split(separator: " ").first.map(String.init) ?? ""
@@ -80,4 +82,11 @@ struct RecommendedProgram: Codable, Equatable {
     let goal: FitnessGoal
     let sessionsPerWeek: Int
     let program: TrainingProgram
+}
+
+/// Moves and swaps in a program's week: permanent ones replace the program's rotation,
+/// one-off ones replace a single program week (1-based).
+struct ScheduleEdits: Codable, Equatable {
+    var everyWeek: [[ScheduleDay]]?
+    var weeks: [Int: [ScheduleDay]] = [:]
 }

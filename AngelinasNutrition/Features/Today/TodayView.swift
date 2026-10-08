@@ -240,6 +240,17 @@ private struct PlanTodaySection: View {
                                 week: today.week, systemImage: "dumbbell.fill", showsChevron: true)
                 }
                 .buttonStyle(.plain)
+                // Can't make it today: swap with tomorrow (not on Sunday, the week ends there).
+                if TrainingProgram.mondayBasedWeekday(of: .now) < 7, !log.didTrain(planID: plan.id, workoutID: workout.id, on: .now) {
+                    Button {
+                        withAnimation(.snappy) { store.moveTodayToTomorrow() }
+                    } label: {
+                        Label(store.t("Не мога днес – премести за утре", "Can't today – move to tomorrow"), systemImage: "arrow.uturn.forward")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(plan.accentColor)
+                    }
+                    .padding(.top, -Theme.Spacing.m)
+                }
             } else {
                 sessionCard(eyebrow: store.t("Днес", "Today"),
                             title: today.day.kindTitle[lang],

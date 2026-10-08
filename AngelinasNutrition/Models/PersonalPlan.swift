@@ -557,3 +557,18 @@ extension NutritionPlan {
         pace: Localized(bg: "", en: ""), aboutTitle: Localized(bg: "", en: ""), about: [], meals: [], week: [],
         weekNote: nil, dayFlow: nil, sections: [], adjustments: nil, important: nil)
 }
+
+extension PersonalPlan {
+    func with(training: TrainingProgram) -> PersonalPlan {
+        PersonalPlan(id: id, name: name, accent: accent, nutrition: nutrition, training: training,
+                     checkIn: checkIn, adviceSource: adviceSource, body: body)
+    }
+}
+
+extension TrainingProgram {
+    func with(schedule: [[ScheduleDay]]) -> TrainingProgram {
+        TrainingProgram(title: title, subtitle: subtitle, stats: stats, schedule: schedule, scheduleNote: scheduleNote,
+                        warmUp: warmUp, callouts: callouts, workouts: workouts, sections: sections, adjustments: adjustments,
+                        shortVersion: shortVersion, deloadEvery: deloadEvery, extraExercises: extraExercises)
+    }
+}
