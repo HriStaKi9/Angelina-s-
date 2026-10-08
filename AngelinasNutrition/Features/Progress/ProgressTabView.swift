@@ -282,6 +282,7 @@ struct AdviceCard: View {
 struct CheckInSheet: View {
     @Environment(ProfileStore.self) private var store
     @Environment(TrainingLog.self) private var log
+    @Environment(HealthService.self) private var health
     @Environment(\.dismiss) private var dismiss
     /// Where the check-in is stored: the plan id, or "personal" without a plan.
     let logID: String
@@ -340,7 +341,13 @@ struct CheckInSheet: View {
                         .disabled(values.isEmpty && chosenFlags.isEmpty)
                 }
             }
-            .onAppear { showAll = expandMeasurements || fields.isEmpty }
+            .onAppear {
+                showAll = expandMeasurements || fields.isEmpty
+                // Steps come from Apple Health when it's connected: the last 7 days' average.
+                if fields.contains(.steps), health.isConnected, health.activity.stepsWeekAverage > 0, values[.steps] == nil {
+                    values[.steps] = health.activity.stepsWeekAverage.rounded()
+                }
+            }
         }
         .presentationDetents([.large])
     }
@@ -366,6 +373,7 @@ struct CheckInSheet: View {
         var checkIn = CheckIn(planID: logID, date: date, flags: chosenFlags)
         for (field, value) in values { checkIn.set(field, value) }
         log.add(checkIn)
+        Task { await health.save(checkIn) }
         dismiss()
     }
 }

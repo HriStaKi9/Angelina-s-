@@ -5,6 +5,8 @@ struct ProfileView: View {
     @Environment(ProfileStore.self) private var store
     @Environment(AssistantStore.self) private var assistant
     @Environment(AccountStore.self) private var account
+    @Environment(HealthService.self) private var health
+    @State private var healthError: String?
     @State private var confirmReset = false
     @State private var showAccount = false
     @State private var showImport = false
@@ -110,6 +112,28 @@ struct ProfileView: View {
                     }
                     Stepper("Workouts per week: \(store.profile.sessionsPerWeek)",
                             value: $store.profile.sessionsPerWeek, in: 2...6)
+                }
+                Section {
+                    if !health.isAvailable {
+                        Text("Apple Health isn't available on this device.").foregroundStyle(Theme.Palette.inkSecondary)
+                    } else if !health.isConnected {
+                        Button("Connect Apple Health", systemImage: "heart.fill") {
+                            Task {
+                                do { try await health.connect() } catch { healthError = error.localizedDescription }
+                            }
+                        }
+                    } else {
+                        Label("Connected", systemImage: "heart.fill").foregroundStyle(Theme.Palette.berry)
+                        Toggle("Save measurements to Health", isOn: Binding(get: { health.writeMeasurements }, set: { health.writeMeasurements = $0 }))
+                        Toggle("Save food diary to Health", isOn: Binding(get: { health.writeDiary }, set: { health.writeDiary = $0 }))
+                        Toggle("Save workouts to Health", isOn: Binding(get: { health.writeWorkouts }, set: { health.writeWorkouts = $0 }))
+                        Button("Stop using Apple Health", role: .destructive) { health.disconnect() }
+                    }
+                    if let healthError { Text(healthError).font(.caption).foregroundStyle(Theme.Palette.berry) }
+                } header: {
+                    Text("Apple Health")
+                } footer: {
+                    Text("Reads steps, active energy, distance, weight, body fat and waist; saves what you choose. Change exactly what's shared any time in Settings → Health → Data Access & Devices.")
                 }
                 Section {
                     FlowLayout(spacing: Theme.Spacing.s) {

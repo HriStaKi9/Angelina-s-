@@ -4,6 +4,7 @@ import SwiftUI
 struct LiveWorkoutView: View {
     @Environment(ProfileStore.self) private var store
     @Environment(TrainingLog.self) private var log
+    @Environment(HealthService.self) private var health
     @Environment(\.dismiss) private var dismiss
 
     let plan: PersonalPlan
@@ -192,6 +193,8 @@ struct LiveWorkoutView: View {
                            isShort: isShort, isDeload: isDeload,
                            durationSeconds: Int(Date.now.timeIntervalSince(startedAt)), exercises: done))
         savedFeedback += 1
+        let (start, title) = (startedAt, workout.title.en)
+        Task { await health.saveWorkout(start: start, end: .now, title: title) }
         dismiss()
     }
 

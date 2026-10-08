@@ -298,6 +298,7 @@ struct WarmUpCard: View {
 struct ProgramWorkoutView: View {
     @Environment(ProfileStore.self) private var store
     @Environment(TrainingLog.self) private var log
+    @Environment(HealthService.self) private var health
     let workout: ProgramWorkout
     /// Debug builds accept `-startWorkout YES` to open the live session straight away.
     @State private var isRunning = UserDefaults.standard.bool(forKey: "startWorkout") && _isDebugAssertConfiguration()
@@ -353,6 +354,7 @@ struct ProgramWorkoutView: View {
                 LiveWorkoutView(plan: plan, workout: workout, week: week)
                     .environment(store)
                     .environment(log)
+                    .environment(health)
             }
         }
     }

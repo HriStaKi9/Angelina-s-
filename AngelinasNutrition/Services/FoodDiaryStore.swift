@@ -15,6 +15,9 @@ final class FoodDiaryStore {
     /// Custom goal per plan id ("" = no plan); falls back to the plan's targets.
     private var goals: [String: CalorieGoal] = [:]
     private let fileURL: URL?
+    /// Called after an entry is added or deleted (used to mirror the diary into Apple Health).
+    @ObservationIgnored var onAdd: ((DiaryEntry) -> Void)?
+    @ObservationIgnored var onDelete: ((DiaryEntry) -> Void)?
 
     init(fileURL: URL? = FoodDiaryStore.defaultFileURL) {
         self.fileURL = fileURL
@@ -49,6 +52,7 @@ final class FoodDiaryStore {
 
     func add(_ entry: DiaryEntry) {
         entries.append(entry)
+        onAdd?(entry)
         if let food = entry.food {
             var food = food
             if let grams = entry.grams { food.portion = grams }
@@ -61,6 +65,7 @@ final class FoodDiaryStore {
 
     func delete(_ entry: DiaryEntry) {
         entries.removeAll { $0.id == entry.id }
+        onDelete?(entry)
         save()
     }
 
