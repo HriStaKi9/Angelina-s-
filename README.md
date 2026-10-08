@@ -36,6 +36,8 @@ Each file in `Resources/Plans/` holds one person's coach-written plan:
 
 Each program exercise also has `tracking` (sets, rep/second range, load type, starting weight, increment, rest) used by `ProgressionCoach`, and `alternatives` the user can swap in. Adjustment table rows carry a `trigger` that `PlanAdvisor` matches against weekly check-in averages. Workouts and check-ins are stored on-device by `TrainingLog` (`Application Support/training-log.json`).
 
+Ingredients carry a `shop` array (product key from `Resources/grocery-catalog.json`, quantity, unit) that `GroceryCalculator` totals into the weekly shopping list; lines without an amount (spices, herbs) are listed as "to taste". The user's chosen meal per day is stored by `WeekMenuStore` (`Application Support/week-menus.json`) and starts from the plan's sample week.
+
 All text is `{ "bg": …, "en": … }`; the app shows Bulgarian by default with a BG/EN switch on plan screens. Add a new plan by dropping in a JSON file and adding its name to `PlanLibrary.planFiles`.
 
 ## Exercise data
@@ -51,6 +53,6 @@ Exercises come from [free-exercise-db](https://github.com/yuhonas/free-exercise-
 1. ~~Foundation: design system, exercise database, onboarding, daily workout~~
 2. ~~Personal plans: Tsveti's and Hristomir's eating plans and training programs~~
 3. ~~Workout tracking: live sessions, the program's "Дневник", progression rules, exercise alternatives, weekly check-ins with plan advice~~
-4. Weekly groceries: pick meals for the week, get a shopping list
+4. ~~Weekly groceries: pick meals for the week from all the plan's options, get a shopping list~~
 5. Nutrition: food diary, logging meals from the plan, food search
 6. Plan sync: training adapts to what was eaten that day

@@ -36,6 +36,7 @@ struct MealLibraryView: View {
 
 struct MealDetailView: View {
     @Environment(ProfileStore.self) private var store
+    @Environment(WeekMenuStore.self) private var menus
     let meal: Meal
     /// Ingredients ticked off while cooking or shopping; resets when leaving the screen.
     @State private var checked: Set<Int> = []
@@ -43,10 +44,10 @@ struct MealDetailView: View {
     private var lang: ContentLanguage { store.language }
     private var accent: Color { store.activePlan?.accentColor ?? Theme.Palette.berry }
 
-    /// Weekdays in the sample week that use this meal.
+    /// Weekdays in the user's week that use this meal.
     private var scheduledDays: [Int] {
-        guard let plan = store.activePlan?.nutrition else { return [] }
-        return plan.week.filter { day in
+        guard let plan = store.activePlan else { return [] }
+        return menus.week(for: plan).filter { day in
             switch meal.course {
             case .breakfast: day.breakfast == meal.number
             case .lunch: day.lunch == meal.number
@@ -98,7 +99,7 @@ struct MealDetailView: View {
                 stat("\(meal.protein.text) \(store.t("г", "g"))", store.t("протеин", "protein"))
             }
             if !scheduledDays.isEmpty {
-                Text(store.t("В седмичното меню: ", "In the weekly menu: ") + scheduledDays.map(dayName).joined(separator: ", "))
+                Text(store.t("В моята седмица: ", "In my week: ") + scheduledDays.map(dayName).joined(separator: ", "))
                     .font(.caption)
                     .opacity(0.9)
             }
