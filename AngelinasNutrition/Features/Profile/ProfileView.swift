@@ -4,13 +4,30 @@ struct ProfileView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(ProfileStore.self) private var store
     @Environment(AssistantStore.self) private var assistant
+    @Environment(AccountStore.self) private var account
     @State private var confirmReset = false
+    @State private var showAccount = false
+    @State private var showImport = false
 
     var body: some View {
         @Bindable var store = store
 
         NavigationStack {
             Form {
+                Section {
+                    Button { showAccount = true } label: {
+                        HStack {
+                            Label(account.session?.email ?? "Sign in or create an account",
+                                  systemImage: account.isSignedIn ? "person.crop.circle.badge.checkmark" : "person.crop.circle.badge.plus")
+                            Spacer()
+                            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(Theme.Palette.inkSecondary)
+                        }
+                    }
+                } header: {
+                    Text("Account")
+                } footer: {
+                    Text(account.isSignedIn ? "Backed up \(account.lastSynced?.formatted(.relative(presentation: .named)) ?? "not yet")." : "Back up your data and restore it on a new phone.")
+                }
                 Section {
                     TextField("Name", text: $store.profile.name)
                 }
@@ -19,6 +36,15 @@ struct ProfileView: View {
                         Text("None – generic plan").tag(String?.none)
                         ForEach(PlanLibrary.shared.plans) { plan in
                             Text(plan.name[store.language]).tag(Optional(plan.id))
+                        }
+                    }
+                    Button("Import plan from PDF…", systemImage: "doc.badge.plus") { showImport = true }
+                    if let plan = store.activePlan, PlanLibrary.shared.isImported(plan.id) {
+                        Button(PlanLibrary.shared.isBundled(plan.id) ? "Restore the coach's original plan" : "Delete this imported plan",
+                               role: .destructive) {
+                            let bundled = PlanLibrary.shared.isBundled(plan.id)
+                            PlanLibrary.shared.removeImported(id: plan.id)
+                            if !bundled { store.selectPlan(nil) }
                         }
                     }
                     if store.activePlan != nil {
@@ -100,6 +126,8 @@ struct ProfileView: View {
             .scrollContentBackground(.hidden)
             .background(Theme.Palette.background.ignoresSafeArea())
             .navigationTitle("Profile")
+            .sheet(isPresented: $showAccount) { AccountView() }
+            .sheet(isPresented: $showImport) { ImportPlanView() }
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
             .confirmationDialog("Reset your profile and go back to onboarding?", isPresented: $confirmReset, titleVisibility: .visible) {
                 Button("Start over", role: .destructive) { store.reset() }

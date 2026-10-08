@@ -90,6 +90,12 @@ struct InfoSection: Codable, Hashable, Identifiable {
 
     var id: String { title.en }
 
+    init(title: Localized, items: [Localized], style: Style = .list) {
+        self.title = title
+        self.items = items
+        self.style = style
+    }
+
     private enum CodingKeys: String, CodingKey { case title, items, style }
 
     init(from decoder: Decoder) throws {

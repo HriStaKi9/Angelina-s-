@@ -243,6 +243,23 @@ final class WeekMenuStore {
         save()
     }
 
+    // MARK: Account backup
+
+    /// Everything this store keeps, for syncing to the account.
+    func exportData() -> Data {
+        (try? JSONEncoder().encode(Snapshot(weeks: weeks, groceryPlanIDs: groceryPlanIDs, groceryDays: groceryDays, checked: checked))) ?? Data()
+    }
+
+    /// Replaces local data with a backup from the account.
+    func restore(from data: Data) {
+        guard let snapshot = try? JSONDecoder().decode(Snapshot.self, from: data) else { return }
+        weeks = snapshot.weeks
+        groceryPlanIDs = snapshot.groceryPlanIDs
+        groceryDays = snapshot.groceryDays ?? Set(1...7)
+        checked = snapshot.checked
+        save()
+    }
+
     private func save() {
         guard let fileURL else { return }
         let snapshot = Snapshot(weeks: weeks, groceryPlanIDs: groceryPlanIDs, groceryDays: groceryDays, checked: checked)

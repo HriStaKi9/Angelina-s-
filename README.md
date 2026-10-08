@@ -69,3 +69,13 @@ Workouts → **More exercises** lists database exercises the user can do with th
 ## Food diary
 
 The **Diary** tab is a MyFitnessPal-style calorie counter: goal − food = remaining, protein/carbs/fat, and Breakfast/Lunch/Dinner/Snacks entries per day. Food can be added from the plan (one tap, or "log the day's menu"), the built-in basic foods (`Resources/basic-foods.json`, ≈ per 100 g), [Open Food Facts](https://world.openfoodfacts.org) search and barcode scanning (VisionKit), or quick add. The goal defaults to the middle of the plan's kcal and protein ranges; the calorie calculator (Mifflin-St Jeor, pre-filled from the plan's `body` stats, +400 kcal and an 1800 kcal floor while breastfeeding) can set a custom one. Stored by `FoodDiaryStore` in `Application Support/food-diary.json`. Profile moved to the 👤 button on Today.
+
+## Accounts (Supabase)
+
+Email + password accounts run on the owner's own [Supabase](https://supabase.com) project (free tier), over REST in `SupabaseClient` (no SDK). The session lives in the Keychain; the whole app state (profile, imported plans, workouts, check-ins, week menus, diary) is backed up as one JSON row in `public.user_data`, protected by row-level security, when the app goes to the background or on demand, and can be restored on another phone.
+
+Setup: create a project → SQL Editor → run the script shown in the app (Profile → Account, also `SupabaseSetupSection.sql`) → Project Settings → API → paste the Project URL and anon public key in the app, or set `SupabaseConfig.builtInURL` / `builtInAnonKey`. Supabase sends a confirmation email on sign-up by default.
+
+## Import a plan from PDF
+
+Profile or Nutrition → **Import plan from PDF**. Claude (`claude-opus-5-5`, the user's API key) reads the PDF and answers in a fixed JSON schema (structured outputs, `PlanImporter.schema`): targets, every meal option with ingredients mapped to grocery items, the sample week, rules and adjustments, in Bulgarian and English. The plan is saved in `Application Support/ImportedPlans/` as a new person, or replaces an existing person's eating plan (their training program is kept; "Restore the coach's original plan" undoes it).

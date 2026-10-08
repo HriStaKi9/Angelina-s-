@@ -36,18 +36,32 @@ struct ClaudeClient {
 
     let apiKey: String
 
-    /// Streams a reply. `stablePrompt` is cached (the plan); `context` changes per request (today's data).
+    /// Streams a chat reply. `stablePrompt` is cached (the plan); `context` changes per request (today's data).
     func stream(stablePrompt: String, context: String, turns: [Turn]) -> AsyncThrowingStream<Event, Error> {
+        stream(body: [
+            "max_tokens": 16000,
+            "system": [
+                // The plan rarely changes, so it goes first and is cached across messages.
+                ["type": "text", "text": stablePrompt, "cache_control": ["type": "ephemeral"]],
+                ["type": "text", "text": context],
+            ],
+            "messages": turns.map { ["role": $0.role.rawValue, "content": $0.text] },
+        ])
+    }
+
+    /// Streams any Messages request. Model, streaming, adaptive thinking, effort and refusal
+    /// fallback are filled in unless `body` sets them.
+    func stream(body: [String: Any]) -> AsyncThrowingStream<Event, Error> {
         AsyncThrowingStream { continuation in
             let task = Task {
                 do {
-                    let request = try makeRequest(stablePrompt: stablePrompt, context: context, turns: turns)
+                    let request = try makeRequest(body: body)
                     let (bytes, response) = try await URLSession.shared.bytes(for: request)
                     let status = (response as? HTTPURLResponse)?.statusCode ?? 0
                     guard status == 200 else {
-                        var body = ""
-                        for try await line in bytes.lines { body += line }
-                        throw ClientError.http(status: status, message: Self.errorMessage(from: body) ?? body)
+                        var text = ""
+                        for try await line in bytes.lines { text += line }
+                        throw ClientError.http(status: status, message: Self.errorMessage(from: text) ?? text)
                     }
                     for try await line in bytes.lines {
                         guard line.hasPrefix("data:") else { continue }
@@ -65,32 +79,26 @@ struct ClaudeClient {
         }
     }
 
-    private func makeRequest(stablePrompt: String, context: String, turns: [Turn]) throws -> URLRequest {
+    private func makeRequest(body: [String: Any]) throws -> URLRequest {
         var request = URLRequest(url: Self.endpoint)
         request.httpMethod = "POST"
-        request.timeoutInterval = 300
+        request.timeoutInterval = 600
         request.setValue("application/json", forHTTPHeaderField: "content-type")
         request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
         request.setValue("2023-06-01", forHTTPHeaderField: "anthropic-version")
         // Server-side fallback: if a safety classifier declines, the API retries on a recommended model.
         request.setValue("server-side-fallback-2026-07-01", forHTTPHeaderField: "anthropic-beta")
 
-        let body: [String: Any] = [
+        var full: [String: Any] = [
             "model": Self.model,
-            "max_tokens": 16000,
             "stream": true,
             "fallbacks": "default",
             "thinking": ["type": "adaptive"],
             // Opus 5.5 defaults to medium; set it explicitly.
             "output_config": ["effort": "medium"],
-            "system": [
-                // The plan rarely changes, so it goes first and is cached across messages.
-                ["type": "text", "text": stablePrompt, "cache_control": ["type": "ephemeral"]],
-                ["type": "text", "text": context],
-            ],
-            "messages": turns.map { ["role": $0.role.rawValue, "content": $0.text] },
         ]
-        request.httpBody = try JSONSerialization.data(withJSONObject: body)
+        full.merge(body) { _, new in new }
+        request.httpBody = try JSONSerialization.data(withJSONObject: full)
         return request
     }
 
