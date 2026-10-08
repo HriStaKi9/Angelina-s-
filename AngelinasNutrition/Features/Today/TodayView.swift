@@ -11,22 +11,34 @@ struct TodayView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: Theme.Spacing.xl) {
                     header
-                    WorkoutHeroCard(workout: workout, location: profile.location)
-                    PlanLinkCard(goal: profile.goal)
-                    exerciseSection(title: "Warm-up", subtitle: "Loosen up the muscles you'll train", exercises: workout.warmUp, numbered: false)
-                    exerciseSection(title: "Workout", subtitle: workout.prescription.style, exercises: workout.main, numbered: true)
+                    if let plan = store.activePlan {
+                        PlanTodaySection(plan: plan)
+                    } else {
+                        WorkoutHeroCard(workout: workout, location: profile.location)
+                        PlanLinkCard(goal: profile.goal)
+                        exerciseSection(title: "Warm-up", subtitle: "Loosen up the muscles you'll train", exercises: workout.warmUp, numbered: false)
+                        exerciseSection(title: "Workout", subtitle: workout.prescription.style, exercises: workout.main, numbered: true)
+                    }
                 }
                 .padding(.horizontal, Theme.Spacing.l)
                 .padding(.bottom, Theme.Spacing.xxl)
             }
             .background(Theme.Palette.background.ignoresSafeArea())
+            .toolbar {
+                if store.activePlan != nil {
+                    ToolbarItem(placement: .topBarTrailing) { LanguageMenu() }
+                }
+            }
             .navigationDestination(for: Exercise.self) { ExerciseDetailView(exercise: $0) }
+            .navigationDestination(for: Meal.self) { MealDetailView(meal: $0) }
+            .navigationDestination(for: ProgramWorkout.self) { ProgramWorkoutView(workout: $0) }
         }
     }
 
     private var header: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
-            Text(Date.now, format: .dateTime.weekday(.wide).day().month(.wide))
+            Text(Date.now.formatted(.dateTime.weekday(.wide).day().month(.wide)
+                    .locale(Locale(identifier: store.activePlan != nil && store.language == .bg ? "bg_BG" : "en_GB"))))
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(Theme.Palette.inkSecondary)
                 .textCase(.uppercase)
@@ -39,8 +51,12 @@ struct TodayView: View {
 
     private var greeting: String {
         let hour = Calendar.current.component(.hour, from: .now)
-        let part = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening"
-        return profile.firstName.isEmpty ? part : "\(part),\n\(profile.firstName)"
+        let usesPlan = store.activePlan != nil
+        let part = hour < 12 ? (usesPlan ? store.t("Добро утро", "Good morning") : "Good morning")
+            : hour < 18 ? (usesPlan ? store.t("Добър ден", "Good afternoon") : "Good afternoon")
+            : (usesPlan ? store.t("Добър вечер", "Good evening") : "Good evening")
+        let name = profile.firstName.isEmpty ? (store.activePlan?.name[store.language] ?? "") : profile.firstName
+        return name.isEmpty ? part : "\(part),\n\(name)"
     }
 
     @ViewBuilder
@@ -158,5 +174,87 @@ struct PlannedExerciseRow: View {
         .padding(Theme.Spacing.m)
         .background(Theme.Palette.surface, in: RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous).strokeBorder(Theme.Palette.hairline))
+    }
+}
+
+/// Today with a personal plan: the scheduled session and the day's menu.
+private struct PlanTodaySection: View {
+    @Environment(ProfileStore.self) private var store
+    let plan: PersonalPlan
+
+    private var lang: ContentLanguage { store.language }
+
+    var body: some View {
+        if let today = store.programDay() {
+            if let workout = today.workout {
+                NavigationLink(value: workout) {
+                    sessionCard(eyebrow: store.t("Днешна тренировка", "Today's workout"),
+                                title: workout.title[lang],
+                                detail: [workout.duration[lang], store.t("\(workout.exercises.count) упражнения", "\(workout.exercises.count) exercises")],
+                                week: today.week, systemImage: "dumbbell.fill", showsChevron: true)
+                }
+                .buttonStyle(.plain)
+            } else {
+                sessionCard(eyebrow: store.t("Днес", "Today"),
+                            title: today.day.kindTitle[lang],
+                            detail: [restDayHint(today.day.kind)],
+                            week: today.week, systemImage: today.day.systemImage, showsChevron: false)
+            }
+        }
+
+        let nutrition = plan.nutrition
+        if let menu = nutrition.menu(weekday: TrainingProgram.mondayBasedWeekday(of: .now)) {
+            let totals = menu.totals(in: nutrition)
+            VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+                SectionHeader(title: store.t("Днешно меню", "Today's menu"),
+                              subtitle: "≈ \(totals.kcal.text) kcal · \(totals.protein.text) \(store.t("г протеин", "g protein"))")
+                ForEach(menu.meals(in: nutrition)) { meal in
+                    NavigationLink(value: meal) { MealRow(meal: meal) }
+                        .buttonStyle(.plain)
+                }
+            }
+        }
+    }
+
+    private func restDayHint(_ kind: ScheduleDay.Kind) -> String {
+        switch kind {
+        case .walk: store.t("Разходка – крачките се броят", "A walk – steps count")
+        case .steps: store.t("Ден за крачки, без силова тренировка", "Steps day, no strength session")
+        case .rest: store.t("Почивка и възстановяване", "Rest and recover")
+        case .workout: ""
+        }
+    }
+
+    private func sessionCard(eyebrow: String, title: String, detail: [String], week: Int, systemImage: String, showsChevron: Bool) -> some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.l) {
+            HStack {
+                Text(store.t("Седмица \(week)", "Week \(week)"))
+                    .font(.caption.weight(.bold))
+                    .padding(.horizontal, 10).padding(.vertical, 6)
+                    .background(.white.opacity(0.22), in: Capsule())
+                Spacer()
+                Image(systemName: systemImage).font(.title2)
+            }
+            VStack(alignment: .leading, spacing: 4) {
+                Text(eyebrow).font(.subheadline.weight(.medium)).opacity(0.85)
+                Text(title).font(.system(.title, design: .rounded).weight(.bold))
+            }
+            HStack {
+                Text(detail.filter { !$0.isEmpty }.joined(separator: " · "))
+                    .font(.subheadline.weight(.medium))
+                Spacer()
+                if showsChevron {
+                    Image(systemName: "arrow.right.circle.fill").font(.title2)
+                }
+            }
+        }
+        .foregroundStyle(.white)
+        .padding(Theme.Spacing.xl)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            LinearGradient(colors: [plan.accentColor, Theme.Palette.apricot.opacity(0.9)], startPoint: .topLeading, endPoint: .bottomTrailing),
+            in: RoundedRectangle(cornerRadius: Theme.Radius.large, style: .continuous)
+        )
+        .shadow(color: plan.accentColor.opacity(0.3), radius: 16, y: 8)
     }
 }

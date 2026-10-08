@@ -5,7 +5,7 @@ struct OnboardingView: View {
     @State private var draft = UserProfile()
     @State private var step: Step = .welcome
 
-    enum Step: Int, CaseIterable { case welcome, goal, location, level }
+    enum Step: Int, CaseIterable { case welcome, plan, goal, location, level }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -19,6 +19,7 @@ struct OnboardingView: View {
                 VStack(alignment: .leading, spacing: Theme.Spacing.xl) {
                     switch step {
                     case .welcome: welcome
+                    case .plan: planStep
                     case .goal: goalStep
                     case .location: locationStep
                     case .level: levelStep
@@ -65,6 +66,19 @@ struct OnboardingView: View {
                     .overlay(RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous).strokeBorder(Theme.Palette.hairline))
             }
             .padding(.top, Theme.Spacing.l)
+        }
+    }
+
+    private var planStep: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+            stepHeader("Do you have a plan?", "Pick your coach-written eating and training plan, or let the app build one from your goal.")
+            ForEach(PlanLibrary.shared.plans) { plan in
+                PlanChoiceCard(plan: plan, isSelected: draft.planID == plan.id) { draft.planID = plan.id }
+            }
+            ChoiceCard(title: "No plan yet", subtitle: "Answer a few questions and get a generated plan",
+                       systemImage: "wand.and.stars", isSelected: draft.planID == nil, tint: Theme.Palette.lavender) {
+                draft.planID = nil
+            }
         }
     }
 
@@ -139,8 +153,9 @@ struct OnboardingView: View {
                 }
                 .accessibilityLabel("Back")
             }
-            Button(step == .level ? "Start my plan" : "Continue") {
-                if step == .level {
+            Button(isLastStep ? "Start my plan" : "Continue") {
+                if isLastStep {
+                    if draft.planID != nil { draft.programStart = TrainingProgram.mondayOfWeek(containing: .now) }
                     store.profile = draft
                     store.hasCompletedOnboarding = true
                 } else {
@@ -150,6 +165,9 @@ struct OnboardingView: View {
             .buttonStyle(PrimaryButtonStyle())
         }
     }
+
+    /// With a personal plan, the goal/location/level questions don't apply.
+    private var isLastStep: Bool { step == .level || (step == .plan && draft.planID != nil) }
 
     private func go(_ delta: Int) {
         guard let next = Step(rawValue: step.rawValue + delta) else { return }
