@@ -5,6 +5,7 @@ struct AngelinasNutritionApp: App {
     @State private var profileStore = ProfileStore()
     @State private var trainingLog = TrainingLog()
     @State private var weekMenus = WeekMenuStore()
+    @State private var assistant = AssistantStore()
 
     var body: some Scene {
         WindowGroup {
@@ -12,6 +13,7 @@ struct AngelinasNutritionApp: App {
                 .environment(profileStore)
                 .environment(trainingLog)
                 .environment(weekMenus)
+                .environment(assistant)
                 .tint(Theme.Palette.berry)
         }
     }

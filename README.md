@@ -54,5 +54,10 @@ Exercises come from [free-exercise-db](https://github.com/yuhonas/free-exercise-
 2. ~~Personal plans: Tsveti's and Hristomir's eating plans and training programs~~
 3. ~~Workout tracking: live sessions, the program's "Дневник", progression rules, exercise alternatives, weekly check-ins with plan advice~~
 4. ~~Weekly groceries: pick meals for the week from all the plan's options, get a shopping list~~
-5. Nutrition: food diary, logging meals from the plan, food search
-6. Plan sync: training adapts to what was eaten that day
+5. ~~Ask Claude (own API key) and one-page plan/program summaries~~
+6. Nutrition: food diary, logging meals from the plan, food search
+7. Plan sync: training adapts to what was eaten that day
+
+## Ask Claude
+
+The ✨ button on Today, Workouts, Nutrition and Progress opens a chat with Claude (`claude-opus-5-5`, streamed, server-side refusal fallback). It uses the user's own Anthropic API key, stored in the Keychain (`APIKeyStore`) and sent only to `api.anthropic.com`. The system prompt is the full plan rendered by `PlanSummary` (cached) plus a per-request block with today's session, chosen menu, check-ins and recent workouts. There is no Swift SDK, so `ClaudeClient` uses raw HTTP + Server-Sent Events.

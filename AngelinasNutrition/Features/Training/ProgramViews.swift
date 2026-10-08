@@ -1,6 +1,7 @@
 import SwiftUI
 
 enum WorkoutRoute: Hashable {
+    case overview
     case library
     case guide
     case logbook
@@ -27,6 +28,7 @@ struct WorkoutsView: View {
                     ToolbarItem(placement: .topBarTrailing) { LanguageMenu() }
                 }
             }
+            .askClaudeButton()
             .navigationDestination(for: Exercise.self) { ExerciseDetailView(exercise: $0) }
             .navigationDestination(for: ProgramWorkout.self) { ProgramWorkoutView(workout: $0) }
             #if DEBUG
@@ -36,6 +38,9 @@ struct WorkoutsView: View {
                    let workout = store.activePlan?.training.workout(id: id) {
                     path.append(workout)
                 }
+                if path.isEmpty, store.activePlan != nil, UserDefaults.standard.bool(forKey: "openOverview") {
+                    path.append(WorkoutRoute.overview)
+                }
             }
             #endif
             .navigationDestination(for: WorkoutRoute.self) { route in
@@ -43,6 +48,8 @@ struct WorkoutsView: View {
                 case .library:
                     ExerciseLibraryView()
                         .navigationTitle(store.t("Библиотека", "Exercise library"))
+                case .overview:
+                    if let plan = store.activePlan { TrainingOverviewView(plan: plan) }
                 case .logbook:
                     LogbookView()
                 case .guide:
@@ -80,6 +87,9 @@ private struct ProgramOverview: View {
                 ForEach(program.callouts) { InfoSectionView(section: $0) }
                 VStack(alignment: .leading, spacing: Theme.Spacing.m) {
                     SectionHeader(title: store.t("Още", "More"))
+                    NavigationLink(value: WorkoutRoute.overview) {
+                        GuideLinkRow(title: store.t("Програмата на една страница", "The whole program on one page"), systemImage: "doc.text.magnifyingglass", tint: plan.accentColor)
+                    }
                     NavigationLink(value: WorkoutRoute.logbook) {
                         GuideLinkRow(title: store.t("Дневник", "Logbook"), systemImage: "book.closed.fill", tint: plan.accentColor)
                     }
