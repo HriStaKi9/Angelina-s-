@@ -137,6 +137,7 @@ private struct PlanNutritionContent: View {
     private var guide: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.m) {
             SectionHeader(title: store.t("Ръководство", "Guide"))
+            ImportPlanRow()
             NavigationLink(value: NutritionRoute.overview) {
                 GuideLinkRow(title: store.t("Целият режим на една страница", "The whole plan on one page"), systemImage: "doc.text.magnifyingglass", tint: plan.accentColor)
             }
@@ -269,6 +270,7 @@ private struct GenericNutritionContent: View {
                     ForEach(PlanLibrary.shared.plans) { plan in
                         PlanChoiceCard(plan: plan, isSelected: false) { store.selectPlan(plan.id) }
                     }
+                    ImportPlanRow()
                 }
             }
             .padding(Theme.Spacing.l)
@@ -322,5 +324,20 @@ private struct MacroSplitCard: View {
             }
             Text(share, format: .percent).font(.metric).foregroundStyle(Theme.Palette.ink)
         }
+    }
+}
+
+/// Opens the PDF importer.
+struct ImportPlanRow: View {
+    @Environment(ProfileStore.self) private var store
+    @State private var isPresented = false
+
+    var body: some View {
+        Button { isPresented = true } label: {
+            GuideLinkRow(title: store.t("Зареди режим от PDF", "Import a plan from PDF"), systemImage: "doc.badge.plus",
+                         tint: store.activePlan?.accentColor ?? Theme.Palette.berry)
+        }
+        .buttonStyle(.plain)
+        .sheet(isPresented: $isPresented) { ImportPlanView() }
     }
 }

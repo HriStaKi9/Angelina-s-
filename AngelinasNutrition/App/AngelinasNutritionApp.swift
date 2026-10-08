@@ -7,6 +7,8 @@ struct AngelinasNutritionApp: App {
     @State private var weekMenus = WeekMenuStore()
     @State private var assistant = AssistantStore()
     @State private var foodDiary = FoodDiaryStore()
+    @State private var account = AccountStore()
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some Scene {
         WindowGroup {
@@ -16,6 +18,15 @@ struct AngelinasNutritionApp: App {
                 .environment(weekMenus)
                 .environment(assistant)
                 .environment(foodDiary)
+                .environment(account)
+                .onChange(of: scenePhase) { _, phase in
+                    // Back up when the app goes to the background, if signed in.
+                    guard phase == .background, account.isSignedIn else { return }
+                    Task {
+                        try? await AccountSync.backUp(account: account, profile: profileStore, log: trainingLog,
+                                                      menus: weekMenus, diary: foodDiary)
+                    }
+                }
                 .tint(Theme.Palette.berry)
         }
     }
@@ -35,6 +46,12 @@ struct RootView: View {
             }
         }
         .animation(.easeInOut(duration: 0.35), value: store.hasCompletedOnboarding)
+        #if DEBUG
+        // `-debugSheet account|import` opens those screens at launch, for simulator screenshots.
+        .sheet(isPresented: .constant(UserDefaults.standard.string(forKey: "debugSheet") != nil)) {
+            if UserDefaults.standard.string(forKey: "debugSheet") == "account" { AccountView() } else { ImportPlanView() }
+        }
+        #endif
     }
 }
 

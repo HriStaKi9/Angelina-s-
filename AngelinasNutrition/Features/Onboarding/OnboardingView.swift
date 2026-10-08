@@ -4,6 +4,7 @@ struct OnboardingView: View {
     @Environment(ProfileStore.self) private var store
     @State private var draft = UserProfile()
     @State private var step: Step = .welcome
+    @State private var showAccount = false
 
     enum Step: Int, CaseIterable { case welcome, plan, goal, location, level }
 
@@ -36,6 +37,7 @@ struct OnboardingView: View {
                 .padding(Theme.Spacing.xl)
         }
         .background(Theme.Palette.background.ignoresSafeArea())
+        .sheet(isPresented: $showAccount) { AccountView() }
     }
 
     // MARK: Steps
@@ -66,6 +68,9 @@ struct OnboardingView: View {
                     .overlay(RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous).strokeBorder(Theme.Palette.hairline))
             }
             .padding(.top, Theme.Spacing.l)
+            Button("Already have an account? Sign in") { showAccount = true }
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(Theme.Palette.berry)
         }
     }
 
