@@ -46,6 +46,8 @@ struct CheckIn: Codable, Hashable, Identifiable {
     var hips: Double?
     var steps: Int?
     var flags: Set<CheckInFlag> = []
+    /// Other tape measurements and body fat, keyed by `CheckInField.rawValue`.
+    var extra: [String: Double]?
 
     func value(_ field: CheckInField) -> Double? {
         switch field {
@@ -53,6 +55,20 @@ struct CheckIn: Codable, Hashable, Identifiable {
         case .waist: waist
         case .hips: hips
         case .steps: steps.map(Double.init)
+        default: extra?[field.rawValue]
+        }
+    }
+
+    mutating func set(_ field: CheckInField, _ value: Double?) {
+        switch field {
+        case .weight: weight = value
+        case .waist: waist = value
+        case .hips: hips = value
+        case .steps: steps = value.map { Int($0) }
+        default:
+            var all = extra ?? [:]
+            all[field.rawValue] = value
+            extra = all.isEmpty ? nil : all
         }
     }
 }

@@ -9,6 +9,7 @@ struct ProfileView: View {
     @State private var showAccount = false
     @State private var showImport = false
     @State private var showRecommended = false
+    @State private var showProviders = false
 
     var body: some View {
         @Bindable var store = store
@@ -110,18 +111,18 @@ struct ProfileView: View {
                     Text("Used by Workouts → More exercises.")
                 }
                 Section {
-                    if assistant.hasKey {
-                        Label("API key saved in Keychain", systemImage: "checkmark.seal.fill")
-                            .foregroundStyle(Theme.Palette.sage)
-                        Button("Remove API key", role: .destructive) { assistant.removeKey() }
-                    } else {
-                        Text("Tap ✨ on any tab to add your Anthropic API key.")
-                            .foregroundStyle(Theme.Palette.inkSecondary)
+                    Button { showProviders = true } label: {
+                        HStack {
+                            Label(assistant.provider.map { "\($0.title) · \(assistant.model(for: $0))" } ?? "Choose Claude, ChatGPT or Gemini",
+                                  systemImage: assistant.provider?.systemImage ?? "sparkles")
+                            Spacer()
+                            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(Theme.Palette.inkSecondary)
+                        }
                     }
                 } header: {
-                    Text("Ask Claude")
+                    Text("AI assistant")
                 } footer: {
-                    Text("Uses \(ClaudeClient.model) with your own key; chats are billed to your Anthropic account.")
+                    Text("Connect your Claude, ChatGPT or Gemini account with an API key; chats are billed to that account. Importing plans from PDF uses Claude.")
                 }
                 if store.profile.location == .home {
                     Section("Home equipment") {
@@ -140,6 +141,12 @@ struct ProfileView: View {
             .navigationTitle("Profile")
             .sheet(isPresented: $showAccount) { AccountView() }
             .sheet(isPresented: $showImport) { ImportPlanView() }
+            .sheet(isPresented: $showProviders) {
+                NavigationStack {
+                    ProviderPickerView()
+                        .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { showProviders = false } } }
+                }
+            }
             .sheet(isPresented: $showRecommended) {
                 NavigationStack {
                     RecommendedProgramsView(goal: store.profile.goal, sessions: store.profile.sessionsPerWeek)

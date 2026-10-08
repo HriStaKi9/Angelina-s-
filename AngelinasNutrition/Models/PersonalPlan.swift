@@ -468,25 +468,55 @@ struct CheckInSpec: Codable, Hashable {
 
 enum CheckInField: String, Codable, CaseIterable, Identifiable {
     case weight, waist, hips, steps
+    case chest, neck, arm, thigh, calf, bodyFat
 
     var id: String { rawValue }
+
+    /// The weekly body measurements, in the order they're taken.
+    static let bodyMeasurements: [CheckInField] = [.weight, .waist, .hips, .chest, .neck, .arm, .thigh, .calf, .bodyFat]
 
     var title: Localized {
         switch self {
         case .weight: Localized(bg: "Тегло", en: "Weight")
-        case .waist: Localized(bg: "Талия", en: "Waist")
+        case .waist: Localized(bg: "Талия (корем)", en: "Waist (belly)")
         case .hips: Localized(bg: "Ханш", en: "Hips")
         case .steps: Localized(bg: "Крачки (средно)", en: "Steps (daily avg)")
+        case .chest: Localized(bg: "Гръдна обиколка", en: "Chest")
+        case .neck: Localized(bg: "Врат", en: "Neck")
+        case .arm: Localized(bg: "Ръка (бицепс)", en: "Upper arm")
+        case .thigh: Localized(bg: "Бедро", en: "Thigh")
+        case .calf: Localized(bg: "Прасец", en: "Calf")
+        case .bodyFat: Localized(bg: "Телесни мазнини", en: "Body fat")
         }
     }
 
     var unit: Localized {
         switch self {
         case .weight: Localized(bg: "кг", en: "kg")
-        case .waist, .hips: Localized(bg: "см", en: "cm")
         case .steps: Localized(bg: "крачки", en: "steps")
+        case .bodyFat: Localized(bg: "%", en: "%")
+        default: Localized(bg: "см", en: "cm")
         }
     }
+
+    /// How to take the measurement the same way every week.
+    var howTo: Localized? {
+        switch self {
+        case .weight: Localized(bg: "Сутрин, след тоалетна, преди закуска.", en: "In the morning, after the toilet, before breakfast.")
+        case .waist: Localized(bg: "На нивото на пъпа, отпуснат корем, след издишване.", en: "At the belly button, relaxed, after breathing out.")
+        case .hips: Localized(bg: "Най-широката част на седалището, стъпалата заедно.", en: "Widest part of the glutes, feet together.")
+        case .chest: Localized(bg: "През зърната, ръцете отпуснати.", en: "Across the nipples, arms relaxed.")
+        case .neck: Localized(bg: "Под адамовата ябълка.", en: "Just below the Adam's apple.")
+        case .arm: Localized(bg: "Средата на мишницата, ръката отпусната (дясна).", en: "Middle of the upper arm, relaxed (right arm).")
+        case .thigh: Localized(bg: "Най-широката част, 15 см над коляното (дясно).", en: "Widest part, about 15 cm above the knee (right leg).")
+        case .calf: Localized(bg: "Най-широката част на прасеца (десен).", en: "Widest part of the calf (right leg).")
+        case .bodyFat: Localized(bg: "От кантар с измерване на мазнини, при едни и същи условия.", en: "From a body-fat scale, under the same conditions each time.")
+        case .steps: nil
+        }
+    }
+
+    /// Weight and steps vary day to day (averaged per week); tape measurements use the latest value.
+    var isAveraged: Bool { self == .weight || self == .steps }
 }
 
 enum CheckInFlag: String, Codable, CaseIterable, Identifiable {
