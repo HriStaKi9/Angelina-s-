@@ -12,6 +12,29 @@ struct ProfileView: View {
                 Section {
                     TextField("Name", text: $store.profile.name)
                 }
+                Section {
+                    Picker("Active plan", selection: Binding(get: { store.profile.planID }, set: { store.selectPlan($0) })) {
+                        Text("None – generic plan").tag(String?.none)
+                        ForEach(PlanLibrary.shared.plans) { plan in
+                            Text(plan.name[store.language]).tag(Optional(plan.id))
+                        }
+                    }
+                    if store.activePlan != nil {
+                        DatePicker("Program started", selection: Binding(
+                            get: { store.programStart },
+                            set: { store.profile.programStart = TrainingProgram.mondayOfWeek(containing: $0) }
+                        ), displayedComponents: .date)
+                        Picker("Plan language", selection: $store.language) {
+                            ForEach(ContentLanguage.allCases) { Text($0.title).tag($0) }
+                        }
+                    }
+                } header: {
+                    Text("Personal plan")
+                } footer: {
+                    if store.activePlan != nil {
+                        Text("The start date sets the program week (\"Week N\") and which A/B rotation applies.")
+                    }
+                }
                 Section("Goal") {
                     Picker("Goal", selection: $store.profile.goal) {
                         ForEach(FitnessGoal.allCases) { Label($0.title, systemImage: $0.systemImage).tag($0) }

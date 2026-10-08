@@ -21,10 +21,20 @@ Choose an iPhone simulator and press Run. The project uses Xcode's synchronized 
 | --- | --- |
 | `App/` | App entry point, onboarding/tab routing |
 | `DesignSystem/` | Color, type and spacing tokens (light + dark), shared components |
-| `Models/` | `Exercise`, `UserProfile`, `FitnessGoal` |
-| `Services/` | `ExerciseLibrary` (bundled DB), `ProfileStore` (persistence), `WorkoutPlanner` |
-| `Features/` | Onboarding, Today, Workouts, Nutrition, Profile screens |
+| `Models/` | `Exercise`, `UserProfile`, `FitnessGoal`, `PersonalPlan` (eating plan + training program) |
+| `Services/` | `ExerciseLibrary` (bundled DB), `PlanLibrary` (personal plans), `ProfileStore` (persistence), `WorkoutPlanner` |
+| `Features/` | Onboarding, Today, Workouts (program + library), Nutrition (menu, recipes, guides), Profile |
 | `Resources/exercises.json` | Bundled exercise database |
+| `Resources/Plans/*.json` | Personal plans (Tsveti, Hristomir), bilingual BG/EN |
+
+## Personal plans
+
+Each file in `Resources/Plans/` holds one person's coach-written plan:
+
+- **Nutrition**: daily targets, every meal option (breakfast, lunch, dinner, snacks) with ingredients, preparation, kcal and protein, a sample week, rules and the adjustment table.
+- **Training**: weekly schedule (with A/B rotation), workouts with sets, rest, starting weights and cues, warm-up, safety notes and progression rules. Exercises link to the exercise database by `exerciseID` for photos and instructions.
+
+All text is `{ "bg": …, "en": … }`; the app shows Bulgarian by default with a BG/EN switch on plan screens. Add a new plan by dropping in a JSON file and adding its name to `PlanLibrary.planFiles`.
 
 ## Exercise data
 
@@ -37,6 +47,7 @@ Exercises come from [free-exercise-db](https://github.com/yuhonas/free-exercise-
 ## Roadmap
 
 1. ~~Foundation: design system, exercise database, onboarding, daily workout~~
-2. Nutrition: calorie and macro targets, food diary, meal plans
-3. Workout tracking: log sets, history, progress
-4. Plan sync: training adapts to what was eaten that day
+2. ~~Personal plans: Tsveti's and Hristomir's eating plans and training programs~~
+3. Nutrition: food diary, logging meals from the plan, food search
+4. Workout tracking: log sets (the program's "Дневник"), history, progress
+5. Plan sync: training adapts to what was eaten that day

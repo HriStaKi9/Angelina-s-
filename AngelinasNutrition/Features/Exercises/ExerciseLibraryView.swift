@@ -1,6 +1,7 @@
 import SwiftUI
 
-struct ExerciseListView: View {
+/// Searchable, filterable exercise database. Hosted inside a NavigationStack by `WorkoutsView`.
+struct ExerciseLibraryView: View {
     @Environment(ProfileStore.self) private var store
     @State private var query = ""
     @State private var group: Exercise.MuscleGroup?
@@ -19,32 +20,28 @@ struct ExerciseListView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    filters
-                        .listRowInsets(EdgeInsets())
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
-                }
-                Section {
-                    ForEach(results) { exercise in
-                        NavigationLink(value: exercise) { ExerciseRow(exercise: exercise) }
-                            .listRowBackground(Theme.Palette.surface)
-                    }
-                } header: {
-                    Text("\(results.count) exercises")
-                }
+        List {
+            Section {
+                filters
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
             }
-            .scrollContentBackground(.hidden)
-            .background(Theme.Palette.background.ignoresSafeArea())
-            .navigationTitle("Workouts")
-            .searchable(text: $query, prompt: "Search exercises")
-            .navigationDestination(for: Exercise.self) { ExerciseDetailView(exercise: $0) }
-            .overlay {
-                if results.isEmpty {
-                    ContentUnavailableView.search(text: query)
+            Section {
+                ForEach(results) { exercise in
+                    NavigationLink(value: exercise) { ExerciseRow(exercise: exercise) }
+                        .listRowBackground(Theme.Palette.surface)
                 }
+            } header: {
+                Text("\(results.count) exercises")
+            }
+        }
+        .scrollContentBackground(.hidden)
+        .background(Theme.Palette.background.ignoresSafeArea())
+        .searchable(text: $query, prompt: "Search exercises")
+        .overlay {
+            if results.isEmpty {
+                ContentUnavailableView.search(text: query)
             }
         }
     }

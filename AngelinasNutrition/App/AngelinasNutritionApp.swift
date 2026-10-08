@@ -31,12 +31,25 @@ struct RootView: View {
 }
 
 struct MainTabView: View {
+    enum TabID: String { case today, workouts, nutrition, profile }
+
+    @State private var selection: TabID = Self.initialTab
+
     var body: some View {
-        TabView {
-            Tab("Today", systemImage: "sun.max.fill") { TodayView() }
-            Tab("Workouts", systemImage: "figure.strengthtraining.functional") { ExerciseListView() }
-            Tab("Nutrition", systemImage: "leaf.fill") { NutritionView() }
-            Tab("Profile", systemImage: "person.crop.circle.fill") { ProfileView() }
+        TabView(selection: $selection) {
+            Tab("Today", systemImage: "sun.max.fill", value: .today) { TodayView() }
+            Tab("Workouts", systemImage: "figure.strengthtraining.functional", value: .workouts) { WorkoutsView() }
+            Tab("Nutrition", systemImage: "leaf.fill", value: .nutrition) { NutritionView() }
+            Tab("Profile", systemImage: "person.crop.circle.fill", value: .profile) { ProfileView() }
         }
+    }
+
+    /// Debug builds accept `-tab <id>` so simulator screenshots can open any tab.
+    private static var initialTab: TabID {
+        #if DEBUG
+        UserDefaults.standard.string(forKey: "tab").flatMap(TabID.init(rawValue:)) ?? .today
+        #else
+        .today
+        #endif
     }
 }

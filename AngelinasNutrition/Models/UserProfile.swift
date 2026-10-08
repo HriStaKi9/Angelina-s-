@@ -7,6 +7,12 @@ struct UserProfile: Codable, Equatable {
     var homeEquipment: Set<Exercise.Equipment> = [.dumbbell, .bands]
     var level: Exercise.Level = .beginner
     var sessionsPerWeek: Int = 3
+    /// Active personal plan (`PersonalPlan.id`); nil means the app builds a generic plan from the goal.
+    /// Optional so profiles saved before plans existed still decode.
+    var planID: String?
+    /// Monday the training program started on; drives "Week N" and A/B rotation.
+    var programStart: Date?
+    var language: ContentLanguage?
 
     var firstName: String {
         name.split(separator: " ").first.map(String.init) ?? ""
