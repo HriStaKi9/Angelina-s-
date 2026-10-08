@@ -181,6 +181,7 @@ struct PlannedExerciseRow: View {
 private struct PlanTodaySection: View {
     @Environment(ProfileStore.self) private var store
     @Environment(TrainingLog.self) private var log
+    @Environment(WeekMenuStore.self) private var menus
     let plan: PersonalPlan
 
     private var lang: ContentLanguage { store.language }
@@ -206,7 +207,7 @@ private struct PlanTodaySection: View {
         }
 
         let nutrition = plan.nutrition
-        if let menu = nutrition.menu(weekday: TrainingProgram.mondayBasedWeekday(of: .now)) {
+        if let menu = menus.menu(for: plan, weekday: TrainingProgram.mondayBasedWeekday(of: .now)) {
             let totals = menu.totals(in: nutrition)
             VStack(alignment: .leading, spacing: Theme.Spacing.m) {
                 SectionHeader(title: store.t("Днешно меню", "Today's menu"),

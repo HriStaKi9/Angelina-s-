@@ -180,7 +180,7 @@ struct Meal: Codable, Hashable, Identifiable {
     let course: Course
     let number: Int
     let name: Localized
-    let ingredients: [Localized]
+    let ingredients: [Ingredient]
     let steps: Localized?
     let kcal: ApproxRange
     let protein: ApproxRange
@@ -188,12 +188,52 @@ struct Meal: Codable, Hashable, Identifiable {
     var id: String { "\(course.rawValue)-\(number)" }
 }
 
+/// One ingredient line as written in the plan, plus what to buy for it.
+struct Ingredient: Codable, Hashable {
+    let bg: String
+    let en: String
+    /// Structured amounts for the shopping list; nil for "to taste" lines (spices, herbs).
+    let shop: [ShopAmount]?
+
+    subscript(language: ContentLanguage) -> String { language == .bg ? bg : en }
+    var text: Localized { Localized(bg: bg, en: en) }
+}
+
+struct ShopAmount: Codable, Hashable {
+    enum Unit: String, Codable { case g, ml, pcs }
+
+    /// Key into `GroceryCatalog`.
+    let item: String
+    let qty: Double
+    let unit: Unit
+}
+
+/// A day's meal choice: one option per main course plus any number of snacks.
+/// The plan's sample week uses this type, and so does the user's own edited week.
 struct DayMenu: Codable, Hashable {
     let weekday: Int
-    let breakfast: Int
-    let lunch: Int
-    let dinner: Int
-    let snacks: [Int]
+    var breakfast: Int
+    var lunch: Int
+    var dinner: Int
+    var snacks: [Int]
+
+    func number(for course: Meal.Course) -> Int? {
+        switch course {
+        case .breakfast: breakfast
+        case .lunch: lunch
+        case .dinner: dinner
+        case .snack: nil
+        }
+    }
+
+    mutating func set(_ course: Meal.Course, _ number: Int) {
+        switch course {
+        case .breakfast: breakfast = number
+        case .lunch: lunch = number
+        case .dinner: dinner = number
+        case .snack: if !snacks.contains(number) { snacks.append(number) }
+        }
+    }
 
     /// Meals in eating order: breakfast → snack → lunch → snack → dinner (→ extra snacks).
     func meals(in plan: NutritionPlan) -> [Meal] {

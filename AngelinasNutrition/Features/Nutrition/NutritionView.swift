@@ -1,6 +1,7 @@
 import SwiftUI
 
 enum NutritionRoute: Hashable {
+    case groceries
     case library(Meal.Course)
     case about
     case rules
@@ -8,9 +9,10 @@ enum NutritionRoute: Hashable {
 
 struct NutritionView: View {
     @Environment(ProfileStore.self) private var store
+    @State private var path = NavigationPath()
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             Group {
                 if let plan = store.activePlan {
                     PlanNutritionContent(plan: plan)
@@ -26,6 +28,14 @@ struct NutritionView: View {
                 }
             }
             .navigationDestination(for: Meal.self) { MealDetailView(meal: $0) }
+            #if DEBUG
+            // `-openGroceries YES` opens the shopping list directly, for simulator screenshots.
+            .onAppear {
+                if path.isEmpty, store.activePlan != nil, UserDefaults.standard.bool(forKey: "openGroceries") {
+                    path.append(NutritionRoute.groceries)
+                }
+            }
+            #endif
             .navigationDestination(for: NutritionRoute.self) { route in
                 if let plan = store.activePlan { destination(route, plan: plan.nutrition) }
             }
@@ -35,6 +45,8 @@ struct NutritionView: View {
     @ViewBuilder
     private func destination(_ route: NutritionRoute, plan: NutritionPlan) -> some View {
         switch route {
+        case .groceries:
+            GroceryListView()
         case .library(let course):
             MealLibraryView(plan: plan, initialCourse: course)
         case .about:
@@ -51,7 +63,6 @@ struct NutritionView: View {
 private struct PlanNutritionContent: View {
     @Environment(ProfileStore.self) private var store
     let plan: PersonalPlan
-    @State private var weekday = TrainingProgram.mondayBasedWeekday(of: .now)
 
     private var nutrition: NutritionPlan { plan.nutrition }
     private var lang: ContentLanguage { store.language }
@@ -60,7 +71,9 @@ private struct PlanNutritionContent: View {
         ScrollView {
             VStack(alignment: .leading, spacing: Theme.Spacing.xl) {
                 header
-                dayMenu
+                NavigationLink(value: NutritionRoute.groceries) { GroceriesCard(tint: plan.accentColor) }
+                    .buttonStyle(.plain)
+                WeekMenuSection(plan: plan)
                 library
                 guide
             }
@@ -97,36 +110,6 @@ private struct PlanNutritionContent: View {
             }
         }
         .padding(.top, Theme.Spacing.s)
-    }
-
-    private var dayMenu: some View {
-        VStack(alignment: .leading, spacing: Theme.Spacing.m) {
-            SectionHeader(title: store.t("Меню за деня", "Daily menu"),
-                          subtitle: weekday == TrainingProgram.mondayBasedWeekday(of: .now) ? store.t("Днес", "Today") : nil)
-            WeekdayPicker(selection: $weekday, tint: plan.accentColor)
-
-            if let menu = nutrition.menu(weekday: weekday) {
-                let totals = menu.totals(in: nutrition)
-                ForEach(menu.meals(in: nutrition)) { meal in
-                    NavigationLink(value: meal) { MealRow(meal: meal) }
-                        .buttonStyle(.plain)
-                }
-                HStack {
-                    Text(store.t("Общо", "Total")).font(.subheadline.weight(.semibold))
-                    Spacer()
-                    Text("≈ \(totals.kcal.text) kcal · \(totals.protein.text) \(store.t("г протеин", "g protein"))")
-                        .font(.subheadline.weight(.semibold).monospacedDigit())
-                }
-                .foregroundStyle(Theme.Palette.ink)
-                .padding(.horizontal, Theme.Spacing.xs)
-            }
-            if let note = nutrition.weekNote {
-                Text(note[lang])
-                    .font(.footnote)
-                    .foregroundStyle(Theme.Palette.inkSecondary)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-        }
     }
 
     private var library: some View {

@@ -1,0 +1,394 @@
+[
+  {
+    "key": "cream_cheese",
+    "name": {
+      "bg": "Крема сирене light",
+      "en": "Light cream cheese"
+    },
+    "aisle": "dairy"
+  },
+  {
+    "key": "peanut_butter",
+    "name": {
+      "bg": "Фъстъчено масло",
+      "en": "Peanut butter"
+    },
+    "aisle": "pantry"
+  },
+  {
+    "key": "tomato_sauce",
+    "name": {
+      "bg": "Доматен сос без захар",
+      "en": "Tomato sauce, no sugar"
+    },
+    "aisle": "pantry"
+  },
+  {
+    "key": "sweet_potato",
+    "name": {
+      "bg": "Сладки картофи",
+      "en": "Sweet potatoes"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "egg_whites",
+    "name": {
+      "bg": "Белтъци",
+      "en": "Egg whites"
+    },
+    "aisle": "dairy"
+  },
+  {
+    "key": "eggs",
+    "name": {
+      "bg": "Яйца",
+      "en": "Eggs"
+    },
+    "aisle": "dairy"
+  },
+  {
+    "key": "chicken",
+    "name": {
+      "bg": "Пилешко месо",
+      "en": "Chicken"
+    },
+    "aisle": "meat"
+  },
+  {
+    "key": "beef_mince",
+    "name": {
+      "bg": "Телешка кайма (постна)",
+      "en": "Lean minced beef"
+    },
+    "aisle": "meat"
+  },
+  {
+    "key": "beef",
+    "name": {
+      "bg": "Телешко месо",
+      "en": "Beef"
+    },
+    "aisle": "meat"
+  },
+  {
+    "key": "pork",
+    "name": {
+      "bg": "Свинско бонфиле",
+      "en": "Pork tenderloin"
+    },
+    "aisle": "meat"
+  },
+  {
+    "key": "salmon",
+    "name": {
+      "bg": "Сьомга",
+      "en": "Salmon"
+    },
+    "aisle": "fish"
+  },
+  {
+    "key": "trout",
+    "name": {
+      "bg": "Пъстърва (филе)",
+      "en": "Trout fillet"
+    },
+    "aisle": "fish"
+  },
+  {
+    "key": "mackerel",
+    "name": {
+      "bg": "Скумрия (филе)",
+      "en": "Mackerel fillet"
+    },
+    "aisle": "fish"
+  },
+  {
+    "key": "oats",
+    "name": {
+      "bg": "Овесени ядки",
+      "en": "Rolled oats"
+    },
+    "aisle": "grains"
+  },
+  {
+    "key": "rice",
+    "name": {
+      "bg": "Ориз",
+      "en": "Rice"
+    },
+    "aisle": "grains"
+  },
+  {
+    "key": "pasta",
+    "name": {
+      "bg": "Пълнозърнеста паста",
+      "en": "Wholegrain pasta"
+    },
+    "aisle": "grains"
+  },
+  {
+    "key": "bulgur",
+    "name": {
+      "bg": "Булгур",
+      "en": "Bulgur"
+    },
+    "aisle": "grains"
+  },
+  {
+    "key": "bread",
+    "name": {
+      "bg": "Пълнозърнест хляб / тортили",
+      "en": "Wholegrain bread / tortillas"
+    },
+    "aisle": "grains"
+  },
+  {
+    "key": "skyr",
+    "name": {
+      "bg": "Skyr",
+      "en": "Skyr"
+    },
+    "aisle": "dairy"
+  },
+  {
+    "key": "yogurt",
+    "name": {
+      "bg": "Кисело мляко",
+      "en": "Yogurt"
+    },
+    "aisle": "dairy"
+  },
+  {
+    "key": "cottage",
+    "name": {
+      "bg": "Извара",
+      "en": "Cottage cheese (izvara)"
+    },
+    "aisle": "dairy"
+  },
+  {
+    "key": "milk",
+    "name": {
+      "bg": "Прясно мляко",
+      "en": "Milk"
+    },
+    "aisle": "dairy"
+  },
+  {
+    "key": "butter",
+    "name": {
+      "bg": "Масло",
+      "en": "Butter"
+    },
+    "aisle": "dairy"
+  },
+  {
+    "key": "kashkaval",
+    "name": {
+      "bg": "Кашкавал",
+      "en": "Kashkaval (yellow cheese)"
+    },
+    "aisle": "dairy"
+  },
+  {
+    "key": "mozzarella",
+    "name": {
+      "bg": "Моцарела light",
+      "en": "Light mozzarella"
+    },
+    "aisle": "dairy"
+  },
+  {
+    "key": "parmesan",
+    "name": {
+      "bg": "Пармезан",
+      "en": "Parmesan"
+    },
+    "aisle": "dairy"
+  },
+  {
+    "key": "sirene",
+    "name": {
+      "bg": "Сирене",
+      "en": "White cheese (sirene)"
+    },
+    "aisle": "dairy"
+  },
+  {
+    "key": "protein",
+    "name": {
+      "bg": "Протеин на прах",
+      "en": "Protein powder"
+    },
+    "aisle": "pantry"
+  },
+  {
+    "key": "olive_oil",
+    "name": {
+      "bg": "Зехтин",
+      "en": "Olive oil"
+    },
+    "aisle": "pantry"
+  },
+  {
+    "key": "honey",
+    "name": {
+      "bg": "Мед",
+      "en": "Honey"
+    },
+    "aisle": "pantry"
+  },
+  {
+    "key": "walnuts",
+    "name": {
+      "bg": "Орехи",
+      "en": "Walnuts"
+    },
+    "aisle": "pantry"
+  },
+  {
+    "key": "almonds",
+    "name": {
+      "bg": "Бадеми",
+      "en": "Almonds"
+    },
+    "aisle": "pantry"
+  },
+  {
+    "key": "avocado",
+    "name": {
+      "bg": "Авокадо",
+      "en": "Avocado"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "banana",
+    "name": {
+      "bg": "Банани",
+      "en": "Bananas"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "apple",
+    "name": {
+      "bg": "Ябълки",
+      "en": "Apples"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "berries",
+    "name": {
+      "bg": "Ягоди / боровинки",
+      "en": "Strawberries / blueberries"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "fruit",
+    "name": {
+      "bg": "Сезонни плодове",
+      "en": "Seasonal fruit"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "potatoes",
+    "name": {
+      "bg": "Картофи",
+      "en": "Potatoes"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "tomatoes",
+    "name": {
+      "bg": "Домати",
+      "en": "Tomatoes"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "cucumber",
+    "name": {
+      "bg": "Краставици",
+      "en": "Cucumbers"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "peppers",
+    "name": {
+      "bg": "Чушки",
+      "en": "Bell peppers"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "mushrooms",
+    "name": {
+      "bg": "Гъби",
+      "en": "Mushrooms"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "onion",
+    "name": {
+      "bg": "Лук",
+      "en": "Onions"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "carrots",
+    "name": {
+      "bg": "Моркови",
+      "en": "Carrots"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "courgettes",
+    "name": {
+      "bg": "Тиквички",
+      "en": "Courgettes"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "green_beans",
+    "name": {
+      "bg": "Зелен фасул",
+      "en": "Green beans"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "rocket",
+    "name": {
+      "bg": "Рукола",
+      "en": "Rocket"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "salad",
+    "name": {
+      "bg": "Зелена салата",
+      "en": "Salad leaves"
+    },
+    "aisle": "produce"
+  },
+  {
+    "key": "vegetables",
+    "name": {
+      "bg": "Зеленчуци (по избор)",
+      "en": "Vegetables (your choice)"
+    },
+    "aisle": "produce"
+  }
+]

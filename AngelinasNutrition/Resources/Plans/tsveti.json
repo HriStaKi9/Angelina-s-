@@ -93,31 +93,80 @@
         "ingredients": [
           {
             "bg": "2 яйца",
-            "en": "2 eggs"
+            "en": "2 eggs",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 2.0,
+                "unit": "pcs"
+              }
+            ]
           },
           {
             "bg": "100 г белтъци",
-            "en": "100 g egg whites"
+            "en": "100 g egg whites",
+            "shop": [
+              {
+                "item": "egg_whites",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г домат",
-            "en": "100 g tomato"
+            "en": "100 g tomato",
+            "shop": [
+              {
+                "item": "tomatoes",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г чушка",
-            "en": "100 g bell pepper"
+            "en": "100 g bell pepper",
+            "shop": [
+              {
+                "item": "peppers",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "30 г сирене",
-            "en": "30 g white cheese (sirene)"
+            "en": "30 g white cheese (sirene)",
+            "shop": [
+              {
+                "item": "sirene",
+                "qty": 30.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "50 г пълнозърнест хляб",
-            "en": "50 g wholegrain bread"
+            "en": "50 g wholegrain bread",
+            "shop": [
+              {
+                "item": "bread",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -137,23 +186,58 @@
         "ingredients": [
           {
             "bg": "40 г овесени ядки",
-            "en": "40 g rolled oats"
+            "en": "40 g rolled oats",
+            "shop": [
+              {
+                "item": "oats",
+                "qty": 40.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "150 г Skyr",
-            "en": "150 g Skyr"
+            "en": "150 g Skyr",
+            "shop": [
+              {
+                "item": "skyr",
+                "qty": 150.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "80 г банан",
-            "en": "80 g banana"
+            "en": "80 g banana",
+            "shop": [
+              {
+                "item": "banana",
+                "qty": 80.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г фъстъчено масло",
-            "en": "10 g peanut butter"
+            "en": "10 g peanut butter",
+            "shop": [
+              {
+                "item": "peanut_butter",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "2 яйца",
-            "en": "2 eggs"
+            "en": "2 eggs",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 2.0,
+                "unit": "pcs"
+              }
+            ]
           }
         ],
         "steps": {
@@ -173,31 +257,80 @@
         "ingredients": [
           {
             "bg": "2 яйца",
-            "en": "2 eggs"
+            "en": "2 eggs",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 2.0,
+                "unit": "pcs"
+              }
+            ]
           },
           {
             "bg": "80 г пилешко филе",
-            "en": "80 g chicken breast"
+            "en": "80 g chicken breast",
+            "shop": [
+              {
+                "item": "chicken",
+                "qty": 80.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г домати",
-            "en": "100 g tomatoes"
+            "en": "100 g tomatoes",
+            "shop": [
+              {
+                "item": "tomatoes",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г краставица",
-            "en": "100 g cucumber"
+            "en": "100 g cucumber",
+            "shop": [
+              {
+                "item": "cucumber",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "50 г авокадо",
-            "en": "50 g avocado"
+            "en": "50 g avocado",
+            "shop": [
+              {
+                "item": "avocado",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "50 г пълнозърнест хляб",
-            "en": "50 g wholegrain bread"
+            "en": "50 g wholegrain bread",
+            "shop": [
+              {
+                "item": "bread",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -217,23 +350,58 @@
         "ingredients": [
           {
             "bg": "50 г овесени ядки",
-            "en": "50 g rolled oats"
+            "en": "50 g rolled oats",
+            "shop": [
+              {
+                "item": "oats",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "200 г Skyr",
-            "en": "200 g Skyr"
+            "en": "200 g Skyr",
+            "shop": [
+              {
+                "item": "skyr",
+                "qty": 200.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "150 г ягоди или боровинки",
-            "en": "150 g strawberries or blueberries"
+            "en": "150 g strawberries or blueberries",
+            "shop": [
+              {
+                "item": "berries",
+                "qty": 150.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "15 г орехи",
-            "en": "15 g walnuts"
+            "en": "15 g walnuts",
+            "shop": [
+              {
+                "item": "walnuts",
+                "qty": 15.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г мед",
-            "en": "10 g honey"
+            "en": "10 g honey",
+            "shop": [
+              {
+                "item": "honey",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -253,27 +421,69 @@
         "ingredients": [
           {
             "bg": "2 яйца",
-            "en": "2 eggs"
+            "en": "2 eggs",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 2.0,
+                "unit": "pcs"
+              }
+            ]
           },
           {
             "bg": "80 г пилешко филе",
-            "en": "80 g chicken breast"
+            "en": "80 g chicken breast",
+            "shop": [
+              {
+                "item": "chicken",
+                "qty": 80.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "25 г кашкавал",
-            "en": "25 g kashkaval (yellow cheese)"
+            "en": "25 g kashkaval (yellow cheese)",
+            "shop": [
+              {
+                "item": "kashkaval",
+                "qty": 25.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г чушки",
-            "en": "100 g bell peppers"
+            "en": "100 g bell peppers",
+            "shop": [
+              {
+                "item": "peppers",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "50 г пълнозърнест хляб",
-            "en": "50 g wholegrain bread"
+            "en": "50 g wholegrain bread",
+            "shop": [
+              {
+                "item": "bread",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -293,27 +503,69 @@
         "ingredients": [
           {
             "bg": "2 яйца",
-            "en": "2 eggs"
+            "en": "2 eggs",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 2.0,
+                "unit": "pcs"
+              }
+            ]
           },
           {
             "bg": "50 г авокадо",
-            "en": "50 g avocado"
+            "en": "50 g avocado",
+            "shop": [
+              {
+                "item": "avocado",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "60 г пълнозърнест хляб",
-            "en": "60 g wholegrain bread"
+            "en": "60 g wholegrain bread",
+            "shop": [
+              {
+                "item": "bread",
+                "qty": 60.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "150 г домати",
-            "en": "150 g tomatoes"
+            "en": "150 g tomatoes",
+            "shop": [
+              {
+                "item": "tomatoes",
+                "qty": 150.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г краставица",
-            "en": "100 g cucumber"
+            "en": "100 g cucumber",
+            "shop": [
+              {
+                "item": "cucumber",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "150 г Skyr",
-            "en": "150 g Skyr"
+            "en": "150 g Skyr",
+            "shop": [
+              {
+                "item": "skyr",
+                "qty": 150.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -333,31 +585,80 @@
         "ingredients": [
           {
             "bg": "40 г овесени ядки",
-            "en": "40 g rolled oats"
+            "en": "40 g rolled oats",
+            "shop": [
+              {
+                "item": "oats",
+                "qty": 40.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "2 яйца",
-            "en": "2 eggs"
+            "en": "2 eggs",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 2.0,
+                "unit": "pcs"
+              }
+            ]
           },
           {
             "bg": "100 г белтъци",
-            "en": "100 g egg whites"
+            "en": "100 g egg whites",
+            "shop": [
+              {
+                "item": "egg_whites",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г гъби",
-            "en": "100 g mushrooms"
+            "en": "100 g mushrooms",
+            "shop": [
+              {
+                "item": "mushrooms",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г домат",
-            "en": "100 g tomato"
+            "en": "100 g tomato",
+            "shop": [
+              {
+                "item": "tomatoes",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "30 г сирене",
-            "en": "30 g white cheese (sirene)"
+            "en": "30 g white cheese (sirene)",
+            "shop": [
+              {
+                "item": "sirene",
+                "qty": 30.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -377,19 +678,47 @@
         "ingredients": [
           {
             "bg": "70 г пълнозърнест хляб",
-            "en": "70 g wholegrain bread"
+            "en": "70 g wholegrain bread",
+            "shop": [
+              {
+                "item": "bread",
+                "qty": 70.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "2 яйца",
-            "en": "2 eggs"
+            "en": "2 eggs",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 2.0,
+                "unit": "pcs"
+              }
+            ]
           },
           {
             "bg": "70 г пилешко филе",
-            "en": "70 g chicken breast"
+            "en": "70 g chicken breast",
+            "shop": [
+              {
+                "item": "chicken",
+                "qty": 70.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "30 г крема сирене light",
-            "en": "30 g light cream cheese"
+            "en": "30 g light cream cheese",
+            "shop": [
+              {
+                "item": "cream_cheese",
+                "qty": 30.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "домат, краставица, зелена салата",
@@ -413,23 +742,58 @@
         "ingredients": [
           {
             "bg": "200 г кисело мляко 2%",
-            "en": "200 g yogurt 2%"
+            "en": "200 g yogurt 2%",
+            "shop": [
+              {
+                "item": "yogurt",
+                "qty": 200.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "30 г овесени ядки",
-            "en": "30 g rolled oats"
+            "en": "30 g rolled oats",
+            "shop": [
+              {
+                "item": "oats",
+                "qty": 30.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "80 г банан",
-            "en": "80 g banana"
+            "en": "80 g banana",
+            "shop": [
+              {
+                "item": "banana",
+                "qty": 80.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г бадеми",
-            "en": "10 g almonds"
+            "en": "10 g almonds",
+            "shop": [
+              {
+                "item": "almonds",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "2 яйца",
-            "en": "2 eggs"
+            "en": "2 eggs",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 2.0,
+                "unit": "pcs"
+              }
+            ]
           }
         ],
         "steps": {
@@ -449,27 +813,69 @@
         "ingredients": [
           {
             "bg": "40 г овесени ядки",
-            "en": "40 g rolled oats"
+            "en": "40 g rolled oats",
+            "shop": [
+              {
+                "item": "oats",
+                "qty": 40.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "2 яйца",
-            "en": "2 eggs"
+            "en": "2 eggs",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 2.0,
+                "unit": "pcs"
+              }
+            ]
           },
           {
             "bg": "100 г белтъци",
-            "en": "100 g egg whites"
+            "en": "100 g egg whites",
+            "shop": [
+              {
+                "item": "egg_whites",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "80 г банан",
-            "en": "80 g banana"
+            "en": "80 g banana",
+            "shop": [
+              {
+                "item": "banana",
+                "qty": 80.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г Skyr",
-            "en": "100 g Skyr"
+            "en": "100 g Skyr",
+            "shop": [
+              {
+                "item": "skyr",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г мед",
-            "en": "10 g honey"
+            "en": "10 g honey",
+            "shop": [
+              {
+                "item": "honey",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -489,19 +895,47 @@
         "ingredients": [
           {
             "bg": "130 г пилешко филе",
-            "en": "130 g chicken breast"
+            "en": "130 g chicken breast",
+            "shop": [
+              {
+                "item": "chicken",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "70 г ориз",
-            "en": "70 g rice (dry)"
+            "en": "70 g rice (dry)",
+            "shop": [
+              {
+                "item": "rice",
+                "qty": 70.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "250 г зеленчуци",
-            "en": "250 g vegetables"
+            "en": "250 g vegetables",
+            "shop": [
+              {
+                "item": "vegetables",
+                "qty": 250.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г зехтин",
-            "en": "10 g olive oil"
+            "en": "10 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -521,19 +955,47 @@
         "ingredients": [
           {
             "bg": "130 г постно телешко",
-            "en": "130 g lean beef"
+            "en": "130 g lean beef",
+            "shop": [
+              {
+                "item": "beef",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "300 г картофи",
-            "en": "300 g potatoes"
+            "en": "300 g potatoes",
+            "shop": [
+              {
+                "item": "potatoes",
+                "qty": 300.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "200 г салата",
-            "en": "200 g salad"
+            "en": "200 g salad",
+            "shop": [
+              {
+                "item": "salad",
+                "qty": 200.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г зехтин",
-            "en": "10 g olive oil"
+            "en": "10 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -553,19 +1015,47 @@
         "ingredients": [
           {
             "bg": "130 г свинско бонфиле",
-            "en": "130 g pork tenderloin"
+            "en": "130 g pork tenderloin",
+            "shop": [
+              {
+                "item": "pork",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "70 г ориз",
-            "en": "70 g rice (dry)"
+            "en": "70 g rice (dry)",
+            "shop": [
+              {
+                "item": "rice",
+                "qty": 70.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "250 г тиквички",
-            "en": "250 g courgettes"
+            "en": "250 g courgettes",
+            "shop": [
+              {
+                "item": "courgettes",
+                "qty": 250.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г зехтин",
-            "en": "10 g olive oil"
+            "en": "10 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -585,19 +1075,47 @@
         "ingredients": [
           {
             "bg": "130 г пилешко филе",
-            "en": "130 g chicken breast"
+            "en": "130 g chicken breast",
+            "shop": [
+              {
+                "item": "chicken",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "300 г картофи",
-            "en": "300 g potatoes"
+            "en": "300 g potatoes",
+            "shop": [
+              {
+                "item": "potatoes",
+                "qty": 300.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "150 г моркови",
-            "en": "150 g carrots"
+            "en": "150 g carrots",
+            "shop": [
+              {
+                "item": "carrots",
+                "qty": 150.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г зехтин",
-            "en": "10 g olive oil"
+            "en": "10 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -617,27 +1135,69 @@
         "ingredients": [
           {
             "bg": "130 г постна телешка кайма",
-            "en": "130 g lean minced beef"
+            "en": "130 g lean minced beef",
+            "shop": [
+              {
+                "item": "beef_mince",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "70 г ориз",
-            "en": "70 g rice (dry)"
+            "en": "70 g rice (dry)",
+            "shop": [
+              {
+                "item": "rice",
+                "qty": 70.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "150 г домати",
-            "en": "150 g tomatoes"
+            "en": "150 g tomatoes",
+            "shop": [
+              {
+                "item": "tomatoes",
+                "qty": 150.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г чушки",
-            "en": "100 g bell peppers"
+            "en": "100 g bell peppers",
+            "shop": [
+              {
+                "item": "peppers",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "80 г лук",
-            "en": "80 g onion"
+            "en": "80 g onion",
+            "shop": [
+              {
+                "item": "onion",
+                "qty": 80.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -657,23 +1217,58 @@
         "ingredients": [
           {
             "bg": "120 г пилешко филе",
-            "en": "120 g chicken breast"
+            "en": "120 g chicken breast",
+            "shop": [
+              {
+                "item": "chicken",
+                "qty": 120.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "70 г пълнозърнеста паста",
-            "en": "70 g wholegrain pasta (dry)"
+            "en": "70 g wholegrain pasta (dry)",
+            "shop": [
+              {
+                "item": "pasta",
+                "qty": 70.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "150 г доматен сос без захар",
-            "en": "150 g tomato sauce, no added sugar"
+            "en": "150 g tomato sauce, no added sugar",
+            "shop": [
+              {
+                "item": "tomato_sauce",
+                "qty": 150.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "15 г пармезан",
-            "en": "15 g parmesan"
+            "en": "15 g parmesan",
+            "shop": [
+              {
+                "item": "parmesan",
+                "qty": 15.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -693,19 +1288,47 @@
         "ingredients": [
           {
             "bg": "130 г сьомга",
-            "en": "130 g salmon"
+            "en": "130 g salmon",
+            "shop": [
+              {
+                "item": "salmon",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "250 г сладък картоф",
-            "en": "250 g sweet potato"
+            "en": "250 g sweet potato",
+            "shop": [
+              {
+                "item": "sweet_potato",
+                "qty": 250.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "200 г зелена салата",
-            "en": "200 g green salad"
+            "en": "200 g green salad",
+            "shop": [
+              {
+                "item": "salad",
+                "qty": 200.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -725,27 +1348,69 @@
         "ingredients": [
           {
             "bg": "130 г пилешко филе",
-            "en": "130 g chicken breast"
+            "en": "130 g chicken breast",
+            "shop": [
+              {
+                "item": "chicken",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "70 г ориз",
-            "en": "70 g rice (dry)"
+            "en": "70 g rice (dry)",
+            "shop": [
+              {
+                "item": "rice",
+                "qty": 70.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г краставица",
-            "en": "100 g cucumber"
+            "en": "100 g cucumber",
+            "shop": [
+              {
+                "item": "cucumber",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г домати",
-            "en": "100 g tomatoes"
+            "en": "100 g tomatoes",
+            "shop": [
+              {
+                "item": "tomatoes",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "50 г авокадо",
-            "en": "50 g avocado"
+            "en": "50 g avocado",
+            "shop": [
+              {
+                "item": "avocado",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г кисело мляко",
-            "en": "100 g yogurt"
+            "en": "100 g yogurt",
+            "shop": [
+              {
+                "item": "yogurt",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -765,23 +1430,58 @@
         "ingredients": [
           {
             "bg": "130 г свинско бонфиле",
-            "en": "130 g pork tenderloin"
+            "en": "130 g pork tenderloin",
+            "shop": [
+              {
+                "item": "pork",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "300 г картофи",
-            "en": "300 g potatoes"
+            "en": "300 g potatoes",
+            "shop": [
+              {
+                "item": "potatoes",
+                "qty": 300.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "50 мл прясно мляко 1.5–2%",
-            "en": "50 ml milk 1.5–2%"
+            "en": "50 ml milk 1.5–2%",
+            "shop": [
+              {
+                "item": "milk",
+                "qty": 50.0,
+                "unit": "ml"
+              }
+            ]
           },
           {
             "bg": "5 г масло",
-            "en": "5 g butter"
+            "en": "5 g butter",
+            "shop": [
+              {
+                "item": "butter",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "200 г зеленчуци",
-            "en": "200 g vegetables"
+            "en": "200 g vegetables",
+            "shop": [
+              {
+                "item": "vegetables",
+                "qty": 200.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -801,23 +1501,58 @@
         "ingredients": [
           {
             "bg": "120 г телешко",
-            "en": "120 g beef"
+            "en": "120 g beef",
+            "shop": [
+              {
+                "item": "beef",
+                "qty": 120.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "60 г ориз",
-            "en": "60 g rice (dry)"
+            "en": "60 g rice (dry)",
+            "shop": [
+              {
+                "item": "rice",
+                "qty": 60.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "1 яйце",
-            "en": "1 egg"
+            "en": "1 egg",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 1.0,
+                "unit": "pcs"
+              }
+            ]
           },
           {
             "bg": "200 г зеленчуци",
-            "en": "200 g vegetables"
+            "en": "200 g vegetables",
+            "shop": [
+              {
+                "item": "vegetables",
+                "qty": 200.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -837,19 +1572,47 @@
         "ingredients": [
           {
             "bg": "130 г телешки стек",
-            "en": "130 g beef steak"
+            "en": "130 g beef steak",
+            "shop": [
+              {
+                "item": "beef",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "250 г картофи",
-            "en": "250 g potatoes"
+            "en": "250 g potatoes",
+            "shop": [
+              {
+                "item": "potatoes",
+                "qty": 250.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "200 г салата",
-            "en": "200 g salad"
+            "en": "200 g salad",
+            "shop": [
+              {
+                "item": "salad",
+                "qty": 200.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г зехтин",
-            "en": "10 g olive oil"
+            "en": "10 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -869,19 +1632,57 @@
         "ingredients": [
           {
             "bg": "130 г пилешко филе",
-            "en": "130 g chicken breast"
+            "en": "130 g chicken breast",
+            "shop": [
+              {
+                "item": "chicken",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "300 г зеленчуци – тиквички, моркови, чушки",
-            "en": "300 g vegetables – courgettes, carrots, peppers"
+            "en": "300 g vegetables – courgettes, carrots, peppers",
+            "shop": [
+              {
+                "item": "courgettes",
+                "qty": 100.0,
+                "unit": "g"
+              },
+              {
+                "item": "carrots",
+                "qty": 100.0,
+                "unit": "g"
+              },
+              {
+                "item": "peppers",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "200 г картофи",
-            "en": "200 g potatoes"
+            "en": "200 g potatoes",
+            "shop": [
+              {
+                "item": "potatoes",
+                "qty": 200.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г зехтин",
-            "en": "10 g olive oil"
+            "en": "10 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -901,19 +1702,47 @@
         "ingredients": [
           {
             "bg": "150 г пъстърва (филе)",
-            "en": "150 g trout fillet"
+            "en": "150 g trout fillet",
+            "shop": [
+              {
+                "item": "trout",
+                "qty": 150.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "60 г ориз",
-            "en": "60 g rice (dry)"
+            "en": "60 g rice (dry)",
+            "shop": [
+              {
+                "item": "rice",
+                "qty": 60.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "250 г тиквички",
-            "en": "250 g courgettes"
+            "en": "250 g courgettes",
+            "shop": [
+              {
+                "item": "courgettes",
+                "qty": 250.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г зехтин",
-            "en": "10 g olive oil"
+            "en": "10 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -933,31 +1762,80 @@
         "ingredients": [
           {
             "bg": "130 г пилешко филе",
-            "en": "130 g chicken breast"
+            "en": "130 g chicken breast",
+            "shop": [
+              {
+                "item": "chicken",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "60 г ориз",
-            "en": "60 g rice (dry)"
+            "en": "60 g rice (dry)",
+            "shop": [
+              {
+                "item": "rice",
+                "qty": 60.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г чушки",
-            "en": "100 g bell peppers"
+            "en": "100 g bell peppers",
+            "shop": [
+              {
+                "item": "peppers",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г домати",
-            "en": "100 g tomatoes"
+            "en": "100 g tomatoes",
+            "shop": [
+              {
+                "item": "tomatoes",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "50 г лук",
-            "en": "50 g onion"
+            "en": "50 g onion",
+            "shop": [
+              {
+                "item": "onion",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "50 г авокадо",
-            "en": "50 g avocado"
+            "en": "50 g avocado",
+            "shop": [
+              {
+                "item": "avocado",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -977,27 +1855,69 @@
         "ingredients": [
           {
             "bg": "130 г постна телешка кайма",
-            "en": "130 g lean minced beef"
+            "en": "130 g lean minced beef",
+            "shop": [
+              {
+                "item": "beef_mince",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "250 г картофи",
-            "en": "250 g potatoes"
+            "en": "250 g potatoes",
+            "shop": [
+              {
+                "item": "potatoes",
+                "qty": 250.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "½ яйце (за сместа)",
-            "en": "½ egg (for the mix)"
+            "en": "½ egg (for the mix)",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 0.5,
+                "unit": "pcs"
+              }
+            ]
           },
           {
             "bg": "50 г лук",
-            "en": "50 g onion"
+            "en": "50 g onion",
+            "shop": [
+              {
+                "item": "onion",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "200 г салата",
-            "en": "200 g salad"
+            "en": "200 g salad",
+            "shop": [
+              {
+                "item": "salad",
+                "qty": 200.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -1017,19 +1937,47 @@
         "ingredients": [
           {
             "bg": "130 г скумрия (филе)",
-            "en": "130 g mackerel fillet"
+            "en": "130 g mackerel fillet",
+            "shop": [
+              {
+                "item": "mackerel",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "50 г булгур",
-            "en": "50 g bulgur (dry)"
+            "en": "50 g bulgur (dry)",
+            "shop": [
+              {
+                "item": "bulgur",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "200 г салата",
-            "en": "200 g salad"
+            "en": "200 g salad",
+            "shop": [
+              {
+                "item": "salad",
+                "qty": 200.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -1049,27 +1997,69 @@
         "ingredients": [
           {
             "bg": "2 яйца",
-            "en": "2 eggs"
+            "en": "2 eggs",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 2.0,
+                "unit": "pcs"
+              }
+            ]
           },
           {
             "bg": "100 г пилешко",
-            "en": "100 g chicken"
+            "en": "100 g chicken",
+            "shop": [
+              {
+                "item": "chicken",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "150 г зеленчуци",
-            "en": "150 g vegetables"
+            "en": "150 g vegetables",
+            "shop": [
+              {
+                "item": "vegetables",
+                "qty": 150.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "25 г кашкавал",
-            "en": "25 g kashkaval (yellow cheese)"
+            "en": "25 g kashkaval (yellow cheese)",
+            "shop": [
+              {
+                "item": "kashkaval",
+                "qty": 25.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "50 г пълнозърнест хляб",
-            "en": "50 g wholegrain bread"
+            "en": "50 g wholegrain bread",
+            "shop": [
+              {
+                "item": "bread",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -1089,19 +2079,47 @@
         "ingredients": [
           {
             "bg": "130 г телешко",
-            "en": "130 g beef"
+            "en": "130 g beef",
+            "shop": [
+              {
+                "item": "beef",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "60 г ориз",
-            "en": "60 g rice (dry)"
+            "en": "60 g rice (dry)",
+            "shop": [
+              {
+                "item": "rice",
+                "qty": 60.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "250 г зелен фасул",
-            "en": "250 g green beans"
+            "en": "250 g green beans",
+            "shop": [
+              {
+                "item": "green_beans",
+                "qty": 250.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г зехтин",
-            "en": "10 g olive oil"
+            "en": "10 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -1121,19 +2139,47 @@
         "ingredients": [
           {
             "bg": "130 г пилешко филе",
-            "en": "130 g chicken breast"
+            "en": "130 g chicken breast",
+            "shop": [
+              {
+                "item": "chicken",
+                "qty": 130.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "60 г булгур",
-            "en": "60 g bulgur (dry)"
+            "en": "60 g bulgur (dry)",
+            "shop": [
+              {
+                "item": "bulgur",
+                "qty": 60.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "250 г зеленчуци",
-            "en": "250 g vegetables"
+            "en": "250 g vegetables",
+            "shop": [
+              {
+                "item": "vegetables",
+                "qty": 250.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "10 г зехтин",
-            "en": "10 g olive oil"
+            "en": "10 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 10.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": {
@@ -1153,31 +2199,80 @@
         "ingredients": [
           {
             "bg": "1 пълнозърнеста тортила (~70 г)",
-            "en": "1 wholegrain tortilla (~70 g)"
+            "en": "1 wholegrain tortilla (~70 g)",
+            "shop": [
+              {
+                "item": "bread",
+                "qty": 70.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г сготвено пилешко",
-            "en": "100 g cooked chicken"
+            "en": "100 g cooked chicken",
+            "shop": [
+              {
+                "item": "chicken",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "50 г доматен сос",
-            "en": "50 g tomato sauce"
+            "en": "50 g tomato sauce",
+            "shop": [
+              {
+                "item": "tomato_sauce",
+                "qty": 50.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "60 г моцарела light",
-            "en": "60 g light mozzarella"
+            "en": "60 g light mozzarella",
+            "shop": [
+              {
+                "item": "mozzarella",
+                "qty": 60.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г чушки",
-            "en": "100 g bell peppers"
+            "en": "100 g bell peppers",
+            "shop": [
+              {
+                "item": "peppers",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г домати",
-            "en": "100 g tomatoes"
+            "en": "100 g tomatoes",
+            "shop": [
+              {
+                "item": "tomatoes",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "шепа рукола",
@@ -1201,15 +2296,36 @@
         "ingredients": [
           {
             "bg": "200 г Skyr",
-            "en": "200 g Skyr"
+            "en": "200 g Skyr",
+            "shop": [
+              {
+                "item": "skyr",
+                "qty": 200.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "150 г сезонен плод",
-            "en": "150 g seasonal fruit"
+            "en": "150 g seasonal fruit",
+            "shop": [
+              {
+                "item": "fruit",
+                "qty": 150.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "15 г орехи",
-            "en": "15 g walnuts"
+            "en": "15 g walnuts",
+            "shop": [
+              {
+                "item": "walnuts",
+                "qty": 15.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": null,
@@ -1226,19 +2342,47 @@
         "ingredients": [
           {
             "bg": "200 г кисело мляко",
-            "en": "200 g yogurt"
+            "en": "200 g yogurt",
+            "shop": [
+              {
+                "item": "yogurt",
+                "qty": 200.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "20 г протеин на прах",
-            "en": "20 g protein powder"
+            "en": "20 g protein powder",
+            "shop": [
+              {
+                "item": "protein",
+                "qty": 20.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "100 г боровинки",
-            "en": "100 g blueberries"
+            "en": "100 g blueberries",
+            "shop": [
+              {
+                "item": "berries",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "20 г овесени ядки",
-            "en": "20 g rolled oats"
+            "en": "20 g rolled oats",
+            "shop": [
+              {
+                "item": "oats",
+                "qty": 20.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": null,
@@ -1255,11 +2399,25 @@
         "ingredients": [
           {
             "bg": "150 г извара",
-            "en": "150 g cottage cheese (izvara)"
+            "en": "150 g cottage cheese (izvara)",
+            "shop": [
+              {
+                "item": "cottage",
+                "qty": 150.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "40 г пълнозърнест хляб",
-            "en": "40 g wholegrain bread"
+            "en": "40 g wholegrain bread",
+            "shop": [
+              {
+                "item": "bread",
+                "qty": 40.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "домат и краставица",
@@ -1267,7 +2425,14 @@
           },
           {
             "bg": "5 г зехтин",
-            "en": "5 g olive oil"
+            "en": "5 g olive oil",
+            "shop": [
+              {
+                "item": "olive_oil",
+                "qty": 5.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": null,
@@ -1284,15 +2449,36 @@
         "ingredients": [
           {
             "bg": "25 г протеин на прах",
-            "en": "25 g protein powder"
+            "en": "25 g protein powder",
+            "shop": [
+              {
+                "item": "protein",
+                "qty": 25.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "250 мл прясно мляко 1.5%",
-            "en": "250 ml milk 1.5%"
+            "en": "250 ml milk 1.5%",
+            "shop": [
+              {
+                "item": "milk",
+                "qty": 250.0,
+                "unit": "ml"
+              }
+            ]
           },
           {
             "bg": "1 банан (~100 г)",
-            "en": "1 banana (~100 g)"
+            "en": "1 banana (~100 g)",
+            "shop": [
+              {
+                "item": "banana",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": null,
@@ -1309,15 +2495,36 @@
         "ingredients": [
           {
             "bg": "1 ябълка",
-            "en": "1 apple"
+            "en": "1 apple",
+            "shop": [
+              {
+                "item": "apple",
+                "qty": 1.0,
+                "unit": "pcs"
+              }
+            ]
           },
           {
             "bg": "20 г фъстъчено масло",
-            "en": "20 g peanut butter"
+            "en": "20 g peanut butter",
+            "shop": [
+              {
+                "item": "peanut_butter",
+                "qty": 20.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "200 мл прясно мляко",
-            "en": "200 ml milk"
+            "en": "200 ml milk",
+            "shop": [
+              {
+                "item": "milk",
+                "qty": 200.0,
+                "unit": "ml"
+              }
+            ]
           }
         ],
         "steps": null,
@@ -1334,11 +2541,25 @@
         "ingredients": [
           {
             "bg": "2 яйца",
-            "en": "2 eggs"
+            "en": "2 eggs",
+            "shop": [
+              {
+                "item": "eggs",
+                "qty": 2.0,
+                "unit": "pcs"
+              }
+            ]
           },
           {
             "bg": "40 г пълнозърнест хляб",
-            "en": "40 g wholegrain bread"
+            "en": "40 g wholegrain bread",
+            "shop": [
+              {
+                "item": "bread",
+                "qty": 40.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "зеленчуци по избор",
@@ -1359,11 +2580,25 @@
         "ingredients": [
           {
             "bg": "30 г бадеми",
-            "en": "30 g almonds"
+            "en": "30 g almonds",
+            "shop": [
+              {
+                "item": "almonds",
+                "qty": 30.0,
+                "unit": "g"
+              }
+            ]
           },
           {
             "bg": "1 банан",
-            "en": "1 banana"
+            "en": "1 banana",
+            "shop": [
+              {
+                "item": "banana",
+                "qty": 100.0,
+                "unit": "g"
+              }
+            ]
           }
         ],
         "steps": null,

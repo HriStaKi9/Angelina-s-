@@ -4,12 +4,14 @@ import SwiftUI
 struct AngelinasNutritionApp: App {
     @State private var profileStore = ProfileStore()
     @State private var trainingLog = TrainingLog()
+    @State private var weekMenus = WeekMenuStore()
 
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environment(profileStore)
                 .environment(trainingLog)
+                .environment(weekMenus)
                 .tint(Theme.Palette.berry)
         }
     }
