@@ -27,8 +27,9 @@ struct ImportPlanView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if !assistant.hasKey {
-                    APIKeySetupView()
+                if !assistant.isConnected(.claude) {
+                    // Reading PDFs into the plan format uses Claude, whatever the chat uses.
+                    ProviderConnectView(provider: .claude)
                 } else {
                     switch phase {
                     case .choose: chooseForm

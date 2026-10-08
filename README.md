@@ -58,9 +58,11 @@ Exercises come from [free-exercise-db](https://github.com/yuhonas/free-exercise-
 6. ~~Food diary and calorie calculator (MyFitnessPal-style)~~
 7. Plan sync: training adapts to what was eaten that day
 
-## Ask Claude
+## AI assistant
 
-The ✨ button on Today, Workouts, Nutrition and Progress opens a chat with Claude (`claude-opus-5-5`, streamed, server-side refusal fallback). It uses the user's own Anthropic API key, stored in the Keychain (`APIKeyStore`) and sent only to `api.anthropic.com`. The system prompt is the full plan rendered by `PlanSummary` (cached) plus a per-request block with today's session, chosen menu, check-ins and recent workouts. There is no Swift SDK, so `ClaudeClient` uses raw HTTP + Server-Sent Events.
+The ✨ button opens a chat with the user's choice of **Claude** (Anthropic), **ChatGPT** (OpenAI) or **Gemini** (Google), connected with that provider's API key (consumer subscriptions can't be used by other apps). The connect screen opens the provider's console in-app to create a key or takes a pasted one, checks it by listing the models, and lets the user pick a model (`AIProviders.swift`; keys per provider in the Keychain). PDF import always uses Claude.
+
+For Claude, the ✨ button on Today, Workouts, Nutrition and Progress opens a chat with Claude (`claude-opus-5-5`, streamed, server-side refusal fallback). It uses the user's own Anthropic API key, stored in the Keychain (`APIKeyStore`) and sent only to `api.anthropic.com`. The system prompt is the full plan rendered by `PlanSummary` (cached) plus a per-request block with today's session, chosen menu, check-ins and recent workouts. There is no Swift SDK, so `ClaudeClient` uses raw HTTP + Server-Sent Events.
 
 ## More exercises
 
@@ -83,3 +85,7 @@ Profile or Nutrition → **Import plan from PDF**. Claude (`claude-opus-5-5`, th
 ## Recommended programs
 
 Workouts → **Recommended programs** (also Profile → Goal) builds a full program for each goal from the exercise database (`ProgramRecommender`): fat loss (3 × 12–15, short rests, cardio finisher, steps days), tone & sculpt (glute emphasis), build muscle (4 × 6–10 main lifts, 2 min rests) and stay healthy. The split follows workouts per week (2–3 full body A/B, 4 upper/lower, 5–6 push/pull/legs for muscle), and exercises are picked from movement-pattern lists by the user's equipment and level, with alternatives. Starting one replaces the coach's training program (`ProfileStore.trainingPlan`) until "Back to the coach's program"; logging and progression work the same.
+
+## Body measurements
+
+Progress → **Measurements** (or the Progress tab itself without a personal plan): weight, waist, hips, chest, neck, upper arm, thigh, calf and body fat %, with how-to tips, latest values, change since last time and since the start, a chart per measurement, and an optional weekly reminder notification. Stored as check-ins (`CheckIn.extra` for the extra measurements), so they're part of the account backup.

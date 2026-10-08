@@ -3,6 +3,7 @@ import SwiftUI
 
 enum ProgressRoute: Hashable {
     case logbook
+    case measurements
 }
 
 /// Weekly check-ins, the plan's advice for them, and the training log.
@@ -15,11 +16,8 @@ struct ProgressTabView: View {
                 if let plan = store.activePlan {
                     PlanProgressContent(plan: plan)
                 } else {
-                    ContentUnavailableView {
-                        Label("No personal plan", systemImage: "chart.line.uptrend.xyaxis")
-                    } description: {
-                        Text("Choose Tsveti's or Hristomir's plan in Profile to track check-ins and workouts.")
-                    }
+                    // Without a personal plan, Progress is the body measurements.
+                    MeasurementsView()
                 }
             }
             .background(Theme.Palette.background.ignoresSafeArea())
@@ -30,7 +28,12 @@ struct ProgressTabView: View {
                 }
             }
             .askClaudeButton()
-            .navigationDestination(for: ProgressRoute.self) { _ in LogbookView() }
+            .navigationDestination(for: ProgressRoute.self) { route in
+                switch route {
+                case .logbook: LogbookView()
+                case .measurements: MeasurementsView()
+                }
+            }
         }
     }
 }
@@ -58,6 +61,9 @@ private struct PlanProgressContent: View {
                     Label(store.t("Нов check-in", "New check-in"), systemImage: "plus")
                 }
                 .buttonStyle(PrimaryButtonStyle(tint: plan.accentColor))
+
+                NavigationLink(value: ProgressRoute.measurements) { MeasurementsCard(logID: plan.id, tint: plan.accentColor) }
+                    .buttonStyle(.plain)
 
                 if log.shouldSuggestDeload(planID: plan.id, currentWeek: currentWeek, every: store.trainingPlan?.training.deloadEvery) {
                     Callout(title: store.t("Време е за разтоварване", "Time for a deload"),
@@ -92,7 +98,7 @@ private struct PlanProgressContent: View {
             .padding(.bottom, Theme.Spacing.xxl)
         }
         .sheet(isPresented: $isAddingCheckIn) {
-            CheckInSheet(plan: plan)
+            CheckInSheet(logID: plan.id, fields: plan.checkIn.fields, flags: plan.checkIn.flags, tint: plan.accentColor)
         }
     }
 
@@ -190,7 +196,8 @@ private struct PlanProgressContent: View {
         switch field {
         case .steps: return Int(value).formatted()
         case .weight: return value.formatted(.number.precision(.fractionLength(1)))
-        case .waist, .hips: return value.trimmed
+        case .bodyFat: return value.formatted(.number.precision(.fractionLength(1)))
+        default: return value.trimmed
         }
     }
 
@@ -276,60 +283,89 @@ struct CheckInSheet: View {
     @Environment(ProfileStore.self) private var store
     @Environment(TrainingLog.self) private var log
     @Environment(\.dismiss) private var dismiss
-    let plan: PersonalPlan
+    /// Where the check-in is stored: the plan id, or "personal" without a plan.
+    let logID: String
+    /// The plan's own check-in fields, shown first; the other body measurements follow.
+    let fields: [CheckInField]
+    let flags: [CheckInFlag]
+    let tint: Color
+    var expandMeasurements = false
 
     @State private var date = Date.now
     @State private var values: [CheckInField: Double] = [:]
-    @State private var flags: Set<CheckInFlag> = []
+    @State private var chosenFlags: Set<CheckInFlag> = []
+    @State private var showAll = false
 
     private var lang: ContentLanguage { store.language }
+    private var extraFields: [CheckInField] { CheckInField.bodyMeasurements.filter { !fields.contains($0) } }
 
     var body: some View {
         NavigationStack {
             Form {
                 DatePicker(store.t("Дата", "Date"), selection: $date, in: ...Date.now, displayedComponents: .date)
+                if !fields.isEmpty {
+                    Section {
+                        ForEach(fields) { fieldRow($0) }
+                    } footer: {
+                        Text(store.t("Попълни само каквото си измерил днес.", "Only fill in what you measured today."))
+                    }
+                }
                 Section {
-                    ForEach(plan.checkIn.fields) { field in
-                        HStack {
-                            Text(field.title[lang])
-                            Spacer()
-                            TextField("–", value: Binding(get: { values[field] }, set: { values[field] = $0 }), format: .number)
-                                .keyboardType(field == .steps ? .numberPad : .decimalPad)
-                                .multilineTextAlignment(.trailing)
-                                .frame(width: 100)
-                            Text(field.unit[lang]).foregroundStyle(Theme.Palette.inkSecondary)
-                        }
+                    DisclosureGroup(isExpanded: $showAll) {
+                        ForEach(extraFields) { fieldRow($0) }
+                    } label: {
+                        Label(store.t("Още мерки (веднъж седмично)", "More measurements (weekly)"), systemImage: "ruler")
                     }
                 } footer: {
-                    Text(store.t("Попълни само каквото си измерил днес.", "Only fill in what you measured today."))
+                    Text(store.t("Мери сутрин, на едно и също място, със същия сантиметър.", "Measure in the morning, at the same spot, with the same tape."))
                 }
-                Section(store.t("Как се чувстваш", "How you feel")) {
-                    ForEach(plan.checkIn.flags) { flag in
-                        Toggle(flag.title[lang], isOn: Binding(
-                            get: { flags.contains(flag) },
-                            set: { if $0 { flags.insert(flag) } else { flags.remove(flag) } }
-                        ))
-                        .tint(plan.accentColor)
+                if !flags.isEmpty {
+                    Section(store.t("Как се чувстваш", "How you feel")) {
+                        ForEach(flags) { flag in
+                            Toggle(flag.title[lang], isOn: Binding(
+                                get: { chosenFlags.contains(flag) },
+                                set: { if $0 { chosenFlags.insert(flag) } else { chosenFlags.remove(flag) } }
+                            ))
+                            .tint(tint)
+                        }
                     }
                 }
             }
-            .navigationTitle(store.t("Check-in", "Check-in"))
+            .navigationTitle(store.t("Измервания", "Measurements"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(store.t("Отказ", "Cancel")) { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
                     Button(store.t("Запази", "Save")) { save() }
-                        .disabled(values.isEmpty && flags.isEmpty)
+                        .disabled(values.isEmpty && chosenFlags.isEmpty)
                 }
             }
+            .onAppear { showAll = expandMeasurements || fields.isEmpty }
         }
         .presentationDetents([.large])
     }
 
+    private func fieldRow(_ field: CheckInField) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            HStack {
+                Text(field.title[lang])
+                Spacer()
+                TextField("–", value: Binding(get: { values[field] }, set: { values[field] = $0 }), format: .number)
+                    .keyboardType(field == .steps ? .numberPad : .decimalPad)
+                    .multilineTextAlignment(.trailing)
+                    .frame(width: 90)
+                Text(field.unit[lang]).foregroundStyle(Theme.Palette.inkSecondary).frame(width: 44, alignment: .leading)
+            }
+            if let howTo = field.howTo {
+                Text(howTo[lang]).font(.caption2).foregroundStyle(Theme.Palette.inkSecondary)
+            }
+        }
+    }
+
     private func save() {
-        log.add(CheckIn(planID: plan.id, date: date,
-                        weight: values[.weight], waist: values[.waist], hips: values[.hips],
-                        steps: values[.steps].map { Int($0) }, flags: flags))
+        var checkIn = CheckIn(planID: logID, date: date, flags: chosenFlags)
+        for (field, value) in values { checkIn.set(field, value) }
+        log.add(checkIn)
         dismiss()
     }
 }

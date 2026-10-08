@@ -13,18 +13,56 @@ final class AssistantStore {
     var messages: [Message] = []
     var isStreaming = false
     var error: String?
-    var hasKey = APIKeyStore.load() != nil
     private var task: Task<Void, Never>?
 
+    /// Providers with a saved key.
+    private(set) var connected: Set<AIProvider> = Set(AIProvider.allCases.filter { ProviderKeys.load($0) != nil })
+    /// The provider the chat uses.
+    private(set) var provider: AIProvider? = {
+        let saved = UserDefaults.standard.string(forKey: "ai.provider").flatMap(AIProvider.init(rawValue:))
+        let withKeys = AIProvider.allCases.filter { ProviderKeys.load($0) != nil }
+        return saved.flatMap { withKeys.contains($0) ? $0 : nil } ?? withKeys.first
+    }()
+
+    /// True when a provider is connected and selected for the chat.
+    var hasKey: Bool { provider != nil }
+
+    func isConnected(_ provider: AIProvider) -> Bool { connected.contains(provider) }
+
+    func model(for provider: AIProvider) -> String {
+        UserDefaults.standard.string(forKey: "ai.model.\(provider.rawValue)") ?? (provider == .claude ? ClaudeClient.model : "")
+    }
+
+    func connect(_ provider: AIProvider, key: String, model: String) {
+        ProviderKeys.save(key, for: provider)
+        UserDefaults.standard.set(model, forKey: "ai.model.\(provider.rawValue)")
+        connected.insert(provider)
+        use(provider)
+    }
+
+    func use(_ provider: AIProvider) {
+        guard connected.contains(provider) else { return }
+        if self.provider != provider { reset() }
+        self.provider = provider
+        UserDefaults.standard.set(provider.rawValue, forKey: "ai.provider")
+    }
+
+    func disconnect(_ provider: AIProvider) {
+        ProviderKeys.delete(provider)
+        connected.remove(provider)
+        if self.provider == provider {
+            reset()
+            self.provider = connected.sorted { $0.rawValue < $1.rawValue }.first
+        }
+    }
+
+    /// Kept for the Claude key screen used by the PDF importer.
     func saveKey(_ key: String) {
-        let trimmed = key.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
-        hasKey = APIKeyStore.save(trimmed)
+        connect(.claude, key: key, model: ClaudeClient.model)
     }
 
     func removeKey() {
-        APIKeyStore.delete()
-        hasKey = false
+        if let provider { disconnect(provider) }
     }
 
     func reset() {
@@ -38,7 +76,8 @@ final class AssistantStore {
 
     func send(_ text: String, stablePrompt: String, context: String) {
         let question = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !question.isEmpty, !isStreaming, let key = APIKeyStore.load() else { return }
+        guard !question.isEmpty, !isStreaming, let provider, let key = ProviderKeys.load(provider) else { return }
+        let model = model(for: provider)
         error = nil
         messages.append(Message(role: .user, text: question))
         // Only completed text turns are sent back; the conversation is append-only.
@@ -55,14 +94,15 @@ final class AssistantStore {
             }
             var failed = false
             do {
-                for try await event in ClaudeClient(apiKey: key).stream(stablePrompt: stablePrompt, context: context, turns: turns) {
+                for try await event in ChatBackend.stream(provider: provider, model: model, key: key, stablePrompt: stablePrompt,
+                                                          context: context, turns: turns) {
                     switch event {
                     case .text(let chunk):
                         update { $0.text += chunk }
-                    case .model(let model) where model != ClaudeClient.model:
-                        update { $0.note = "Answered by \(model)" }
+                    case .model(let served) where provider == .claude && served != ClaudeClient.model:
+                        update { $0.note = "Answered by \(served)" }
                     case .stop(let reason) where reason == "refusal":
-                        update { $0.note = "Claude declined to answer this one." }
+                        update { $0.note = "\(provider.title) declined to answer this one." }
                     case .stop(let reason) where reason == "max_tokens":
                         update { $0.note = "The answer was cut off." }
                     default:
@@ -95,6 +135,7 @@ struct AssistantView: View {
     @Environment(AssistantStore.self) private var assistant
     @Environment(\.dismiss) private var dismiss
     @State private var draft = ""
+    @State private var choosingProvider = false
     @FocusState private var inputFocused: Bool
 
     private var plan: PersonalPlan? { store.activePlan }
@@ -106,11 +147,17 @@ struct AssistantView: View {
                 if assistant.hasKey {
                     chat
                 } else {
-                    APIKeySetupView()
+                    ProviderPickerView()
                 }
             }
             .background(Theme.Palette.background.ignoresSafeArea())
-            .navigationTitle("Claude")
+            .navigationTitle(assistant.provider?.title ?? "AI")
+            .sheet(isPresented: $choosingProvider) {
+                NavigationStack {
+                    ProviderPickerView()
+                        .toolbar { ToolbarItem(placement: .confirmationAction) { Button(store.t("Готово", "Done")) { choosingProvider = false } } }
+                }
+            }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(store.t("Затвори", "Close")) { dismiss() } }
@@ -118,9 +165,20 @@ struct AssistantView: View {
                     ToolbarItem(placement: .primaryAction) {
                         Menu {
                             Button(store.t("Нов разговор", "New chat"), systemImage: "square.and.pencil") { assistant.reset() }
-                            Button(store.t("Премахни API ключа", "Remove API key"), systemImage: "key.slash", role: .destructive) {
-                                assistant.reset()
-                                assistant.removeKey()
+                            Menu(store.t("Смени AI", "Switch AI")) {
+                                ForEach(AIProvider.allCases) { provider in
+                                    Button {
+                                        if assistant.isConnected(provider) { assistant.use(provider) } else { choosingProvider = true }
+                                    } label: {
+                                        if assistant.provider == provider { Label(provider.title, systemImage: "checkmark") } else { Text(provider.title) }
+                                    }
+                                }
+                                Button(store.t("Управление…", "Manage…"), systemImage: "slider.horizontal.3") { choosingProvider = true }
+                            }
+                            if let provider = assistant.provider {
+                                Button(store.t("Изключи \(provider.title)", "Disconnect \(provider.title)"), systemImage: "key.slash", role: .destructive) {
+                                    assistant.disconnect(provider)
+                                }
                             }
                         } label: { Image(systemName: "ellipsis.circle") }
                     }
@@ -157,7 +215,7 @@ struct AssistantView: View {
                 .foregroundStyle(tint)
             Text(plan == nil
                  ? store.t("Питай за хранене и тренировки.", "Ask about nutrition and training.")
-                 : store.t("Claude знае режима и програмата на \(plan!.name.bg), днешното меню и последните ти тренировки.",
+                 : store.t("\(assistant.provider?.title ?? "AI") знае режима и програмата на \(plan!.name.bg), днешното меню и последните ти тренировки.",
                            "Claude knows \(plan!.name.en)'s eating plan and program, today's menu and your recent workouts."))
                 .font(.body)
                 .foregroundStyle(Theme.Palette.ink)
@@ -174,8 +232,8 @@ struct AssistantView: View {
                 }
                 .buttonStyle(.plain)
             }
-            Text(store.t("Използва твоя Anthropic API ключ – разговорите се таксуват по сметката ти.",
-                         "Uses your Anthropic API key – chats are billed to your account."))
+            Text(store.t("\(assistant.provider.map { "\($0.title) · \(assistant.model(for: $0))" } ?? "") – по твоя ключ; разговорите се таксуват по сметката ти.",
+                         "\(assistant.provider.map { "\($0.title) · \(assistant.model(for: $0))" } ?? "") – your own key; chats are billed to your account."))
                 .font(.caption)
                 .foregroundStyle(Theme.Palette.inkSecondary)
         }

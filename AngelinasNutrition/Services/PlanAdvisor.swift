@@ -3,22 +3,16 @@ import Foundation
 /// One program week of check-ins, averaged the way the plans ask ("look at the weekly average").
 struct WeekSummary: Equatable, Identifiable {
     let week: Int
-    let weight: Double?
-    let waist: Double?
-    let hips: Double?
-    let steps: Double?
+    let values: [CheckInField: Double]
     let count: Int
 
     var id: Int { week }
+    var weight: Double? { values[.weight] }
+    var waist: Double? { values[.waist] }
+    var hips: Double? { values[.hips] }
+    var steps: Double? { values[.steps] }
 
-    func value(_ field: CheckInField) -> Double? {
-        switch field {
-        case .weight: weight
-        case .waist: waist
-        case .hips: hips
-        case .steps: steps
-        }
-    }
+    func value(_ field: CheckInField) -> Double? { values[field] }
 }
 
 struct PlanAdvice: Equatable {
@@ -44,15 +38,13 @@ enum PlanAdvisor {
         return grouped.keys.sorted().map { week in
             let items = grouped[week, default: []].sorted { $0.date < $1.date }
             func average(_ values: [Double]) -> Double? { values.isEmpty ? nil : values.reduce(0, +) / Double(values.count) }
-            return WeekSummary(
-                week: week,
-                weight: average(items.compactMap(\.weight)),
-                // Tape measurements are weekly; use the latest one.
-                waist: items.compactMap(\.waist).last,
-                hips: items.compactMap(\.hips).last,
-                steps: average(items.compactMap(\.steps).map(Double.init)),
-                count: items.count
-            )
+            var values: [CheckInField: Double] = [:]
+            for field in CheckInField.allCases {
+                let all = items.compactMap { $0.value(field) }
+                // Weight and steps are averaged; tape measurements are weekly, so the latest one counts.
+                values[field] = field.isAveraged ? average(all) : all.last
+            }
+            return WeekSummary(week: week, values: values, count: items.count)
         }
     }
 
