@@ -1,28 +1,38 @@
 import SwiftUI
 import UIKit
 
-/// Design tokens for the whole app. Every color adapts to light and dark mode,
+/// The two looks of the app: Rose (the original) and Steel (cooler slate and blue).
+enum ThemeVariant: String, Codable, CaseIterable, Identifiable {
+    case rose, steel
+
+    var id: String { rawValue }
+
+    /// Read by every themed color at draw time; RootView rebuilds the view tree when it changes.
+    nonisolated(unsafe) static var current: ThemeVariant = .rose
+}
+
+/// Design tokens for the whole app. Every color adapts to light and dark mode and to the theme,
 /// so views never reach for raw `Color.white` / `Color.black`.
 enum Theme {
     enum Palette {
-        /// Warm cream page background.
-        static let background = Color.dynamic(light: 0xFBF6F2, dark: 0x141016)
+        /// Page background: warm cream (Rose) / cool slate (Steel).
+        static let background = Color.themed(rose: (0xFBF6F2, 0x141016), steel: (0xF2F4F7, 0x0D1117))
         /// Raised surfaces: cards, sheets, list rows.
-        static let surface = Color.dynamic(light: 0xFFFFFF, dark: 0x211A24)
+        static let surface = Color.themed(rose: (0xFFFFFF, 0x211A24), steel: (0xFFFFFF, 0x171D25))
         /// Subtle fill for chips, inputs and tracks.
-        static let surfaceMuted = Color.dynamic(light: 0xF3EAE6, dark: 0x2C2330)
-        static let ink = Color.dynamic(light: 0x2A2024, dark: 0xF4ECEF)
-        static let inkSecondary = Color.dynamic(light: 0x7A6A70, dark: 0xB3A3AA)
-        static let hairline = Color.dynamic(light: 0xEBDFDA, dark: 0x382E3C)
+        static let surfaceMuted = Color.themed(rose: (0xF3EAE6, 0x2C2330), steel: (0xE5E9EE, 0x232B35))
+        static let ink = Color.themed(rose: (0x2A2024, 0xF4ECEF), steel: (0x18212C, 0xE7ECF2))
+        static let inkSecondary = Color.themed(rose: (0x7A6A70, 0xB3A3AA), steel: (0x5D6978, 0x98A6B5))
+        static let hairline = Color.themed(rose: (0xEBDFDA, 0x382E3C), steel: (0xDAE0E7, 0x2B3440))
 
-        /// Brand berry — training, primary actions.
-        static let berry = Color.dynamic(light: 0xD9576D, dark: 0xF47C8F)
-        /// Sage — nutrition and "good" states.
-        static let sage = Color.dynamic(light: 0x5E9478, dark: 0x86C2A2)
-        /// Apricot — energy, calories, cardio.
-        static let apricot = Color.dynamic(light: 0xE8925A, dark: 0xF4AD7E)
-        /// Lavender — recovery, stretching.
-        static let lavender = Color.dynamic(light: 0x8C7BC8, dark: 0xAE9FE6)
+        /// Primary accent — training, primary actions: berry (Rose) / steel blue (Steel).
+        static let berry = Color.themed(rose: (0xD9576D, 0xF47C8F), steel: (0x2E6BB0, 0x5D9DE3))
+        /// Nutrition and "good" states: sage / teal.
+        static let sage = Color.themed(rose: (0x5E9478, 0x86C2A2), steel: (0x23856F, 0x4FC2A6))
+        /// Energy, calories, cardio: apricot / amber.
+        static let apricot = Color.themed(rose: (0xE8925A, 0xF4AD7E), steel: (0xD7861F, 0xF2A745))
+        /// Recovery, stretching: lavender / slate indigo.
+        static let lavender = Color.themed(rose: (0x8C7BC8, 0xAE9FE6), steel: (0x5B63B8, 0x8E95E6))
 
         static let onAccent = Color.white
     }
@@ -30,7 +40,8 @@ enum Theme {
     enum Gradients {
         /// Deepens in dark mode (rather than lightening) so white text keeps its contrast.
         static let hero = LinearGradient(
-            colors: [Color.dynamic(light: 0xD9576D, dark: 0xC94A61), Color.dynamic(light: 0xE8925A, dark: 0xD97B45)],
+            colors: [Color.themed(rose: (0xD9576D, 0xC94A61), steel: (0x1F4F86, 0x1B4473)),
+                     Color.themed(rose: (0xE8925A, 0xD97B45), steel: (0x23856F, 0x1E7060))],
             startPoint: .topLeading, endPoint: .bottomTrailing
         )
         static let calm = LinearGradient(
@@ -63,6 +74,14 @@ extension Font {
 }
 
 extension Color {
+    /// A color with light/dark values for each theme.
+    static func themed(rose: (light: UInt32, dark: UInt32), steel: (light: UInt32, dark: UInt32)) -> Color {
+        Color(UIColor { traits in
+            let pair = ThemeVariant.current == .steel ? steel : rose
+            return UIColor(hex: traits.userInterfaceStyle == .dark ? pair.dark : pair.light)
+        })
+    }
+
     static func dynamic(light: UInt32, dark: UInt32) -> Color {
         Color(UIColor { traits in
             UIColor(hex: traits.userInterfaceStyle == .dark ? dark : light)

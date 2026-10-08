@@ -34,6 +34,23 @@ struct ProfileView: View {
                     TextField("Name", text: $store.profile.name)
                 }
                 Section {
+                    Picker("App look", selection: Binding(get: { store.profile.theme }, set: { store.profile.theme = $0 })) {
+                        Text("Automatic").tag(ThemeVariant?.none)
+                        Text("Rose").tag(Optional(ThemeVariant.rose))
+                        Text("Steel").tag(Optional(ThemeVariant.steel))
+                    }
+                    .pickerStyle(.segmented)
+                    HStack(spacing: Theme.Spacing.m) {
+                        ForEach(ThemeVariant.allCases) { variant in
+                            ThemeSwatch(variant: variant, isActive: store.theme == variant)
+                        }
+                    }
+                } header: {
+                    Text("App look")
+                } footer: {
+                    Text("Automatic uses Steel for a man's plan (Hristomir) and Rose otherwise. The app icon changes with it.")
+                }
+                Section {
                     Picker("Active plan", selection: Binding(get: { store.profile.planID }, set: { store.selectPlan($0) })) {
                         Text("None – generic plan").tag(String?.none)
                         ForEach(PlanLibrary.shared.plans) { plan in
@@ -158,5 +175,29 @@ struct ProfileView: View {
                 Button("Start over", role: .destructive) { store.reset() }
             }
         }
+    }
+}
+
+/// Small preview of a theme's colors and icon.
+private struct ThemeSwatch: View {
+    let variant: ThemeVariant
+    let isActive: Bool
+
+    private var colors: [Color] {
+        variant == .steel
+            ? [Color(red: 0.12, green: 0.31, blue: 0.53), Color(red: 0.18, green: 0.42, blue: 0.69), Color(red: 0.14, green: 0.52, blue: 0.44)]
+            : [Color(red: 0.85, green: 0.34, blue: 0.43), Color(red: 0.91, green: 0.57, blue: 0.35), Color(red: 0.37, green: 0.58, blue: 0.47)]
+    }
+
+    var body: some View {
+        VStack(spacing: 6) {
+            HStack(spacing: 4) {
+                ForEach(0..<3, id: \.self) { Circle().fill(colors[$0]).frame(width: 18, height: 18) }
+            }
+            Text(variant == .steel ? "Steel" : "Rose").font(.caption.weight(isActive ? .bold : .regular))
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, Theme.Spacing.s)
+        .background(isActive ? Theme.Palette.surfaceMuted : .clear, in: RoundedRectangle(cornerRadius: Theme.Radius.small))
     }
 }

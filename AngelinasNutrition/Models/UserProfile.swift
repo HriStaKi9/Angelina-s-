@@ -17,6 +17,8 @@ struct UserProfile: Codable, Equatable {
     var gear: Set<HomeGear>?
     /// A recommended program the user started; replaces the coach's training program until removed.
     var recommendedProgram: RecommendedProgram?
+    /// App look: nil = automatic (Steel for a male plan, otherwise Rose).
+    var theme: ThemeVariant?
 
     var firstName: String {
         name.split(separator: " ").first.map(String.init) ?? ""

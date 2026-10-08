@@ -2,7 +2,8 @@ import SwiftUI
 
 extension PersonalPlan {
     var accentColor: Color {
-        accent == "apricot" ? Theme.Palette.apricot : Theme.Palette.berry
+        if ThemeVariant.current == .steel { return Theme.Palette.berry }
+        return accent == "apricot" ? Theme.Palette.apricot : Theme.Palette.berry
     }
 }
 
