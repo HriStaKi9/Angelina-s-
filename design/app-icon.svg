@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E25A72"/>
+      <stop offset="1" stop-color="#F0A167"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.38" r="0.5">
+      <stop offset="0" stop-color="#FFF4EC" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FFF4EC" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E8AE86"/>
+      <stop offset="1" stop-color="#D4956C"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <circle cx="512" cy="430" r="380" fill="url(#glow)"/>
+  <ellipse cx="512" cy="966" rx="180" ry="22" fill="#7A2E3A" opacity="0.25"/>
+  <g transform="translate(512,520) scale(1.12) translate(-495,-550)">
+    <!-- ponytail -->
+    <path d="M500,250 C560,262 610,300 655,322 C680,334 705,352 718,372 C688,362 655,352 615,338 C565,320 528,296 492,272 Z" fill="#231C24"/>
+    <!-- raised arm holding ponytail -->
+    <path d="M582,336 C608,382 624,442 632,500 L606,506 C598,452 584,402 566,352 Z" fill="url(#skin)"/>
+    <path d="M606,506 L632,500 C652,442 664,388 672,332 L648,326 C640,386 626,446 606,506 Z" fill="url(#skin)"/>
+    <circle cx="661" cy="326" r="18" fill="#E2A47C"/>
+    <!-- left arm -->
+    <path d="M396,336 C374,384 370,452 383,522 C391,572 404,612 417,642 L440,636 C430,590 421,540 419,500 C416,440 421,382 427,346 Z" fill="url(#skin)"/>
+    <rect x="406" y="598" width="26" height="18" rx="6" fill="#FFFFFF" transform="rotate(-12 419 607)"/>
+    <!-- neck -->
+    <path d="M452,262 L500,262 L506,318 L452,318 Z" fill="#D99A72"/>
+    <!-- back -->
+    <path d="M400,334 C435,316 556,316 590,334 C600,372 590,420 572,470 C562,500 552,525 549,556 L445,556 C442,525 432,500 420,470 C402,420 391,372 400,334 Z" fill="url(#skin)"/>
+    <path d="M496,340 C494,380 495,420 497,456" stroke="#C07F58" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.6"/>
+    <!-- sports bra: crossed straps + band -->
+    <path d="M432,326 L554,468 M558,326 L436,468" stroke="#2B2530" stroke-width="12" stroke-linecap="round"/>
+    <path d="M416,460 C456,474 536,474 576,458 L564,514 C526,525 466,525 430,514 Z" fill="#2B2530"/>
+    <!-- leggings -->
+    <path d="M444,548 C480,558 516,558 550,548 C578,578 602,618 601,662 C600,706 586,736 576,772 C566,822 562,870 556,906 L527,906 C523,860 516,802 507,752 C504,736 501,722 497,712 C493,722 490,736 487,752 C478,802 471,860 467,906 L438,906 C432,870 428,822 418,772 C408,736 393,706 393,662 C392,618 416,578 444,548 Z" fill="#2B2530"/>
+    <path d="M420,640 C428,606 462,594 486,610 M574,640 C566,606 532,594 508,610" stroke="#4A4252" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <path d="M446,553 C480,563 516,563 548,553" stroke="#4A4252" stroke-width="6" fill="none"/>
+    <!-- sneakers -->
+    <path d="M440,900 C430,928 444,950 472,950 C494,950 494,926 478,900 Z" fill="#F7CFDD"/>
+    <path d="M440,936 C450,950 486,952 492,938" stroke="#FFFFFF" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M520,900 C510,928 524,950 552,950 C574,950 574,926 558,900 Z" fill="#F7CFDD"/>
+    <path d="M520,936 C530,950 566,952 572,938" stroke="#FFFFFF" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <!-- head -->
+    <circle cx="468" cy="214" r="58" fill="url(#skin)"/>
+    <path d="M416,206 C414,150 470,138 506,158 C538,178 540,242 516,268 C498,286 474,276 468,254 C462,232 446,214 416,206 Z" fill="#231C24"/>
+    <path d="M448,160 C470,150 495,154 510,168" stroke="#4A3F4C" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="486" cy="226" r="11" fill="#D99A72"/>
+    <circle cx="487" cy="240" r="3.5" fill="#FFFFFF"/>
+    <!-- smile -->
+    <path d="M420,240 C428,252 442,254 452,246" stroke="#7A2E3A" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <circle cx="430" cy="212" r="5" fill="#231C24"/>
+  </g>
+</svg>
